@@ -1,0 +1,56 @@
+/* ============================================================
+   EQUITERRA — Design tokens
+   Pegar este bloque una sola vez en Elementor > Custom CSS (global)
+   o mapear a Global Colors / Global Fonts.
+   ============================================================ */
+:root {
+  /* Brand palette (extraída de los SVG) */
+  --eq-forest:        #0f2e15;   /* Dark Forest Green — primario */
+  --eq-forest-700:    #16401f;
+  --eq-forest-600:    #1d5228;
+  --eq-mint:          #dae2cb;   /* Light Mint Green / sage — secundario */
+  --eq-mint-200:      #eef2e6;
+  --eq-gray:          #565953;   /* Warm Gray — neutro texto */
+  --eq-gray-400:      #8a8d86;
+  --eq-white:         #ffffff;
+  --eq-cream:         #f7f8f3;   /* fondo claro de sección */
+
+  /* Acentos premium derivados */
+  --eq-gold:          var(--eq-mint);   /* [DEPRECADO] el dorado se reemplazó por menta — alias para no romper refs */
+
+  /* Semánticos */
+  --eq-bg:            var(--eq-white);
+  --eq-bg-alt:        var(--eq-cream);
+  --eq-bg-dark:       var(--eq-forest);
+  --eq-text:          #1c1f1b;
+  --eq-text-soft:     var(--eq-gray);
+  --eq-text-invert:   var(--eq-white);
+  --eq-border:        rgba(15, 46, 21, 0.12);
+  --eq-border-light:  rgba(255, 255, 255, 0.16);
+
+  /* Tipografía */
+  --eq-font:          'Outfit', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  /* Escala fluida de tipografía */
+  --eq-fs-hero:   clamp(2.6rem, 6vw, 5rem);
+  --eq-fs-h1:     clamp(2.2rem, 4.5vw, 3.4rem);
+  --eq-fs-h2:     clamp(1.7rem, 3.2vw, 2.5rem);
+  --eq-fs-h3:     clamp(1.25rem, 2vw, 1.6rem);
+  --eq-fs-body:   clamp(1rem, 1.1vw, 1.125rem);
+  --eq-fs-small:  0.875rem;
+  --eq-fs-eyebrow:0.78rem;
+
+  /* Layout */
+  --eq-maxw:      1240px;
+  --eq-gutter:    clamp(1.25rem, 4vw, 4rem);
+  --eq-radius:    14px;
+  --eq-radius-lg: 24px;
+
+  /* Sombra */
+  --eq-shadow:    0 18px 50px -22px rgba(15, 46, 21, 0.35);
+  --eq-shadow-sm: 0 8px 24px -16px rgba(15, 46, 21, 0.4);
+
+  /* Movimiento */
+  --eq-ease:      cubic-bezier(0.22, 1, 0.36, 1);
+  --eq-dur:       .5s;
+}

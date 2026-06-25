@@ -1,0 +1,72 @@
+/* ============================================================
+   EQUITERRA — Motor de animación (editorial, no "fade-up de IA")
+   Primitivas: line-mask, wipe, parallax, marquee, pin horizontal.
+   ============================================================ */
+
+/* ---- Reveal de titulares: línea por línea con máscara ---- */
+.line-wrap { display: block; overflow: hidden; }
+.line {
+  display: block;
+  transform: translateY(115%) rotate(2deg);
+  transform-origin: left top;
+  transition: transform 1s var(--eq-ease);
+  transition-delay: calc(var(--i, 0) * 95ms);
+  will-change: transform;
+}
+.is-in .line { transform: none; }
+
+/* ---- Reveal de palabras (hero) ---- */
+.word-wrap { display: inline-block; overflow: hidden; vertical-align: top; }
+.word { display: inline-block; transform: translateY(110%); transition: transform .95s var(--eq-ease); transition-delay: calc(var(--i, 0) * 55ms); }
+.is-in .word { transform: none; }
+
+/* ---- Wipe con clip-path (bloques, cards, imágenes) ---- */
+[data-anim="wipe"] { clip-path: inset(0 0 100% 0); transition: clip-path 1.05s var(--eq-ease) var(--d, 0ms); }
+[data-anim="wipe"].is-in { clip-path: inset(0 0 0 0); }
+
+[data-anim="wipe-x"] { clip-path: inset(0 100% 0 0); transition: clip-path 1.05s var(--eq-ease) var(--d, 0ms); }
+[data-anim="wipe-x"].is-in { clip-path: inset(0 0 0 0); }
+
+/* ---- Rise sutil (no el fade-up genérico: con escala + sin opacity larga) ---- */
+[data-anim="rise"] { opacity: 0; transform: translateY(34px) scale(.985); transition: opacity .6s var(--eq-ease) var(--d, 0ms), transform .9s var(--eq-ease) var(--d, 0ms); }
+[data-anim="rise"].is-in { opacity: 1; transform: none; }
+
+/* ---- Stagger de hijos (cards) ---- */
+[data-stagger] > * { opacity: 0; transform: translateY(30px); transition: opacity .55s var(--eq-ease), transform .8s var(--eq-ease); }
+[data-stagger].is-in > * { opacity: 1; transform: none; }
+[data-stagger].is-in > *:nth-child(1) { transition-delay: .00s; }
+[data-stagger].is-in > *:nth-child(2) { transition-delay: .10s; }
+[data-stagger].is-in > *:nth-child(3) { transition-delay: .20s; }
+[data-stagger].is-in > *:nth-child(4) { transition-delay: .30s; }
+[data-stagger].is-in > *:nth-child(5) { transition-delay: .40s; }
+
+/* ---- Parallax (lo mueve JS via --py) ---- */
+[data-parallax] { transform: translate3d(0, var(--py, 0), 0); will-change: transform; }
+
+/* ---- Marquee continuo ---- */
+.eq-marquee { overflow: hidden; white-space: nowrap; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.eq-marquee__track { display: inline-flex; gap: 3.5rem; align-items: center; animation: eq-marq 32s linear infinite; }
+.eq-marquee:hover .eq-marquee__track { animation-play-state: paused; }
+@keyframes eq-marq { to { transform: translateX(-50%); } }
+
+/* ---- Galería horizontal anclada (pinned) ---- */
+.eq-hscroll { position: relative; }
+.eq-hscroll__pin { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.eq-hscroll__track { display: flex; gap: 1.6rem; padding-inline: var(--eq-gutter); will-change: transform; }
+
+@media (max-width: 760px) {
+  /* En móvil el pin se vuelve scroll horizontal nativo (más fluido al tacto) */
+  .eq-hscroll { height: auto !important; }
+  .eq-hscroll__pin { position: static; height: auto; }
+  .eq-hscroll__track { overflow-x: auto; scroll-snap-type: x mandatory; transform: none !important; padding-block: 1rem; -webkit-overflow-scrolling: touch; }
+  .eq-hscroll__track > * { scroll-snap-align: start; }
+}
+
+/* ---- Línea decorativa que se dibuja ---- */
+.eq-rule { height: 1px; background: var(--eq-border); transform: scaleX(0); transform-origin: left; transition: transform 1.1s var(--eq-ease); }
+.is-in .eq-rule, .eq-rule.is-in { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .line, .word, [data-anim], [data-stagger] > *, .eq-rule { transition: none !important; transform: none !important; clip-path: none !important; opacity: 1 !important; }
+  .eq-marquee__track { animation: none; }
+}

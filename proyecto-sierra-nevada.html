@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto Sierra Nevada — Equiterra</title>
+  <meta name="description" content="An ARR natural-capital project in the Sierra Nevada de Santa Marta, developed with the Arhuaco people — restoring forest, watersheds and ancestral stewardship." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/anim.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- [NATIVO] Header -->
+  <header class="eq-header">
+    <div class="eq-container eq-header__inner">
+      <a class="eq-header__logo" href="index.html" aria-label="Equiterra home">
+        <img class="logo-light" src="Logos/SVG/Logo Blanco.svg" alt="Equiterra" />
+        <img class="logo-dark"  src="Logos/SVG/Logo Dark Forest Green.svg" alt="Equiterra" />
+      </a>
+      <nav class="eq-nav">
+        <a href="index.html">Home</a><a href="about.html">About</a><a href="solutions.html">Solutions</a><a href="cbam.html">CBAM</a><a href="partner.html">Partner With Us</a>
+      </nav>
+      <div class="eq-header__cta"><a href="partner.html" class="eq-btn eq-btn--gold">Get in touch</a></div>
+      <button class="eq-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="eq-mobile">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="solutions.html">Solutions</a><a href="cbam.html">CBAM</a><a href="partner.html">Partner With Us</a>
+  </div>
+
+  <!-- [NATIVO] Project hero con imagen de fondo. [PRO] parallax. [CÓDIGO] reveal título -->
+  <section class="eq-proj-hero">
+    <div class="eq-proj-hero__bg" data-parallax="0.08" style="background-image:url('assets/images/sierra-nevada-1.jpg')"></div>
+    <a href="index.html#projects" class="eq-proj-hero__back">← Back to projects</a>
+    <div class="eq-container eq-proj-hero__inner">
+      <span class="eq-eyebrow" data-anim="rise">Flagship project · ARR — Natural Capital</span>
+      <h1 data-anim="lines" class="notranslate">Proyecto Sierra Nevada</h1>
+      <p data-anim="rise" style="--d:.2s">A forest-restoration and natural-capital project in the Sierra Nevada de Santa Marta, developed hand-in-hand with the Arhuaco people on their ancestral territory.</p>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Fact sheet -->
+  <section class="eq-section" style="padding-block: clamp(2.5rem,5vw,4rem);">
+    <div class="eq-container">
+      <dl class="eq-facts" data-stagger>
+        <div class="eq-fact"><dt>Location</dt><dd>Sierra Nevada<small>de Santa Marta, Colombia</small></dd></div>
+        <div class="eq-fact"><dt>Type</dt><dd>ARR<small>Afforestation, Reforestation &amp; Revegetation</small></dd></div>
+        <div class="eq-fact"><dt>Partner community</dt><dd>Arhuaco<small>Indigenous stewardship</small></dd></div>
+        <div class="eq-fact"><dt>Status</dt><dd>In development<small>Field assessment 2026</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Intro statement -->
+  <section class="eq-section" style="padding-top:0;">
+    <div class="eq-container">
+      <div class="eq-head" style="max-width:62rem">
+        <span class="eq-eyebrow" data-anim="rise">The project</span>
+        <h2 class="eq-h2" data-anim="lines">Restoring one of the planet's most irreplaceable ecosystems.</h2>
+        <p class="eq-lead" data-anim="rise" style="--d:.2s">The Sierra Nevada de Santa Marta is the world's highest coastal mountain range and a biodiversity hotspot — and the ancestral home of the Arhuaco people. Equiterra is structuring an ARR carbon project that restores degraded forest and watersheds while putting indigenous stewardship and benefit-sharing at the center of the financial architecture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Gallery mosaico. [CÓDIGO] reveal -->
+  <section class="eq-section eq-section--alt" style="padding-top:0;background:var(--eq-bg);">
+    <div class="eq-container">
+      <div class="eq-pgallery" data-anim="wipe">
+        <div class="eq-pgallery__img"><img src="assets/images/sierra-nevada-1.jpg" alt="Arhuaco village in the Sierra Nevada de Santa Marta" loading="lazy" /></div>
+        <div class="eq-pgallery__col">
+          <div class="eq-pgallery__img"><img src="assets/images/sierra-nevada-2.jpg" alt="Community meeting with Arhuaco authorities" loading="lazy" /></div>
+          <div class="eq-pgallery__img" style="background:linear-gradient(160deg,var(--eq-forest-600),var(--eq-forest));display:grid;place-items:center;color:rgba(255,255,255,.4);min-height:160px;font-size:.85rem;text-align:center;padding:1rem;">More imagery coming<br>from the field</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Feature: comunidad (foto real) -->
+  <section class="eq-section eq-section--alt">
+    <div class="eq-container">
+      <div class="eq-feature">
+        <div>
+          <span class="eq-eyebrow" data-anim="rise">Community at the core</span>
+          <h2 data-anim="lines">Built with the Arhuaco, not around them</h2>
+          <p data-anim="rise" style="--d:.15s">This project is co-designed with Arhuaco authorities. Carbon revenue flows back into the community through transparent benefit-sharing, and traditional ecological knowledge guides what gets restored and how.</p>
+          <ul data-stagger>
+            <li>Free, prior and informed consent</li>
+            <li>Transparent benefit-sharing agreements</li>
+            <li>Ancestral knowledge guiding restoration</li>
+            <li>Long-term governance with local authorities</li>
+          </ul>
+        </div>
+        <div class="eq-feature__photo" data-anim="wipe"><img src="assets/images/sierra-nevada-2.jpg" alt="Field meeting with Arhuaco authorities" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Impact projected -->
+  <section class="eq-section">
+    <div class="eq-container">
+      <div class="eq-head">
+        <span class="eq-eyebrow" data-anim="rise">Projected impact</span>
+        <h2 class="eq-h2" data-anim="lines">Carbon, water and culture — together</h2>
+      </div>
+      <div class="eq-grid eq-grid--3" data-stagger>
+        <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c4 4 6 7 6 10a6 6 0 1 1-12 0c0-3 2-6 6-10Z"/></svg></div><h3>Forest restoration</h3><p>Native reforestation that rebuilds habitat connectivity across degraded slopes.</p></div>
+        <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c4 4 6 7 6 10a6 6 0 1 1-12 0c0-3 2-6 6-10Z"/></svg></div><h3>Watershed protection</h3><p>Restoring the headwaters that supply water to the entire region.</p></div>
+        <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Verified carbon</h3><p>High-integrity ARR credits with rigorous MRV and permanence safeguards.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Quote band -->
+  <section class="eq-section eq-section--dark eq-quoteband">
+    <div class="eq-container">
+      <blockquote data-anim="lines">The mountain is the heart of the world. Restoring it is not charity — it is architecture.</blockquote>
+      <cite data-anim="rise" style="--d:.2s">— Equiterra, on the Sierra Nevada project</cite>
+    </div>
+  </section>
+
+  <!-- [NATIVO] CTA -->
+  <section class="eq-section eq-cta-band" style="text-align:center;">
+    <div class="eq-container">
+      <h2 class="eq-h2" data-anim="lines" style="color:var(--eq-forest)">Want to support or co-finance this project?</h2>
+      <p data-anim="rise" style="--d:.2s;margin:1rem auto 2rem;max-width:48ch;">We're structuring participation for institutions and impact investors aligned with indigenous-led restoration.</p>
+      <div class="eq-hero__actions" data-anim="rise" style="--d:.32s;justify-content:center;">
+        <a href="partner.html" class="eq-btn eq-btn--primary">Partner with us <span class="eq-arrow">→</span></a>
+        <a href="index.html#projects" class="eq-btn eq-btn--ghost">See all projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- [NATIVO] Footer -->
+  <footer class="eq-footer">
+    <div class="eq-container">
+      <div class="eq-footer__top">
+        <div class="eq-footer__brand">
+          <img src="Logos/SVG/Logo Blanco.svg" alt="Equiterra" />
+          <p>An international advisory and development firm financing a sustainable future across climate, carbon and natural capital.</p>
+        </div>
+        <div><h4>Company</h4><ul><li><a href="about.html">About Equiterra</a></li><li><a href="solutions.html">Solutions</a></li><li><a href="cbam.html">CBAM</a></li><li><a href="partner.html">Partner With Us</a></li></ul></div>
+        <div><h4>Solutions</h4><ul><li><a href="solutions.html">Climate Advisory</a></li><li><a href="solutions.html">Carbon Markets</a></li><li><a href="solutions.html">Project Financing</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li><a href="mailto:inquiries@equiterra.capital">inquiries@equiterra.capital</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+      </div>
+      <div class="eq-footer__bottom">
+        <span>© 2026 Equiterra. All rights reserved.</span>
+        <nav><a href="#">Disclaimer</a><a href="#">Privacy</a><a href="#">Terms</a><a href="#">English / Español</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
