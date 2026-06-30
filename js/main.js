@@ -89,7 +89,7 @@
   function applyI18n(lang) {
     if (!CURATED.includes(lang) || !window.EQ_I18N || !window.EQ_I18N[lang]) return;
     const dict = window.EQ_I18N[lang];
-    const norm = s => s.replace(/\s+/g, ' ').trim();
+    const norm = s => s.replace(/\s+/g, ' ').replace(/\s*—\s*/g, ', ').trim();
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;

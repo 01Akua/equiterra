@@ -353,6 +353,7 @@
       <h1 id="page-title">Home</h1>
       <div class="topbar__actions">
         <span class="badge" id="save-badge">Sin cambios</span>
+        <button id="btn-translate" onclick="translatePage()" style="padding:.5rem 1rem;background:var(--blue);color:var(--white);border:none;border-radius:8px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer" title="Traducir esta página al Español y Português automáticamente">🌐 Traducir ES+PT</button>
         <button onclick="saveLocal()" style="padding:.5rem 1rem;background:var(--forest);color:var(--white);border:none;border-radius:8px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer">Guardar</button>
       </div>
     </div>
@@ -440,8 +441,22 @@ function renderPage(page) {
 }
 
 // ─── Helpers de UI ──────────────────────────────────
+// Extraer valor en inglés de campos multiidioma {en,es,pt} o strings planos
+function getVal(v) {
+  if (v && typeof v === 'object' && 'en' in v) return v.en || '';
+  return v == null ? '' : String(v);
+}
+// Devuelve clave con .en si el valor es multiidioma
+function fieldKey(val, key) {
+  return (val && typeof val === 'object' && 'en' in val) ? key + '.en' : key;
+}
+
 function field(label, val, key, type='text', hint='') {
-  const tag = type === 'textarea' ? `<textarea data-key="${key}">${esc(val)}</textarea>` : `<input type="text" data-key="${key}" value="${esc(val)}" />`;
+  const dk = fieldKey(val, key);
+  const dv = getVal(val);
+  const tag = type === 'textarea'
+    ? `<textarea data-key="${dk}">${esc(dv)}</textarea>`
+    : `<input type="text" data-key="${dk}" value="${esc(dv)}" />`;
   return `<div class="field"><label>${label}</label>${tag}${hint ? `<p class="field-hint">${hint}</p>` : ''}</div>`;
 }
 function fieldRow(...fields) {
@@ -458,12 +473,17 @@ function card(title, ico, content_html, open=false) {
 }
 function esc(s='') { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function listEditor(items, keyPrefix) {
-  const lis = items.map((it,i) => `<div class="list-item" style="grid-template-columns:1fr auto">
-    <input type="text" data-key="${keyPrefix}[${i}]" value="${esc(it)}" placeholder="Elemento ${i+1}" />
-    <button class="list-item__del" onclick="removeListItem(this,'${keyPrefix}')">×</button>
-  </div>`).join('');
-  return `<div class="list-editor" id="le-${keyPrefix}">${lis}</div>
-    <button class="btn-add-item" onclick="addListItem('${keyPrefix}','${esc(JSON.stringify(items))}')">+ Agregar elemento</button>`;
+  const lis = items.map((it, i) => {
+    const isMulti = it && typeof it === 'object' && 'en' in it;
+    const dv = isMulti ? (it.en || '') : (it || '');
+    const dk = isMulti ? `${keyPrefix}[${i}].en` : `${keyPrefix}[${i}]`;
+    return `<div class="list-item" style="grid-template-columns:1fr auto">
+      <input type="text" data-key="${dk}" value="${esc(dv)}" placeholder="Elemento ${i+1}" />
+      <button class="list-item__del" onclick="removeListItem(this,'${keyPrefix}')">×</button>
+    </div>`;
+  }).join('');
+  return `<div class="list-editor" id="le-${keyPrefix.replace(/[\[\].]/g,'-')}">${lis}</div>
+    <button class="btn-add-item" onclick="addListItem('${keyPrefix}')">+ Agregar elemento</button>`;
 }
 
 // ─── HOME ──────────────────────────────────────────
@@ -828,12 +848,14 @@ function collectFormData() {
 }
 
 function setNestedKey(obj, keyPath, value) {
-  // Supports: 'home.hero.tagline', 'home.capabilities.items[0].num', etc.
   const parts = keyPath.replace(/\[(\d+)\]/g, '.$1').split('.');
   let cur = obj;
   for (let i = 0; i < parts.length - 1; i++) {
-    if (cur[parts[i]] === undefined) cur[parts[i]] = {};
-    cur = cur[parts[i]];
+    const k = parts[i];
+    if (cur[k] === undefined) {
+      cur[k] = /^\d+$/.test(parts[i + 1]) ? [] : {};
+    }
+    cur = cur[k];
   }
   cur[parts[parts.length - 1]] = value;
 }
@@ -845,20 +867,87 @@ function removeListItem(btn, keyPrefix) {
   btn.closest('.list-item').remove();
   markUnsaved();
 }
-function addListItem(keyPrefix, _items) {
-  // Re-read current items from DOM
-  const container = document.getElementById('le-' + keyPrefix);
+function addListItem(keyPrefix) {
+  const safeId = keyPrefix.replace(/[\[\].]/g,'-');
+  const container = document.getElementById('le-' + safeId);
+  if (!container) return;
   const inputs = container.querySelectorAll('input');
   const n = inputs.length;
   const div = document.createElement('div');
   div.className = 'list-item';
   div.style.gridTemplateColumns = '1fr auto';
-  div.innerHTML = `<input type="text" data-key="${keyPrefix}[${n}]" value="" placeholder="Nuevo elemento" />
+  // New items always multilingual
+  div.innerHTML = `<input type="text" data-key="${keyPrefix}[${n}].en" value="" placeholder="Nuevo elemento" />
     <button class="list-item__del" onclick="removeListItem(this,'${keyPrefix}')">×</button>`;
   container.appendChild(div);
   wireAutoSave();
   div.querySelector('input').focus();
   markUnsaved();
+}
+
+// ═══════════════════════════════════════════════════════
+//  TRADUCCIÓN AUTOMÁTICA (MyMemory API — gratis, sin Google)
+// ═══════════════════════════════════════════════════════
+async function translateText(text, lang) {
+  if (!text || !text.trim()) return '';
+  try {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}&de=admin@equiterra.capital`;
+    const r = await fetch(url);
+    const d = await r.json();
+    if (d.responseStatus === 200) return d.responseData.translatedText || text;
+    return text;
+  } catch { return text; }
+}
+
+function collectMultilingualFields(obj, prefix, fields) {
+  if (!obj || typeof obj !== 'object') return;
+  if ('en' in obj) {
+    // It's a multilingual field
+    if (obj.en && obj.en.trim()) fields.push({ path: prefix, en: obj.en });
+    return;
+  }
+  if (Array.isArray(obj)) {
+    obj.forEach((item, i) => collectMultilingualFields(item, `${prefix}[${i}]`, fields));
+    return;
+  }
+  Object.entries(obj).forEach(([k, v]) => collectMultilingualFields(v, prefix ? `${prefix}.${k}` : k, fields));
+}
+
+async function translatePage() {
+  collectFormData();
+  const btn = document.getElementById('btn-translate');
+  btn.disabled = true;
+  btn.textContent = '⏳ Traduciendo…';
+
+  const pageContent = ['home','about','solutions','cbam','partner','site'].includes(currentPage)
+    ? (currentPage === 'settings' ? content.site : content[currentPage])
+    : null;
+
+  if (!pageContent) { btn.disabled = false; btn.textContent = '🌐 Traducir ES+PT'; return; }
+
+  const prefix = currentPage === 'settings' ? 'site' : currentPage;
+  const fields = [];
+  collectMultilingualFields(pageContent, prefix, fields);
+
+  let done = 0;
+  for (const f of fields) {
+    for (const lang of ['es', 'pt']) {
+      const current = f.path.split('.').concat([lang]).reduce((o, k) => {
+        const m = k.match(/^(.*)\[(\d+)\]$/);
+        return m ? (o?.[m[1]]?.[m[2]]) : o?.[k];
+      }, content);
+      if (current && current.trim()) continue; // already translated
+      const translated = await translateText(f.en, lang);
+      setNestedKey(content, f.path + '.' + lang, translated);
+    }
+    done++;
+    btn.textContent = `⏳ ${done}/${fields.length}`;
+  }
+
+  saveLocal();
+  btn.disabled = false;
+  btn.textContent = '🌐 Traducir ES+PT';
+  showToast(`✓ ${done} campos traducidos a ES y PT`, 'ok');
 }
 
 // ═══════════════════════════════════════════════════════

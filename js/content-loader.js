@@ -1,15 +1,28 @@
 /**
  * Equiterra — Content Loader
  * Fetches admin/content.json and injects values into the page.
+ * Supports multilingual fields: {en, es, pt} objects.
  * Falls back silently to hardcoded HTML if JSON is unavailable.
  */
 (function () {
   'use strict';
 
-  // ── Selector maps per page ─────────────────────────────────────────────────
-  // Format: { cssSelector: 'json.key.path' }
-  // Prefix key with 'html:' to use innerHTML instead of textContent.
+  // ── Language detection ─────────────────────────────────────────────────────
+  function currentLang() {
+    return localStorage.getItem('eq_lang') || 'en';
+  }
 
+  // ── Get value from nested path, resolve multilingual objects ───────────────
+  function get(obj, path) {
+    const val = path.replace(/\[(\d+)\]/g, '.$1').split('.').reduce((o, k) => o?.[k], obj);
+    if (val && typeof val === 'object' && !Array.isArray(val) && ('en' in val || 'es' in val)) {
+      const lang = currentLang();
+      return (val[lang] && val[lang].trim()) ? val[lang] : (val['en'] || '');
+    }
+    return val;
+  }
+
+  // ── Selector maps per page ─────────────────────────────────────────────────
   const MAPS = {
 
     home: {
@@ -101,26 +114,21 @@
   const REPEATER_MAPS = {
 
     home: [
-      // Capabilities
       { sel: '.eq-caps .eq-cap', fields: [
         { child: 'h3',  key: 'home.capabilities.items[I].h3' },
         { child: 'p',   key: 'home.capabilities.items[I].p' },
       ]},
-      // Pillars
       { sel: '.eq-pillars .eq-pillar', fields: [
         { child: 'h3',  key: 'home.pillars.items[I].h3' },
         { child: 'p',   key: 'home.pillars.items[I].p' },
       ]},
-      // CM4GE principles
       { sel: '.eq-framework__list .eq-principle', fields: [
         { child: 'h4',  key: 'home.cm4ge.principles[I].h4' },
         { child: 'p',   key: 'home.cm4ge.principles[I].p' },
       ]},
-      // Impact stats
       { sel: '.eq-impact__grid .eq-stat', fields: [
         { child: '.eq-stat__label', key: 'home.impact.stats[I].label' },
       ]},
-      // Why items
       { sel: '.eq-section .eq-why', fields: [
         { child: 'h3',  key: 'home.why.items[I].h3' },
         { child: 'p',   key: 'home.why.items[I].p' },
@@ -128,13 +136,11 @@
     ],
 
     solutions: [
-      // Services (feature sections)
       { sel: '.eq-feature', fields: [
         { child: '.eq-eyebrow',  key: 'solutions.services[I].eyebrow' },
         { child: 'h2',           key: 'solutions.services[I].h2' },
         { child: 'p',            key: 'solutions.services[I].p' },
       ]},
-      // Process steps
       { sel: '.eq-step', fields: [
         { child: 'h3',  key: 'solutions.process.steps[I].h3' },
         { child: 'p',   key: 'solutions.process.steps[I].p' },
@@ -142,18 +148,15 @@
     ],
 
     cbam: [
-      // Cards básicos
       { sel: '.eq-cbam-basics .eq-ptype', fields: [
         { child: 'h3',  key: 'cbam.basics.cards[I].h3' },
         { child: 'p',   key: 'cbam.basics.cards[I].p' },
       ]},
-      // Timeline
       { sel: '.eq-tl', fields: [
         { child: '.eq-tl__date', key: 'cbam.timeline[I].date' },
         { child: 'h3',           key: 'cbam.timeline[I].h3' },
         { child: 'p',            key: 'cbam.timeline[I].p' },
       ]},
-      // FAQ
       { sel: '.eq-faq__item', fields: [
         { child: '.eq-faq__q', key: 'cbam.faq[I].q', html: true },
         { child: '.eq-faq__a p', key: 'cbam.faq[I].a' },
@@ -161,7 +164,6 @@
     ],
 
     about: [
-      // Values
       { sel: '.eq-about-values .eq-ptype', fields: [
         { child: 'h3',  key: 'about.values.items[I].h3' },
         { child: 'p',   key: 'about.values.items[I].p' },
@@ -169,7 +171,6 @@
     ],
 
     partner: [
-      // Partner types
       { sel: '.eq-partner-types .eq-ptype', fields: [
         { child: 'h3',  key: 'partner.types.items[I].h3' },
         { child: 'p',   key: 'partner.types.items[I].p' },
@@ -177,11 +178,6 @@
     ],
 
   };
-
-  // ── Utility ────────────────────────────────────────────────────────────────
-  function get(obj, path) {
-    return path.replace(/\[(\d+)\]/g, '.$1').split('.').reduce((o, k) => o?.[k], obj);
-  }
 
   // ── Main hydrate ───────────────────────────────────────────────────────────
   async function hydrate() {
@@ -196,7 +192,7 @@
       if (!r.ok) return;
       c = await r.json();
     } catch {
-      return; // graceful degradation — hardcoded HTML stays
+      return;
     }
 
     // Simple selector map
@@ -207,7 +203,7 @@
       const isHtml = keyDef.startsWith('html:');
       const key = isHtml ? keyDef.slice(5) : keyDef;
       const val = get(c, key);
-      if (val == null) continue;
+      if (val == null || val === '') continue;
       if (isHtml) el.innerHTML = val;
       else el.textContent = val;
     }
@@ -222,7 +218,7 @@
           if (!child) continue;
           const key = f.key.replace('I', i);
           const val = get(c, key);
-          if (val == null) continue;
+          if (val == null || val === '') continue;
           if (f.html) child.innerHTML = val;
           else child.textContent = val;
         }
@@ -231,15 +227,12 @@
 
     // Site-wide: footer copyright + email
     const copy = document.querySelector('.eq-footer__bottom span');
-    if (copy && c.site?.copyright) copy.textContent = c.site.copyright;
+    if (copy) { const v = get(c, 'site.copyright'); if (v) copy.textContent = v; }
     const emails = document.querySelectorAll('a[href^="mailto:"]');
-    if (c.site?.email) emails.forEach(a => {
-      a.href = 'mailto:' + c.site.email;
-      a.textContent = c.site.email;
-    });
+    const email = get(c, 'site.email');
+    if (email) emails.forEach(a => { a.href = 'mailto:' + email; a.textContent = email; });
   }
 
-  // Run after DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', hydrate);
   } else {

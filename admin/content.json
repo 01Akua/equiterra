@@ -1,240 +1,1062 @@
 {
   "site": {
-    "title": "Equiterra, Financing a Sustainable Future",
-    "description": "Equiterra structures climate finance solutions that help governments, institutions, and project developers unlock capital, meet regulatory requirements, and deliver large-scale environmental projects.",
+    "title": {
+      "en": "Equiterra, Financing a Sustainable Future",
+      "es": "",
+      "pt": ""
+    },
+    "description": {
+      "en": "Equiterra structures climate finance solutions that help governments, institutions, and project developers unlock capital, meet regulatory requirements, and deliver large-scale environmental projects.",
+      "es": "",
+      "pt": ""
+    },
     "email": "inquiries@equiterra.capital",
     "linkedin": "https://linkedin.com/company/equiterra-capital",
-    "copyright": "© 2026 Equiterra Capital. All rights reserved."
+    "copyright": {
+      "en": "© 2026 Equiterra Capital. All rights reserved.",
+      "es": "",
+      "pt": ""
+    }
   },
   "home": {
     "hero": {
-      "tagline": "Finance • Equity • Earth",
-      "h1": "Financing a <em>sustainable</em> future.",
-      "subtitle": "Climate finance solutions for governments, institutions, and project developers — pairing regulatory depth with the structuring and execution that move climate capital at scale.",
-      "cta_primary": "Explore our solutions",
-      "cta_secondary": "About Equiterra"
+      "tagline": {
+        "en": "Finance • Equity • Earth",
+        "es": "",
+        "pt": ""
+      },
+      "h1": {
+        "en": "Financing a <em>sustainable</em> future.",
+        "es": "",
+        "pt": ""
+      },
+      "subtitle": {
+        "en": "Climate finance solutions for governments, institutions, and project developers — pairing regulatory depth with the structuring and execution that move climate capital at scale.",
+        "es": "",
+        "pt": ""
+      },
+      "cta_primary": {
+        "en": "Explore our solutions",
+        "es": "",
+        "pt": ""
+      },
+      "cta_secondary": {
+        "en": "About Equiterra",
+        "es": "",
+        "pt": ""
+      }
     },
     "manifesto": {
-      "eyebrow": "Strategic Environmental Finance",
-      "h2": "We structure climate finance solutions that help governments, institutions, and project developers unlock capital.",
-      "p1": "Our work combines regulatory expertise, market structuring, and execution to turn environmental value into bankable outcomes.",
-      "p2": "Not narrative. Not pledges. A financial architecture that turns sustainability into a return."
+      "eyebrow": {
+        "en": "Strategic Environmental Finance",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "We structure climate finance solutions that help governments, institutions, and project developers unlock capital.",
+        "es": "",
+        "pt": ""
+      },
+      "p1": {
+        "en": "Our work combines regulatory expertise, market structuring, and execution to turn environmental value into bankable outcomes.",
+        "es": "",
+        "pt": ""
+      },
+      "p2": {
+        "en": "Not narrative. Not pledges. A financial architecture that turns sustainability into a return.",
+        "es": "",
+        "pt": ""
+      }
     },
     "capabilities": {
-      "eyebrow": "Our capabilities",
-      "h2": "Where mandates become outcomes",
-      "lead": "Three connected disciplines that take a climate thesis all the way to financial close.",
+      "eyebrow": {
+        "en": "Our capabilities",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Where mandates become outcomes",
+        "es": "",
+        "pt": ""
+      },
+      "lead": {
+        "en": "Three connected disciplines that take a climate thesis all the way to financial close.",
+        "es": "",
+        "pt": ""
+      },
       "items": [
         {
           "num": "01",
-          "h3": "Climate Advisory & Investment Strategy",
-          "p": "We design strategies to unlock climate finance and navigate complex regulatory environments with technical rigor.",
-          "li": ["Strategy & portfolio design", "Due diligence & risk", "Investor readiness"]
+          "h3": {
+            "en": "Climate Advisory & Investment Strategy",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We design strategies to unlock climate finance and navigate complex regulatory environments with technical rigor.",
+            "es": "",
+            "pt": ""
+          },
+          "li": [
+            "Strategy & portfolio design",
+            "Due diligence & risk",
+            "Investor readiness"
+          ]
         },
         {
           "num": "02",
-          "h3": "Carbon Markets & Pricing",
-          "p": "Access carbon pricing insights and structure market-based compliance strategies across voluntary and regulated markets.",
-          "li": ["Methodology & MRV", "Pricing & offtake", "CBAM positioning"]
+          "h3": {
+            "en": "Carbon Markets & Pricing",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Access carbon pricing insights and structure market-based compliance strategies across voluntary and regulated markets.",
+            "es": "",
+            "pt": ""
+          },
+          "li": [
+            "Methodology & MRV",
+            "Pricing & offtake",
+            "CBAM positioning"
+          ]
         },
         {
           "num": "03",
-          "h3": "Project Development & Financing",
-          "p": "We develop and finance large-scale environmental and infrastructure projects, connecting capital with territory.",
-          "li": ["Feasibility & structuring", "Capital raising", "Delivery & monitoring"]
+          "h3": {
+            "en": "Project Development & Financing",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We develop and finance large-scale environmental and infrastructure projects, connecting capital with territory.",
+            "es": "",
+            "pt": ""
+          },
+          "li": [
+            "Feasibility & structuring",
+            "Capital raising",
+            "Delivery & monitoring"
+          ]
         }
       ]
     },
     "pillars": {
-      "eyebrow": "What we stand for",
-      "h2": "Four disciplines, one architecture",
+      "eyebrow": {
+        "en": "What we stand for",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Four disciplines, one architecture",
+        "es": "",
+        "pt": ""
+      },
       "items": [
-        { "h3": "Environmental Integrity", "p": "Ensuring projects meet international sustainability standards and deliver measurable impact." },
-        { "h3": "Climate Finance Structuring", "p": "Designing financial models that unlock investment into environmental assets and infrastructure." },
-        { "h3": "Regulatory & Carbon Markets", "p": "Navigating CBAM and global carbon frameworks to support compliance and market participation." },
-        { "h3": "Project Development & Delivery", "p": "Developing and implementing projects from concept to execution across climate and infrastructure sectors." }
+        {
+          "h3": {
+            "en": "Environmental Integrity",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Ensuring projects meet international sustainability standards and deliver measurable impact.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Climate Finance Structuring",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Designing financial models that unlock investment into environmental assets and infrastructure.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Regulatory & Carbon Markets",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Navigating CBAM and global carbon frameworks to support compliance and market participation.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Project Development & Delivery",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Developing and implementing projects from concept to execution across climate and infrastructure sectors.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "cm4ge": {
-      "eyebrow": "Our methodology",
-      "h2": "The CM4GE Framework",
-      "lead": "Carbon Markets for Green Economies guides environmental markets and climate finance. It ensures projects have strong integrity, aligned incentives, and long-term impact.",
-      "cta": "Download the framework",
+      "eyebrow": {
+        "en": "Our methodology",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "The CM4GE Framework",
+        "es": "",
+        "pt": ""
+      },
+      "lead": {
+        "en": "Carbon Markets for Green Economies guides environmental markets and climate finance. It ensures projects have strong integrity, aligned incentives, and long-term impact.",
+        "es": "",
+        "pt": ""
+      },
+      "cta": {
+        "en": "Download the framework",
+        "es": "",
+        "pt": ""
+      },
       "principles": [
-        { "n": "1", "h4": "Market and regulatory integrity", "p": "Additionality and permanence built into the asset, not bolted on." },
-        { "n": "2", "h4": "Equitable benefit-sharing", "p": "Communities and stewards participate in the value created." },
-        { "n": "3", "h4": "Long-term environmental value", "p": "Clear roles, data and accountability across every counterparty." },
-        { "n": "4", "h4": "Institutional capacity", "p": "Structured to meet compliance, CBAM and buyer requirements." },
-        { "n": "5", "h4": "Cross-jurisdictional compliance", "p": "MRV that turns outcomes into verifiable, financeable results." }
+        {
+          "n": "1",
+          "h4": {
+            "en": "Market and regulatory integrity",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Additionality and permanence built into the asset, not bolted on.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "n": "2",
+          "h4": {
+            "en": "Equitable benefit-sharing",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Communities and stewards participate in the value created.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "n": "3",
+          "h4": {
+            "en": "Long-term environmental value",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Clear roles, data and accountability across every counterparty.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "n": "4",
+          "h4": {
+            "en": "Institutional capacity",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Structured to meet compliance, CBAM and buyer requirements.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "n": "5",
+          "h4": {
+            "en": "Cross-jurisdictional compliance",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "MRV that turns outcomes into verifiable, financeable results.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "impact": {
-      "eyebrow": "Impact in numbers",
-      "h2": "Proof, not promises",
+      "eyebrow": {
+        "en": "Impact in numbers",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Proof, not promises",
+        "es": "",
+        "pt": ""
+      },
       "stats": [
-        { "num": "15+", "label": "Years structuring climate finance" },
-        { "num": "$2B+", "label": "In projects developed & advised" },
-        { "num": "20+", "label": "Countries across LATAM & beyond" },
-        { "num": "5M", "label": "tCO₂e under management pathways" }
+        {
+          "num": "15+",
+          "label": {
+            "en": "Years structuring climate finance",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "num": "$2B+",
+          "label": {
+            "en": "In projects developed & advised",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "num": "20+",
+          "label": {
+            "en": "Countries across LATAM & beyond",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "num": "5M",
+          "label": {
+            "en": "tCO₂e under management pathways",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "founder": {
-      "eyebrow": "Leadership",
-      "quote": "Sustainability becomes transformational when it moves from narrative to financial architecture.",
-      "name": "Alexis Ludwig Leroy",
-      "role": "Founder & Principal, Equiterra",
-      "bio": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital.",
+      "eyebrow": {
+        "en": "Leadership",
+        "es": "",
+        "pt": ""
+      },
+      "quote": {
+        "en": "Sustainability becomes transformational when it moves from narrative to financial architecture.",
+        "es": "",
+        "pt": ""
+      },
+      "name": {
+        "en": "Alexis Ludwig Leroy",
+        "es": "",
+        "pt": ""
+      },
+      "role": {
+        "en": "Founder & Principal, Equiterra",
+        "es": "",
+        "pt": ""
+      },
+      "bio": {
+        "en": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital.",
+        "es": "",
+        "pt": ""
+      },
       "initials": "AL"
     },
     "why": {
-      "eyebrow": "Why Equiterra",
-      "h2": "We combine regulatory, financial, and market expertise to deliver scalable climate solutions.",
+      "eyebrow": {
+        "en": "Why Equiterra",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "We combine regulatory, financial, and market expertise to deliver scalable climate solutions.",
+        "es": "",
+        "pt": ""
+      },
       "items": [
-        { "num": "01", "h3": "Regulatory & Market Expertise", "p": "Experience navigating carbon markets, CBAM, and complex regulatory frameworks across multiple jurisdictions." },
-        { "num": "02", "h3": "Climate Finance Structuring", "p": "Design financial structures that unlock investment and scale environmental projects." },
-        { "num": "03", "h3": "Global Execution Capability", "p": "Delivering projects across regions with cross-border coordination and on-the-ground implementation." }
+        {
+          "num": "01",
+          "h3": {
+            "en": "Regulatory & Market Expertise",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Experience navigating carbon markets, CBAM, and complex regulatory frameworks across multiple jurisdictions.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "num": "02",
+          "h3": {
+            "en": "Climate Finance Structuring",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Design financial structures that unlock investment and scale environmental projects.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "num": "03",
+          "h3": {
+            "en": "Global Execution Capability",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Delivering projects across regions with cross-border coordination and on-the-ground implementation.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "cta": {
-      "h2": "Let's structure what comes next.",
-      "p": "Governments, institutions and developers partner with Equiterra to turn climate ambition into financeable reality.",
-      "btn_primary": "Partner with us",
-      "btn_secondary": "See our solutions"
+      "h2": {
+        "en": "Let's structure what comes next.",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "Governments, institutions and developers partner with Equiterra to turn climate ambition into financeable reality.",
+        "es": "",
+        "pt": ""
+      },
+      "btn_primary": {
+        "en": "Partner with us",
+        "es": "",
+        "pt": ""
+      },
+      "btn_secondary": {
+        "en": "See our solutions",
+        "es": "",
+        "pt": ""
+      }
     }
   },
   "about": {
     "hero": {
-      "eyebrow": "About Equiterra",
-      "h1": "Finance, equity and earth, engineered into one architecture.",
-      "p": "We are an international advisory and development firm that turns environmental value into financeable reality for governments, institutions and developers.",
+      "eyebrow": {
+        "en": "About Equiterra",
+        "es": "",
+        "pt": ""
+      },
+      "h1": {
+        "en": "Finance, equity and earth, engineered into one architecture.",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "We are an international advisory and development firm that turns environmental value into financeable reality for governments, institutions and developers.",
+        "es": "",
+        "pt": ""
+      },
       "meta": [
-        { "value": "2026", "label": "Founded" },
-        { "value": "LATAM+", "label": "Core regions" },
-        { "value": "Climate", "label": "Sole focus" }
+        {
+          "value": {
+            "en": "2026",
+            "es": "",
+            "pt": ""
+          },
+          "label": {
+            "en": "Founded",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "value": {
+            "en": "LATAM+",
+            "es": "",
+            "pt": ""
+          },
+          "label": {
+            "en": "Core regions",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "value": {
+            "en": "Climate",
+            "es": "",
+            "pt": ""
+          },
+          "label": {
+            "en": "Sole focus",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "who": {
-      "eyebrow": "Who we are",
-      "h2": "Sustainability becomes transformational when it moves from narrative to financial architecture.",
-      "lead": "Equiterra exists to close the distance between climate ambition and deployable capital, combining regulatory depth, market structuring and on-the-ground delivery."
+      "eyebrow": {
+        "en": "Who we are",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Sustainability becomes transformational when it moves from narrative to financial architecture.",
+        "es": "",
+        "pt": ""
+      },
+      "lead": {
+        "en": "Equiterra exists to close the distance between climate ambition and deployable capital, combining regulatory depth, market structuring and on-the-ground delivery.",
+        "es": "",
+        "pt": ""
+      }
     },
     "mandate": {
-      "eyebrow": "Our mandate",
-      "h2": "Capital that meets integrity",
-      "p": "We structure environmental assets so they hold up to regulation and to the market at the same time, with additionality, governance and returns aligned from day one.",
-      "li": ["Climate finance structuring & blended capital", "Carbon market design, pricing and offtake", "Regulatory & CBAM positioning", "Project development to financial close"]
+      "eyebrow": {
+        "en": "Our mandate",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Capital that meets integrity",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "We structure environmental assets so they hold up to regulation and to the market at the same time, with additionality, governance and returns aligned from day one.",
+        "es": "",
+        "pt": ""
+      },
+      "li": [
+        "Climate finance structuring & blended capital",
+        "Carbon market design, pricing and offtake",
+        "Regulatory & CBAM positioning",
+        "Project development to financial close"
+      ]
     },
     "how": {
-      "eyebrow": "How we work",
-      "h2": "From thesis to delivery",
-      "p": "We stay in the deal from origination through monitoring, not a report and a handshake, but execution with local partners and measurable impact.",
-      "li": ["Strategy & investment thesis", "Structuring & capital raising", "Delivery, MRV & reporting"]
+      "eyebrow": {
+        "en": "How we work",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "From thesis to delivery",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "We stay in the deal from origination through monitoring, not a report and a handshake, but execution with local partners and measurable impact.",
+        "es": "",
+        "pt": ""
+      },
+      "li": [
+        "Strategy & investment thesis",
+        "Structuring & capital raising",
+        "Delivery, MRV & reporting"
+      ]
     },
     "founder": {
-      "quote": "We don't sell pledges. We build the financial structures that make climate outcomes inevitable.",
-      "bio": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience. Founder of ALLCOT and Equiterra Capital, his work focuses on structuring credible environmental assets and mobilizing climate capital through carbon markets, Article 6 cooperation and nature-based solutions."
+      "quote": {
+        "en": "We don't sell pledges. We build the financial structures that make climate outcomes inevitable.",
+        "es": "",
+        "pt": ""
+      },
+      "bio": {
+        "en": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience. Founder of ALLCOT and Equiterra Capital, his work focuses on structuring credible environmental assets and mobilizing climate capital through carbon markets, Article 6 cooperation and nature-based solutions.",
+        "es": "",
+        "pt": ""
+      }
     },
     "values": {
-      "eyebrow": "What we stand for",
-      "h2": "Principles that don't bend",
+      "eyebrow": {
+        "en": "What we stand for",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Principles that don't bend",
+        "es": "",
+        "pt": ""
+      },
       "items": [
-        { "h3": "Environmental integrity", "p": "Science-based, additional and permanent, or we don't structure it." },
-        { "h3": "Equity by design", "p": "Communities and stewards share in the value the asset creates." },
-        { "h3": "Financeable always", "p": "Every structure is built to be funded, not to look good on a slide." }
+        {
+          "h3": {
+            "en": "Environmental integrity",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Science-based, additional and permanent, or we don't structure it.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Equity by design",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Communities and stewards share in the value the asset creates.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Financeable always",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Every structure is built to be funded, not to look good on a slide.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     }
   },
   "solutions": {
     "hero": {
-      "eyebrow": "Solutions",
-      "h1": "Strategic environmental finance, end to end.",
-      "p": "Three connected disciplines that take a climate thesis all the way from strategy to financial close, and delivery on the ground."
+      "eyebrow": {
+        "en": "Solutions",
+        "es": "",
+        "pt": ""
+      },
+      "h1": {
+        "en": "Strategic environmental finance, end to end.",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "Three connected disciplines that take a climate thesis all the way from strategy to financial close, and delivery on the ground.",
+        "es": "",
+        "pt": ""
+      }
     },
     "services": [
       {
-        "eyebrow": "01, Advisory",
-        "h2": "Climate Advisory & Investment Strategy",
-        "p": "We design strategies to unlock climate finance and navigate complex regulatory environments with technical rigor, so decisions are made on architecture, not optimism.",
-        "li": ["Strategy & portfolio design", "Due diligence & risk assessment", "Investor readiness & positioning"]
+        "eyebrow": {
+          "en": "01, Advisory",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Climate Advisory & Investment Strategy",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "We design strategies to unlock climate finance and navigate complex regulatory environments with technical rigor, so decisions are made on architecture, not optimism.",
+          "es": "",
+          "pt": ""
+        },
+        "li": [
+          "Strategy & portfolio design",
+          "Due diligence & risk assessment",
+          "Investor readiness & positioning"
+        ]
       },
       {
-        "eyebrow": "02, Markets",
-        "h2": "Carbon Markets & Pricing",
-        "p": "Access carbon pricing insights and structure market-based compliance strategies across voluntary and regulated markets, with the methodology and MRV that make credits defensible.",
-        "li": ["Methodology selection & MRV", "Pricing, valuation & offtake", "CBAM positioning & compliance"]
+        "eyebrow": {
+          "en": "02, Markets",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Carbon Markets & Pricing",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Access carbon pricing insights and structure market-based compliance strategies across voluntary and regulated markets, with the methodology and MRV that make credits defensible.",
+          "es": "",
+          "pt": ""
+        },
+        "li": [
+          "Methodology selection & MRV",
+          "Pricing, valuation & offtake",
+          "CBAM positioning & compliance"
+        ]
       },
       {
-        "eyebrow": "03, Development",
-        "h2": "Project Development & Financing",
-        "p": "We develop and finance large-scale environmental and infrastructure projects, connecting capital with territory, from concept to financial close and through delivery, monitoring and reporting.",
-        "li": ["Feasibility & structuring", "Capital raising & financial close", "Delivery, monitoring & reporting"]
+        "eyebrow": {
+          "en": "03, Development",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Project Development & Financing",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "We develop and finance large-scale environmental and infrastructure projects, connecting capital with territory, from concept to financial close and through delivery, monitoring and reporting.",
+          "es": "",
+          "pt": ""
+        },
+        "li": [
+          "Feasibility & structuring",
+          "Capital raising & financial close",
+          "Delivery, monitoring & reporting"
+        ]
       }
     ],
     "process": {
-      "eyebrow": "How we engage",
-      "h2": "A clear path to financial close",
+      "eyebrow": {
+        "en": "How we engage",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "A clear path to financial close",
+        "es": "",
+        "pt": ""
+      },
       "steps": [
-        { "h3": "Diagnose", "p": "We map the asset, the regulation and the capital landscape." },
-        { "h3": "Structure", "p": "We engineer the vehicle, the instruments and the governance." },
-        { "h3": "Finance", "p": "We raise and close with the right institutional partners." },
-        { "h3": "Deliver", "p": "We execute, monitor and report measurable impact." }
+        {
+          "h3": {
+            "en": "Diagnose",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We map the asset, the regulation and the capital landscape.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Structure",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We engineer the vehicle, the instruments and the governance.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Finance",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We raise and close with the right institutional partners.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Deliver",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "We execute, monitor and report measurable impact.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     }
   },
   "cbam": {
     "hero": {
-      "eyebrow": "Carbon Border Adjustment Mechanism",
-      "h1": "CBAM is coming. Be positioned, not penalised.",
-      "p": "The EU's carbon border tariff reshapes the economics of every carbon-intensive export. Equiterra turns that exposure into a strategy."
+      "eyebrow": {
+        "en": "Carbon Border Adjustment Mechanism",
+        "es": "",
+        "pt": ""
+      },
+      "h1": {
+        "en": "CBAM is coming. Be positioned, not penalised.",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "The EU's carbon border tariff reshapes the economics of every carbon-intensive export. Equiterra turns that exposure into a strategy.",
+        "es": "",
+        "pt": ""
+      }
     },
     "basics": {
-      "eyebrow": "The basics",
-      "h2": "What CBAM actually means",
-      "lead": "CBAM puts a carbon price on imports into the EU, starting with carbon-intensive goods, to match the cost EU producers already pay. Exporters that can measure, reduce and document emissions win; those that can't, pay.",
+      "eyebrow": {
+        "en": "The basics",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "What CBAM actually means",
+        "es": "",
+        "pt": ""
+      },
+      "lead": {
+        "en": "CBAM puts a carbon price on imports into the EU, starting with carbon-intensive goods, to match the cost EU producers already pay. Exporters that can measure, reduce and document emissions win; those that can't, pay.",
+        "es": "",
+        "pt": ""
+      },
       "cards": [
-        { "h3": "Who it hits", "p": "Iron, steel, aluminium, cement, fertilisers, hydrogen and electricity, first, with scope expanding." },
-        { "h3": "What changes", "p": "Importers must report embedded emissions and, from 2026, buy CBAM certificates for them." },
-        { "h3": "The opportunity", "p": "Accurate MRV and decarbonisation become a competitive moat, not just a cost." }
+        {
+          "h3": {
+            "en": "Who it hits",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Iron, steel, aluminium, cement, fertilisers, hydrogen and electricity, first, with scope expanding.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "What changes",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Importers must report embedded emissions and, from 2026, buy CBAM certificates for them.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "The opportunity",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Accurate MRV and decarbonisation become a competitive moat, not just a cost.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "timeline": [
-      { "date": "2023–25", "h3": "Transitional phase", "p": "Quarterly reporting of embedded emissions, no financial payment yet, but the data foundation is set." },
-      { "date": "2026", "h3": "Definitive regime begins", "p": "Importers start purchasing CBAM certificates for embedded emissions. Real cost enters the equation." },
-      { "date": "2027–33", "h3": "Free-allowance phase-out", "p": "EU ETS free allowances wind down as CBAM scales, exposure rises for unprepared exporters." },
-      { "date": "Beyond", "h3": "Scope expansion", "p": "More sectors and indirect emissions are brought in. Early positioning compounds." }
+      {
+        "date": "2023–25",
+        "h3": {
+          "en": "Transitional phase",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Quarterly reporting of embedded emissions, no financial payment yet, but the data foundation is set.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "date": "2026",
+        "h3": {
+          "en": "Definitive regime begins",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Importers start purchasing CBAM certificates for embedded emissions. Real cost enters the equation.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "date": "2027–33",
+        "h3": {
+          "en": "Free-allowance phase-out",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "EU ETS free allowances wind down as CBAM scales, exposure rises for unprepared exporters.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "date": "Beyond",
+        "h3": {
+          "en": "Scope expansion",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "More sectors and indirect emissions are brought in. Early positioning compounds.",
+          "es": "",
+          "pt": ""
+        }
+      }
     ],
     "role": {
-      "eyebrow": "Our role",
-      "h2": "How Equiterra positions you",
-      "p": "We turn CBAM from a compliance scramble into a strategic advantage, measuring what matters, reducing what counts, and documenting what regulators require.",
-      "li": ["Embedded-emissions measurement & MRV", "Exposure modelling & cost forecasting", "Decarbonisation & offset strategy", "Reporting & certificate management"]
+      "eyebrow": {
+        "en": "Our role",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "How Equiterra positions you",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "We turn CBAM from a compliance scramble into a strategic advantage, measuring what matters, reducing what counts, and documenting what regulators require.",
+        "es": "",
+        "pt": ""
+      },
+      "li": [
+        "Embedded-emissions measurement & MRV",
+        "Exposure modelling & cost forecasting",
+        "Decarbonisation & offset strategy",
+        "Reporting & certificate management"
+      ]
     },
     "faq": [
-      { "q": "Does CBAM affect my business if I'm outside the EU?", "a": "Yes, if you export covered goods into the EU, your importers carry the CBAM obligation, and they will pass the data and cost requirements back to you." },
-      { "q": "What happens if I can't document my emissions?", "a": "Default values apply, and they are deliberately conservative (high). Accurate MRV almost always lowers your effective CBAM cost." },
-      { "q": "Can carbon credits offset CBAM exposure?", "a": "CBAM itself is about embedded emissions, but a well-structured decarbonisation and carbon strategy reduces both your real footprint and your certificate burden. We design both together." },
-      { "q": "When should we start preparing?", "a": "Now. The transitional phase is the cheap window to build the data and processes before certificates become payable." }
+      {
+        "q": {
+          "en": "Does CBAM affect my business if I'm outside the EU?",
+          "es": "",
+          "pt": ""
+        },
+        "a": {
+          "en": "Yes, if you export covered goods into the EU, your importers carry the CBAM obligation, and they will pass the data and cost requirements back to you.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "q": {
+          "en": "What happens if I can't document my emissions?",
+          "es": "",
+          "pt": ""
+        },
+        "a": {
+          "en": "Default values apply, and they are deliberately conservative (high). Accurate MRV almost always lowers your effective CBAM cost.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "q": {
+          "en": "Can carbon credits offset CBAM exposure?",
+          "es": "",
+          "pt": ""
+        },
+        "a": {
+          "en": "CBAM itself is about embedded emissions, but a well-structured decarbonisation and carbon strategy reduces both your real footprint and your certificate burden. We design both together.",
+          "es": "",
+          "pt": ""
+        }
+      },
+      {
+        "q": {
+          "en": "When should we start preparing?",
+          "es": "",
+          "pt": ""
+        },
+        "a": {
+          "en": "Now. The transitional phase is the cheap window to build the data and processes before certificates become payable.",
+          "es": "",
+          "pt": ""
+        }
+      }
     ]
   },
   "partner": {
     "hero": {
-      "eyebrow": "Partner With Us",
-      "h1": "Turn climate ambition into financeable reality.",
-      "p": "We work with the institutions that move capital and the developers that build on the ground. Tell us where you are, we'll tell you how it gets done."
+      "eyebrow": {
+        "en": "Partner With Us",
+        "es": "",
+        "pt": ""
+      },
+      "h1": {
+        "en": "Turn climate ambition into financeable reality.",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "We work with the institutions that move capital and the developers that build on the ground. Tell us where you are, we'll tell you how it gets done.",
+        "es": "",
+        "pt": ""
+      }
     },
     "types": {
-      "eyebrow": "Who we partner with",
-      "h2": "Built for serious counterparties",
+      "eyebrow": {
+        "en": "Who we partner with",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Built for serious counterparties",
+        "es": "",
+        "pt": ""
+      },
       "items": [
-        { "h3": "Governments", "p": "National and subnational bodies designing carbon markets and mobilising climate finance." },
-        { "h3": "Institutions & investors", "p": "Funds, banks and corporates seeking credible, financeable climate exposure." },
-        { "h3": "Project developers", "p": "Teams with environmental assets that need structuring, capital and delivery." }
+        {
+          "h3": {
+            "en": "Governments",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "National and subnational bodies designing carbon markets and mobilising climate finance.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Institutions & investors",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Funds, banks and corporates seeking credible, financeable climate exposure.",
+            "es": "",
+            "pt": ""
+          }
+        },
+        {
+          "h3": {
+            "en": "Project developers",
+            "es": "",
+            "pt": ""
+          },
+          "p": {
+            "en": "Teams with environmental assets that need structuring, capital and delivery.",
+            "es": "",
+            "pt": ""
+          }
+        }
       ]
     },
     "contact": {
-      "eyebrow": "Get in touch",
-      "h2": "Start a conversation",
-      "p": "Send us the shape of your mandate. We respond to qualified inquiries within two business days."
+      "eyebrow": {
+        "en": "Get in touch",
+        "es": "",
+        "pt": ""
+      },
+      "h2": {
+        "en": "Start a conversation",
+        "es": "",
+        "pt": ""
+      },
+      "p": {
+        "en": "Send us the shape of your mandate. We respond to qualified inquiries within two business days.",
+        "es": "",
+        "pt": ""
+      }
     }
   }
 }
