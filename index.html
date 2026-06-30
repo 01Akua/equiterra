@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="css/layout.css" />
   <link rel="stylesheet" href="css/home.css" />
 </head>
-<body>
+<body data-page="home">
 
   <!-- ===================== HEADER ===================== -->
   <header class="eq-header">
@@ -55,10 +55,10 @@
     <div class="eq-container eq-hero__inner is-in">
       <p class="eq-hero__tagline" data-anim="rise">Finance &nbsp;•&nbsp; Equity &nbsp;•&nbsp; Earth</p>
       <h1 data-anim="words">Financing a <em>sustainable</em> future.</h1>
-      <p data-anim="rise" style="--d:.4s">Climate finance solutions for governments, institutions, and project developers — pairing regulatory depth with the structuring and execution that move climate capital at scale.</p>
+      <p class="eq-hero-subtitle" data-anim="rise" style="--d:.4s">Climate finance solutions for governments, institutions, and project developers — pairing regulatory depth with the structuring and execution that move climate capital at scale.</p>
       <div class="eq-hero__actions" data-anim="rise" style="--d:.55s">
-        <a href="solutions.html" class="eq-btn eq-btn--gold">Explore our solutions <span class="eq-arrow">→</span></a>
-        <a href="about.html" class="eq-btn eq-btn--ghost is-on-dark">About Equiterra</a>
+        <a href="solutions.html" class="eq-btn eq-btn--gold eq-hero-cta-primary">Explore our solutions <span class="eq-arrow">→</span></a>
+        <a href="about.html" class="eq-btn eq-btn--ghost is-on-dark eq-hero-cta-secondary">About Equiterra</a>
       </div>
     </div>
     <span class="eq-hero__scroll">Scroll</span>
@@ -72,8 +72,8 @@
         <h2 data-anim="lines">We structure climate finance solutions that help governments, institutions, and project developers unlock capital.</h2>
       </div>
       <div class="eq-manifesto__foot">
-        <p data-anim="rise" style="--d:.15s">Our work combines regulatory expertise, market structuring, and execution to turn environmental value into bankable outcomes.</p>
-        <p data-anim="rise" style="--d:.3s">Not narrative. Not pledges. A financial architecture that turns sustainability into a return.</p>
+        <p class="eq-manifesto-p1" data-anim="rise" style="--d:.15s">Our work combines regulatory expertise, market structuring, and execution to turn environmental value into bankable outcomes.</p>
+        <p class="eq-manifesto-p2" data-anim="rise" style="--d:.3s">Not narrative. Not pledges. A financial architecture that turns sustainability into a return.</p>
       </div>
     </div>
   </section>
@@ -214,7 +214,7 @@
         <blockquote data-anim="lines">Sustainability becomes transformational when it moves from narrative to financial architecture.</blockquote>
         <div class="eq-founder__name" data-anim="rise" style="--d:.2s">Alexis Ludwig Leroy</div>
         <div class="eq-founder__role" data-anim="rise" style="--d:.28s">Founder &amp; Principal, Equiterra</div>
-        <p data-anim="rise" style="--d:.36s;margin-top:1.2rem;font-size:.95rem;color:var(--eq-text-soft);max-width:44ch">Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital.</p>
+        <p class="eq-founder-bio" data-anim="rise" style="--d:.36s;margin-top:1.2rem;font-size:.95rem;color:var(--eq-text-soft);max-width:44ch">Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital.</p>
       </div>
     </div>
   </section>
@@ -224,7 +224,7 @@
     <div class="eq-container">
       <div class="eq-head">
         <span class="eq-eyebrow" data-anim="rise">Why Equiterra</span>
-        <h2 class="eq-h2" data-anim="lines">We combine regulatory, financial, and market expertise to deliver scalable climate solutions.</h2>
+        <h2 class="eq-h2 eq-why-h2" data-anim="lines">We combine regulatory, financial, and market expertise to deliver scalable climate solutions.</h2>
       </div>
       <div class="eq-grid eq-grid--3" data-stagger>
         <div class="eq-why"><div class="eq-why__mark">01</div><div><h3>Regulatory &amp; Market Expertise</h3><p>Experience navigating carbon markets, CBAM, and complex regulatory frameworks across multiple jurisdictions.</p></div></div>
@@ -266,6 +266,7 @@
   </footer>
 
   <script src="js/i18n.js"></script>
+  <script src="js/content-loader.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
