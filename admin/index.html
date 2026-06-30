@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equiterra — Panel de Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest: #0f2e15; --forest-700: #16401f; --forest-600: #1d5228;
+      --mint: #dae2cb; --mint-200: #eef2e6;
+      --gray: #565953; --text: #1c1f1b; --white: #fff;
+      --cream: #f7f8f3; --border: rgba(15,46,21,.12);
+      --radius: 12px; --shadow: 0 4px 24px rgba(15,46,21,.12);
+      --green-ok: #16a34a; --red: #dc2626; --blue: #2563eb;
+    }
+    body { font-family: 'Outfit', sans-serif; background: #f0f2ed; color: var(--text); min-height: 100vh; }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      position: fixed; inset: 0; background: var(--forest);
+      display: flex; align-items: center; justify-content: center; z-index: 999;
+    }
+    #login-screen.hidden { display: none; }
+    .login-box {
+      background: var(--white); border-radius: 20px; padding: 2.5rem;
+      width: min(400px, 90vw); text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .login-box img { height: 44px; margin-bottom: 1.5rem; }
+    .login-box h2 { font-size: 1.4rem; margin-bottom: .4rem; color: var(--forest); }
+    .login-box p { font-size: .9rem; color: var(--gray); margin-bottom: 1.5rem; }
+    .login-box input {
+      width: 100%; padding: .8rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 10px; font: inherit; font-size: 1rem;
+      margin-bottom: 1rem; outline: none; transition: border-color .2s;
+    }
+    .login-box input:focus { border-color: var(--forest); }
+    .login-box button {
+      width: 100%; padding: .9rem; background: var(--forest); color: var(--white);
+      border: none; border-radius: 10px; font: inherit; font-size: 1rem;
+      font-weight: 600; cursor: pointer; transition: background .2s;
+    }
+    .login-box button:hover { background: var(--forest-600); }
+    .login-error { color: var(--red); font-size: .85rem; margin-top: .5rem; display: none; }
+
+    /* ── LAYOUT ── */
+    .app { display: flex; min-height: 100vh; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 240px; flex: none; background: var(--forest); color: var(--white);
+      display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    }
+    .sidebar__logo { padding: 1.4rem 1.2rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .sidebar__logo img { height: 32px; }
+    .sidebar__label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); padding: 1.2rem 1.2rem .5rem; }
+    .sidebar nav a {
+      display: flex; align-items: center; gap: .6rem; padding: .6rem 1.2rem;
+      color: rgba(255,255,255,.75); font-size: .9rem; font-weight: 500;
+      text-decoration: none; border-radius: 8px; margin: .1rem .5rem;
+      transition: background .15s, color .15s;
+    }
+    .sidebar nav a:hover { background: rgba(255,255,255,.08); color: var(--white); }
+    .sidebar nav a.active { background: rgba(218,226,203,.15); color: var(--mint); }
+    .sidebar nav a .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); flex: none; }
+    .sidebar__bottom { margin-top: auto; padding: 1rem; border-top: 1px solid rgba(255,255,255,.1); }
+    .btn-publish {
+      width: 100%; padding: .75rem; background: var(--mint); color: var(--forest);
+      border: none; border-radius: 10px; font: inherit; font-size: .95rem;
+      font-weight: 700; cursor: pointer; transition: opacity .2s;
+      display: flex; align-items: center; justify-content: center; gap: .5rem;
+    }
+    .btn-publish:hover { opacity: .9; }
+    .btn-publish:disabled { opacity: .5; cursor: default; }
+    .btn-preview {
+      width: 100%; padding: .65rem; background: transparent; color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.2); border-radius: 10px; font: inherit;
+      font-size: .88rem; cursor: pointer; margin-bottom: .6rem; transition: all .2s;
+    }
+    .btn-preview:hover { border-color: var(--mint); color: var(--mint); }
+
+    /* ── MAIN CONTENT ── */
+    .main { flex: 1; overflow-y: auto; }
+    .topbar {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: .9rem 2rem; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar h1 { font-size: 1.1rem; font-weight: 600; color: var(--forest); }
+    .topbar__actions { display: flex; gap: .75rem; align-items: center; }
+    .badge { font-size: .75rem; padding: .25rem .6rem; border-radius: 20px;
+      background: var(--mint-200); color: var(--forest); font-weight: 600; }
+    .badge.unsaved { background: #fef3c7; color: #92400e; }
+    .badge.saved { background: #dcfce7; color: #166534; }
+
+    .content-area { padding: 2rem; max-width: 860px; }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--white); border-radius: var(--radius); border: 1px solid var(--border);
+      margin-bottom: 1.5rem; overflow: hidden;
+    }
+    .section-card__head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 1.4rem; cursor: pointer; user-select: none;
+      border-bottom: 1px solid transparent; transition: border-color .2s;
+    }
+    .section-card__head:hover { background: var(--cream); }
+    .section-card.open .section-card__head { border-bottom-color: var(--border); }
+    .section-card__title { font-size: .95rem; font-weight: 600; color: var(--forest);
+      display: flex; align-items: center; gap: .5rem; }
+    .section-card__title .ico { width: 28px; height: 28px; border-radius: 8px;
+      background: var(--mint-200); color: var(--forest); display: grid; place-items: center;
+      font-size: .8rem; font-weight: 700; }
+    .section-card__chevron { font-size: .85rem; color: var(--gray); transition: transform .2s; }
+    .section-card.open .section-card__chevron { transform: rotate(180deg); }
+    .section-card__body { display: none; padding: 1.4rem; }
+    .section-card.open .section-card__body { display: block; }
+
+    /* ── FIELDS ── */
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-size: .8rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--gray); margin-bottom: .35rem; }
+    .field input, .field textarea, .field select {
+      width: 100%; padding: .65rem .85rem; border: 1.5px solid var(--border);
+      border-radius: 9px; font: inherit; font-size: .95rem; color: var(--text);
+      background: var(--white); outline: none; transition: border-color .2s;
+      resize: vertical;
+    }
+    .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--forest); }
+    .field textarea { min-height: 80px; }
+    .field--row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .field--row { grid-template-columns: 1fr; } }
+    .field-hint { font-size: .78rem; color: var(--gray); margin-top: .25rem; }
+
+    /* ── LIST EDITOR ── */
+    .list-editor { border: 1.5px solid var(--border); border-radius: 9px; overflow: hidden; }
+    .list-item {
+      display: grid; align-items: center; padding: .7rem 1rem;
+      border-bottom: 1px solid var(--border); gap: .6rem;
+      background: var(--white);
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-item input { border: none; outline: none; font: inherit; font-size: .92rem;
+      width: 100%; background: transparent; }
+    .list-item input:focus { background: var(--cream); border-radius: 4px; padding: .1rem .3rem; }
+    .list-item__del {
+      flex: none; width: 24px; height: 24px; border-radius: 6px; background: none;
+      border: 1px solid var(--border); cursor: pointer; color: var(--gray);
+      font-size: 1rem; display: grid; place-items: center; transition: all .15s;
+    }
+    .list-item__del:hover { background: #fee2e2; border-color: var(--red); color: var(--red); }
+    .btn-add-item {
+      width: 100%; padding: .6rem; background: var(--cream); border: none;
+      font: inherit; font-size: .88rem; color: var(--forest); cursor: pointer;
+      font-weight: 600; transition: background .15s;
+    }
+    .btn-add-item:hover { background: var(--mint-200); }
+
+    /* ── REPEATER (cards/items) ── */
+    .repeater-item {
+      border: 1.5px solid var(--border); border-radius: 10px;
+      padding: 1rem; margin-bottom: .8rem; position: relative; background: var(--cream);
+    }
+    .repeater-item__head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: .8rem;
+    }
+    .repeater-item__num { font-size: .75rem; font-weight: 700; color: var(--gray);
+      letter-spacing: .1em; text-transform: uppercase; }
+    .repeater-item__del {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      cursor: pointer; padding: .25rem .5rem; font-size: .8rem; color: var(--gray);
+      transition: all .15s;
+    }
+    .repeater-item__del:hover { background: #fee2e2; border-color: var(--red); color: var(--red); }
+    .btn-add-repeater {
+      width: 100%; padding: .65rem; border: 2px dashed var(--border);
+      border-radius: 10px; background: none; font: inherit; font-size: .9rem;
+      color: var(--forest); cursor: pointer; font-weight: 600; transition: all .15s;
+    }
+    .btn-add-repeater:hover { border-color: var(--forest); background: var(--cream); }
+
+    /* ── STAT EDITOR ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    .stat-card { border: 1.5px solid var(--border); border-radius: 9px; padding: .8rem; background: var(--cream); }
+    .stat-card label { font-size: .72rem; font-weight: 700; color: var(--gray);
+      letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: .3rem; }
+    .stat-card input { width: 100%; border: 1.5px solid var(--border); border-radius: 7px;
+      padding: .45rem .65rem; font: inherit; font-size: .92rem; background: var(--white); outline: none; }
+    .stat-card input:focus { border-color: var(--forest); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      background: var(--forest); color: var(--white); padding: .85rem 1.4rem;
+      border-radius: 12px; font-size: .9rem; font-weight: 500;
+      box-shadow: var(--shadow); transform: translateY(100px); opacity: 0;
+      transition: transform .3s, opacity .3s; pointer-events: none;
+    }
+    .toast.show { transform: none; opacity: 1; }
+    .toast.ok { background: var(--green-ok); }
+    .toast.err { background: var(--red); }
+
+    /* ── PUBLISH MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 100;
+      display: flex; align-items: center; justify-content: center; display: none;
+    }
+    .modal-overlay.show { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 18px; padding: 2rem;
+      width: min(520px, 94vw); box-shadow: 0 24px 60px rgba(0,0,0,.2);
+    }
+    .modal h2 { font-size: 1.25rem; color: var(--forest); margin-bottom: .5rem; }
+    .modal p { font-size: .9rem; color: var(--gray); margin-bottom: 1.2rem; line-height: 1.5; }
+    .modal input {
+      width: 100%; padding: .75rem .9rem; border: 1.5px solid var(--border);
+      border-radius: 9px; font: inherit; font-size: .95rem; margin-bottom: .5rem; outline: none;
+    }
+    .modal input:focus { border-color: var(--forest); }
+    .modal__actions { display: flex; gap: .75rem; justify-content: flex-end; margin-top: 1.2rem; }
+    .modal .btn-cancel {
+      padding: .65rem 1.1rem; background: none; border: 1.5px solid var(--border);
+      border-radius: 9px; font: inherit; font-size: .9rem; cursor: pointer; color: var(--gray);
+    }
+    .modal .btn-confirm {
+      padding: .65rem 1.4rem; background: var(--forest); color: var(--white);
+      border: none; border-radius: 9px; font: inherit; font-size: .9rem; font-weight: 600;
+      cursor: pointer; transition: background .2s;
+    }
+    .modal .btn-confirm:hover { background: var(--forest-600); }
+    .modal .btn-confirm:disabled { opacity: .5; cursor: default; }
+    .publish-log {
+      margin-top: 1rem; background: #1c1f1b; color: #a8d5a2; border-radius: 8px;
+      padding: .8rem 1rem; font-family: monospace; font-size: .82rem; display: none;
+      max-height: 140px; overflow-y: auto; line-height: 1.6;
+    }
+    .publish-log.show { display: block; }
+
+    /* ── GITHUB CONFIG ── */
+    .gh-config-notice {
+      background: #fef9c3; border: 1.5px solid #fde047; border-radius: 10px;
+      padding: .9rem 1.1rem; font-size: .88rem; color: #713f12;
+      margin-bottom: 1rem; display: flex; gap: .6rem; align-items: flex-start;
+    }
+    .gh-config-notice a { color: var(--forest); font-weight: 600; }
+
+    /* ── TABS (top pages) ── */
+    .page-tabs {
+      display: flex; gap: .25rem; padding: 1rem 2rem .5rem;
+      border-bottom: 1px solid var(--border); background: var(--white);
+      overflow-x: auto;
+    }
+    .page-tabs button {
+      padding: .45rem 1rem; border-radius: 8px; border: 1.5px solid transparent;
+      background: none; font: inherit; font-size: .88rem; cursor: pointer;
+      color: var(--gray); font-weight: 500; white-space: nowrap; transition: all .15s;
+    }
+    .page-tabs button:hover { background: var(--cream); color: var(--text); }
+    .page-tabs button.active {
+      background: var(--forest); color: var(--white); border-color: var(--forest);
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+
+    /* ── SETTINGS PAGE ── */
+    .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .settings-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="../Logos/SVG/Logo Dark Forest Green.svg" alt="Equiterra" />
+    <h2>Panel de Administración</h2>
+    <p>Ingresa la contraseña para editar el sitio</p>
+    <input type="password" id="pwd-input" placeholder="Contraseña" autocomplete="current-password" />
+    <button onclick="checkLogin()">Entrar</button>
+    <p class="login-error" id="login-error">Contraseña incorrecta</p>
+  </div>
+</div>
+
+<!-- PUBLISH MODAL -->
+<div class="modal-overlay" id="publishModal">
+  <div class="modal">
+    <h2>🚀 Publicar en el sitio</h2>
+    <p>Para publicar los cambios en <strong>01akua.github.io/equiterra</strong>, necesitas un GitHub Personal Access Token con permisos <code>repo</code>.</p>
+    <div id="gh-pat-section">
+      <label style="font-size:.8rem;font-weight:600;color:var(--gray);display:block;margin-bottom:.35rem">GitHub Personal Access Token</label>
+      <input type="password" id="gh-pat" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+      <p style="font-size:.78rem;color:var(--gray);margin-top:.3rem">Se guarda solo en este navegador (localStorage). <a href="https://github.com/settings/tokens/new?scopes=repo&description=Equiterra+Admin" target="_blank" style="color:var(--forest);font-weight:600">Generar token →</a></p>
+    </div>
+    <div class="publish-log" id="publishLog"></div>
+    <div class="modal__actions">
+      <button class="btn-cancel" onclick="closePublishModal()">Cancelar</button>
+      <button class="btn-confirm" id="btn-confirm-publish" onclick="doPublish()">Publicar cambios</button>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="../Logos/SVG/Logo Blanco.svg" alt="Equiterra" />
+    </div>
+    <div class="sidebar__label">Páginas</div>
+    <nav id="sidebar-nav">
+      <a href="#" class="active" data-page="home" onclick="switchPage('home',this)">
+        <span class="dot"></span> Home
+      </a>
+      <a href="#" data-page="about" onclick="switchPage('about',this)">
+        <span class="dot"></span> About
+      </a>
+      <a href="#" data-page="solutions" onclick="switchPage('solutions',this)">
+        <span class="dot"></span> Solutions
+      </a>
+      <a href="#" data-page="cbam" onclick="switchPage('cbam',this)">
+        <span class="dot"></span> CBAM
+      </a>
+      <a href="#" data-page="partner" onclick="switchPage('partner',this)">
+        <span class="dot"></span> Partner With Us
+      </a>
+    </nav>
+    <div class="sidebar__label">Configuración</div>
+    <nav>
+      <a href="#" data-page="settings" onclick="switchPage('settings',this)">
+        ⚙️ Site &amp; Config
+      </a>
+      <a href="#" data-page="github" onclick="switchPage('github',this)">
+        🔗 GitHub
+      </a>
+    </nav>
+    <div class="sidebar__bottom">
+      <button class="btn-preview" onclick="openPreview()">👁 Vista previa</button>
+      <button class="btn-publish" onclick="openPublishModal()">
+        ▲ Publicar sitio
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main" id="main-area">
+    <div class="topbar">
+      <h1 id="page-title">Home</h1>
+      <div class="topbar__actions">
+        <span class="badge" id="save-badge">Sin cambios</span>
+        <button onclick="saveLocal()" style="padding:.5rem 1rem;background:var(--forest);color:var(--white);border:none;border-radius:8px;font:inherit;font-size:.88rem;font-weight:600;cursor:pointer">Guardar</button>
+      </div>
+    </div>
+    <div class="content-area" id="content-area">
+      <!-- Se llena dinámicamente -->
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  ESTADO GLOBAL
+// ═══════════════════════════════════════════════════════
+const PASS = 'equiterra2026';
+const REPO_OWNER = '01Akua';
+const REPO_NAME  = 'equiterra';
+const CONTENT_PATH = 'admin/content.json';
+
+let content = null;
+let currentPage = 'home';
+let unsaved = false;
+
+// ═══════════════════════════════════════════════════════
+//  LOGIN
+// ═══════════════════════════════════════════════════════
+function checkLogin() {
+  const v = document.getElementById('pwd-input').value;
+  if (v === PASS || localStorage.getItem('eq_auth') === PASS) {
+    localStorage.setItem('eq_auth', PASS);
+    document.getElementById('login-screen').classList.add('hidden');
+    init();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+document.getElementById('pwd-input').addEventListener('keydown', e => { if (e.key === 'Enter') checkLogin(); });
+if (localStorage.getItem('eq_auth') === PASS) {
+  document.getElementById('login-screen').classList.add('hidden');
+  init();
+}
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+async function init() {
+  // Cargar desde localStorage primero (cambios no publicados)
+  const cached = localStorage.getItem('eq_content');
+  if (cached) {
+    content = JSON.parse(cached);
+  } else {
+    // Cargar desde archivo
+    const r = await fetch('../admin/content.json?t=' + Date.now());
+    content = await r.json();
+  }
+  renderPage(currentPage);
+  const pat = localStorage.getItem('eq_gh_pat');
+  if (pat) document.getElementById('gh-pat').value = pat;
+}
+
+// ═══════════════════════════════════════════════════════
+//  NAVEGACIÓN
+// ═══════════════════════════════════════════════════════
+function switchPage(page, el) {
+  if (el) {
+    document.querySelectorAll('#sidebar-nav a, .sidebar nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+  currentPage = page;
+  const titles = { home:'Home', about:'About', solutions:'Solutions', cbam:'CBAM', partner:'Partner With Us', settings:'Configuración del Sitio', github:'GitHub & Publicación' };
+  document.getElementById('page-title').textContent = titles[page] || page;
+  renderPage(page);
+  return false;
+}
+
+// ═══════════════════════════════════════════════════════
+//  RENDER PÁGINAS
+// ═══════════════════════════════════════════════════════
+function renderPage(page) {
+  const area = document.getElementById('content-area');
+  const builders = { home: buildHome, about: buildAbout, solutions: buildSolutions, cbam: buildCbam, partner: buildPartner, settings: buildSettings, github: buildGithub };
+  area.innerHTML = (builders[page] || (() => '<p>Página no encontrada</p>'))();
+  wireAutoSave();
+}
+
+// ─── Helpers de UI ──────────────────────────────────
+function field(label, val, key, type='text', hint='') {
+  const tag = type === 'textarea' ? `<textarea data-key="${key}">${esc(val)}</textarea>` : `<input type="text" data-key="${key}" value="${esc(val)}" />`;
+  return `<div class="field"><label>${label}</label>${tag}${hint ? `<p class="field-hint">${hint}</p>` : ''}</div>`;
+}
+function fieldRow(...fields) {
+  return `<div class="field--row">${fields.join('')}</div>`;
+}
+function card(title, ico, content_html, open=false) {
+  return `<div class="section-card${open?' open':''}">
+    <div class="section-card__head" onclick="toggleCard(this)">
+      <span class="section-card__title"><span class="ico">${ico}</span>${title}</span>
+      <span class="section-card__chevron">▼</span>
+    </div>
+    <div class="section-card__body">${content_html}</div>
+  </div>`;
+}
+function esc(s='') { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function listEditor(items, keyPrefix) {
+  const lis = items.map((it,i) => `<div class="list-item" style="grid-template-columns:1fr auto">
+    <input type="text" data-key="${keyPrefix}[${i}]" value="${esc(it)}" placeholder="Elemento ${i+1}" />
+    <button class="list-item__del" onclick="removeListItem(this,'${keyPrefix}')">×</button>
+  </div>`).join('');
+  return `<div class="list-editor" id="le-${keyPrefix}">${lis}</div>
+    <button class="btn-add-item" onclick="addListItem('${keyPrefix}','${esc(JSON.stringify(items))}')">+ Agregar elemento</button>`;
+}
+
+// ─── HOME ──────────────────────────────────────────
+function buildHome() {
+  const h = content.home;
+  return `
+  ${card('Hero (portada)', '🏠', `
+    ${field('Tagline', h.hero.tagline, 'home.hero.tagline')}
+    ${field('Título H1', h.hero.h1, 'home.hero.h1')}
+    ${field('Subtítulo', h.hero.subtitle, 'home.hero.subtitle', 'textarea')}
+    ${fieldRow(field('CTA Principal', h.hero.cta_primary, 'home.hero.cta_primary'), field('CTA Secundario', h.hero.cta_secondary, 'home.hero.cta_secondary'))}
+  `, true)}
+  ${card('Manifiesto', '✍️', `
+    ${field('Eyebrow', h.manifesto.eyebrow, 'home.manifesto.eyebrow')}
+    ${field('Título H2', h.manifesto.h2, 'home.manifesto.h2', 'textarea')}
+    ${field('Párrafo 1', h.manifesto.p1, 'home.manifesto.p1', 'textarea')}
+    ${field('Párrafo 2', h.manifesto.p2, 'home.manifesto.p2', 'textarea')}
+  `)}
+  ${card('Capacidades (sección oscura)', '🎯', `
+    ${field('Eyebrow', h.capabilities.eyebrow, 'home.capabilities.eyebrow')}
+    ${field('Título', h.capabilities.h2, 'home.capabilities.h2')}
+    ${field('Lead', h.capabilities.lead, 'home.capabilities.lead', 'textarea')}
+    <hr class="divider" />
+    ${h.capabilities.items.map((item,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Capacidad ${i+1}</span></div>
+        ${field('Número', item.num, `home.capabilities.items[${i}].num`)}
+        ${field('Título', item.h3, `home.capabilities.items[${i}].h3`)}
+        ${field('Descripción', item.p, `home.capabilities.items[${i}].p`, 'textarea')}
+        <label style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);display:block;margin-bottom:.35rem">Lista de puntos</label>
+        ${listEditor(item.li, `home.capabilities.items[${i}].li`)}
+      </div>`).join('')}
+  `)}
+  ${card('Cuatro pilares', '🏛️', `
+    ${field('Eyebrow', h.pillars.eyebrow, 'home.pillars.eyebrow')}
+    ${field('Título', h.pillars.h2, 'home.pillars.h2')}
+    <hr class="divider" />
+    ${h.pillars.items.map((item,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Pilar ${i+1}</span></div>
+        ${field('Título', item.h3, `home.pillars.items[${i}].h3`)}
+        ${field('Descripción', item.p, `home.pillars.items[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Framework CM4GE', '🌿', `
+    ${field('Eyebrow', h.cm4ge.eyebrow, 'home.cm4ge.eyebrow')}
+    ${field('Título', h.cm4ge.h2, 'home.cm4ge.h2')}
+    ${field('Lead', h.cm4ge.lead, 'home.cm4ge.lead', 'textarea')}
+    ${field('Texto del botón', h.cm4ge.cta, 'home.cm4ge.cta')}
+    <hr class="divider" />
+    ${h.cm4ge.principles.map((p,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Principio ${p.n}</span></div>
+        ${field('Título', p.h4, `home.cm4ge.principles[${i}].h4`)}
+        ${field('Descripción', p.p, `home.cm4ge.principles[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Estadísticas de impacto', '📊', `
+    ${field('Eyebrow', h.impact.eyebrow, 'home.impact.eyebrow')}
+    ${field('Título', h.impact.h2, 'home.impact.h2')}
+    <div class="stats-grid">
+      ${h.impact.stats.map((s,i) => `
+        <div class="stat-card">
+          <label>Estadística ${i+1}</label>
+          <input type="text" data-key="home.impact.stats[${i}].num" value="${esc(s.num)}" placeholder="15+" style="margin-bottom:.4rem" />
+          <input type="text" data-key="home.impact.stats[${i}].label" value="${esc(s.label)}" placeholder="Etiqueta" />
+        </div>`).join('')}
+    </div>
+  `)}
+  ${card('Sección Fundador', '👤', `
+    ${field('Eyebrow', h.founder.eyebrow, 'home.founder.eyebrow')}
+    ${field('Cita', h.founder.quote, 'home.founder.quote', 'textarea')}
+    ${fieldRow(field('Nombre', h.founder.name, 'home.founder.name'), field('Cargo', h.founder.role, 'home.founder.role'))}
+    ${field('Iniciales (placeholder foto)', h.founder.initials, 'home.founder.initials')}
+    ${field('Biografía corta', h.founder.bio, 'home.founder.bio', 'textarea')}
+  `)}
+  ${card('¿Por qué Equiterra?', '🤝', `
+    ${field('Eyebrow', h.why.eyebrow, 'home.why.eyebrow')}
+    ${field('Título', h.why.h2, 'home.why.h2', 'textarea')}
+    <hr class="divider" />
+    ${h.why.items.map((item,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Razón ${item.num}</span></div>
+        ${field('Título', item.h3, `home.why.items[${i}].h3`)}
+        ${field('Descripción', item.p, `home.why.items[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Banda CTA final', '📣', `
+    ${field('Título', h.cta.h2, 'home.cta.h2')}
+    ${field('Párrafo', h.cta.p, 'home.cta.p', 'textarea')}
+    ${fieldRow(field('Botón principal', h.cta.btn_primary, 'home.cta.btn_primary'), field('Botón secundario', h.cta.btn_secondary, 'home.cta.btn_secondary'))}
+  `)}`;
+}
+
+// ─── ABOUT ─────────────────────────────────────────
+function buildAbout() {
+  const a = content.about;
+  return `
+  ${card('Hero de página', '🏠', `
+    ${field('Eyebrow', a.hero.eyebrow, 'about.hero.eyebrow')}
+    ${field('Título H1', a.hero.h1, 'about.hero.h1', 'textarea')}
+    ${field('Párrafo', a.hero.p, 'about.hero.p', 'textarea')}
+  `, true)}
+  ${card('Quiénes somos', '📖', `
+    ${field('Eyebrow', a.who.eyebrow, 'about.who.eyebrow')}
+    ${field('Título H2', a.who.h2, 'about.who.h2', 'textarea')}
+    ${field('Lead', a.who.lead, 'about.who.lead', 'textarea')}
+  `)}
+  ${card('Nuestro mandato', '📋', `
+    ${field('Eyebrow', a.mandate.eyebrow, 'about.mandate.eyebrow')}
+    ${field('Título', a.mandate.h2, 'about.mandate.h2')}
+    ${field('Párrafo', a.mandate.p, 'about.mandate.p', 'textarea')}
+    <label style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);display:block;margin:.6rem 0 .35rem">Lista de servicios</label>
+    ${listEditor(a.mandate.li, 'about.mandate.li')}
+  `)}
+  ${card('Cómo trabajamos', '⚙️', `
+    ${field('Eyebrow', a.how.eyebrow, 'about.how.eyebrow')}
+    ${field('Título', a.how.h2, 'about.how.h2')}
+    ${field('Párrafo', a.how.p, 'about.how.p', 'textarea')}
+    <label style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);display:block;margin:.6rem 0 .35rem">Lista de pasos</label>
+    ${listEditor(a.how.li, 'about.how.li')}
+  `)}
+  ${card('Fundador', '👤', `
+    ${field('Cita', a.founder.quote, 'about.founder.quote', 'textarea')}
+    ${field('Biografía', a.founder.bio, 'about.founder.bio', 'textarea')}
+  `)}
+  ${card('Valores', '⭐', `
+    ${field('Eyebrow', a.values.eyebrow, 'about.values.eyebrow')}
+    ${field('Título', a.values.h2, 'about.values.h2')}
+    <hr class="divider" />
+    ${a.values.items.map((item,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Valor ${i+1}</span></div>
+        ${field('Título', item.h3, `about.values.items[${i}].h3`)}
+        ${field('Descripción', item.p, `about.values.items[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}`;
+}
+
+// ─── SOLUTIONS ─────────────────────────────────────
+function buildSolutions() {
+  const s = content.solutions;
+  return `
+  ${card('Hero de página', '🏠', `
+    ${field('Eyebrow', s.hero.eyebrow, 'solutions.hero.eyebrow')}
+    ${field('Título H1', s.hero.h1, 'solutions.hero.h1', 'textarea')}
+    ${field('Párrafo', s.hero.p, 'solutions.hero.p', 'textarea')}
+  `, true)}
+  ${s.services.map((sv,i) => card(`Servicio ${i+1}: ${sv.h2}`, `0${i+1}`, `
+    ${field('Eyebrow / Número', sv.eyebrow, `solutions.services[${i}].eyebrow`)}
+    ${field('Título H2', sv.h2, `solutions.services[${i}].h2`)}
+    ${field('Descripción', sv.p, `solutions.services[${i}].p`, 'textarea')}
+    <label style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);display:block;margin:.6rem 0 .35rem">Lista de servicios</label>
+    ${listEditor(sv.li, `solutions.services[${i}].li`)}
+  `)).join('')}
+  ${card('Proceso (4 pasos)', '🔄', `
+    ${field('Eyebrow', s.process.eyebrow, 'solutions.process.eyebrow')}
+    ${field('Título', s.process.h2, 'solutions.process.h2')}
+    <hr class="divider" />
+    ${s.process.steps.map((step,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Paso ${i+1}</span></div>
+        ${field('Título', step.h3, `solutions.process.steps[${i}].h3`)}
+        ${field('Descripción', step.p, `solutions.process.steps[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}`;
+}
+
+// ─── CBAM ──────────────────────────────────────────
+function buildCbam() {
+  const c = content.cbam;
+  return `
+  ${card('Hero de página', '🏠', `
+    ${field('Eyebrow', c.hero.eyebrow, 'cbam.hero.eyebrow')}
+    ${field('Título H1', c.hero.h1, 'cbam.hero.h1', 'textarea')}
+    ${field('Párrafo', c.hero.p, 'cbam.hero.p', 'textarea')}
+  `, true)}
+  ${card('Qué es el CBAM', '📌', `
+    ${field('Eyebrow', c.basics.eyebrow, 'cbam.basics.eyebrow')}
+    ${field('Título', c.basics.h2, 'cbam.basics.h2')}
+    ${field('Lead', c.basics.lead, 'cbam.basics.lead', 'textarea')}
+    <hr class="divider" />
+    ${c.basics.cards.map((card_,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Card ${i+1}</span></div>
+        ${field('Título', card_.h3, `cbam.basics.cards[${i}].h3`)}
+        ${field('Descripción', card_.p, `cbam.basics.cards[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Timeline CBAM', '📅', `
+    ${c.timeline.map((tl,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Hito ${i+1}</span></div>
+        ${field('Fecha', tl.date, `cbam.timeline[${i}].date`)}
+        ${field('Título', tl.h3, `cbam.timeline[${i}].h3`)}
+        ${field('Descripción', tl.p, `cbam.timeline[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Nuestro rol en CBAM', '🎯', `
+    ${field('Eyebrow', c.role.eyebrow, 'cbam.role.eyebrow')}
+    ${field('Título', c.role.h2, 'cbam.role.h2')}
+    ${field('Párrafo', c.role.p, 'cbam.role.p', 'textarea')}
+    <label style="font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--gray);display:block;margin:.6rem 0 .35rem">Lista de servicios</label>
+    ${listEditor(c.role.li, 'cbam.role.li')}
+  `)}
+  ${card('Preguntas frecuentes (FAQ)', '❓', `
+    ${c.faq.map((faq,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Pregunta ${i+1}</span></div>
+        ${field('Pregunta', faq.q, `cbam.faq[${i}].q`)}
+        ${field('Respuesta', faq.a, `cbam.faq[${i}].a`, 'textarea')}
+      </div>`).join('')}
+  `)}`;
+}
+
+// ─── PARTNER ───────────────────────────────────────
+function buildPartner() {
+  const p = content.partner;
+  return `
+  ${card('Hero de página', '🏠', `
+    ${field('Eyebrow', p.hero.eyebrow, 'partner.hero.eyebrow')}
+    ${field('Título H1', p.hero.h1, 'partner.hero.h1', 'textarea')}
+    ${field('Párrafo', p.hero.p, 'partner.hero.p', 'textarea')}
+  `, true)}
+  ${card('Tipos de partner', '🤝', `
+    ${field('Eyebrow', p.types.eyebrow, 'partner.types.eyebrow')}
+    ${field('Título', p.types.h2, 'partner.types.h2')}
+    <hr class="divider" />
+    ${p.types.items.map((item,i) => `
+      <div class="repeater-item">
+        <div class="repeater-item__head"><span class="repeater-item__num">Tipo ${i+1}</span></div>
+        ${field('Título', item.h3, `partner.types.items[${i}].h3`)}
+        ${field('Descripción', item.p, `partner.types.items[${i}].p`, 'textarea')}
+      </div>`).join('')}
+  `)}
+  ${card('Sección de contacto', '📬', `
+    ${field('Eyebrow', p.contact.eyebrow, 'partner.contact.eyebrow')}
+    ${field('Título', p.contact.h2, 'partner.contact.h2')}
+    ${field('Párrafo', p.contact.p, 'partner.contact.p', 'textarea')}
+  `)}`;
+}
+
+// ─── SETTINGS ──────────────────────────────────────
+function buildSettings() {
+  const s = content.site;
+  return `
+  ${card('Información del sitio', '🌐', `
+    ${field('Título del sitio', s.title, 'site.title')}
+    ${field('Descripción meta', s.description, 'site.description', 'textarea')}
+    ${fieldRow(field('Email de contacto', s.email, 'site.email'), field('LinkedIn URL', s.linkedin, 'site.linkedin'))}
+    ${field('Copyright', s.copyright, 'site.copyright')}
+  `, true)}
+  <div class="section-card">
+    <div class="section-card__head" onclick="toggleCard(this)" style="cursor:pointer">
+      <span class="section-card__title"><span class="ico">🎨</span>Notas de diseño</span>
+      <span class="section-card__chevron">▼</span>
+    </div>
+    <div class="section-card__body">
+      <div class="gh-config-notice">
+        ℹ️ El diseño (colores, tipografía, animaciones) se gestiona editando los archivos CSS directamente. Los colores de marca están en <strong>css/variables.css</strong>.
+      </div>
+      <div class="settings-grid">
+        <div style="background:var(--cream);border-radius:10px;padding:1rem">
+          <div style="width:100%;height:32px;background:#0f2e15;border-radius:6px;margin-bottom:.5rem"></div>
+          <p style="font-size:.82rem;font-weight:600">Dark Forest Green</p>
+          <p style="font-size:.78rem;color:var(--gray)">#0f2e15 — Color primario</p>
+        </div>
+        <div style="background:var(--cream);border-radius:10px;padding:1rem">
+          <div style="width:100%;height:32px;background:#dae2cb;border-radius:6px;margin-bottom:.5rem"></div>
+          <p style="font-size:.82rem;font-weight:600">Light Mint Green</p>
+          <p style="font-size:.78rem;color:var(--gray)">#dae2cb — Color secundario</p>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+// ─── GITHUB ────────────────────────────────────────
+function buildGithub() {
+  const pat = localStorage.getItem('eq_gh_pat') || '';
+  return `
+  <div class="section-card open">
+    <div class="section-card__head" onclick="toggleCard(this)">
+      <span class="section-card__title"><span class="ico">🔗</span>Configuración de GitHub</span>
+      <span class="section-card__chevron">▼</span>
+    </div>
+    <div class="section-card__body">
+      <div class="gh-config-notice">
+        ⚡ Para publicar cambios directamente desde este panel, necesitas un <strong>GitHub Personal Access Token</strong> con permiso <code>repo</code>.
+      </div>
+      <div class="field">
+        <label>Repositorio</label>
+        <input type="text" value="${REPO_OWNER}/${REPO_NAME}" readonly style="background:var(--cream);cursor:default" />
+      </div>
+      <div class="field">
+        <label>Personal Access Token</label>
+        <input type="password" id="gh-pat-config" value="${esc(pat)}" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+        <p class="field-hint">Se guarda en tu navegador. <a href="https://github.com/settings/tokens/new?scopes=repo&description=Equiterra+Admin" target="_blank" style="color:var(--forest);font-weight:600">Generar nuevo token →</a></p>
+      </div>
+      <button onclick="saveGhPat()" style="padding:.65rem 1.2rem;background:var(--forest);color:var(--white);border:none;border-radius:9px;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer">Guardar token</button>
+      <button onclick="testGhPat()" style="padding:.65rem 1.2rem;background:none;color:var(--forest);border:1.5px solid var(--border);border-radius:9px;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;margin-left:.6rem">Probar conexión</button>
+      <p id="gh-test-result" style="margin-top:.75rem;font-size:.88rem"></p>
+    </div>
+  </div>
+  <div class="section-card">
+    <div class="section-card__head" onclick="toggleCard(this)">
+      <span class="section-card__title"><span class="ico">📝</span>¿Cómo funciona la publicación?</span>
+      <span class="section-card__chevron">▼</span>
+    </div>
+    <div class="section-card__body">
+      <ol style="padding-left:1.2rem;line-height:2;font-size:.92rem;color:var(--gray)">
+        <li>Editas el contenido en este panel</li>
+        <li>Haces clic en <strong>Guardar</strong> (guarda localmente en el navegador)</li>
+        <li>Cuando estés listo, haces clic en <strong>▲ Publicar sitio</strong></li>
+        <li>El panel envía el archivo <code>admin/content.json</code> a GitHub</li>
+        <li>GitHub Pages reconstruye el sitio en ~30 segundos</li>
+        <li>Los visitantes ven los cambios al recargar la página</li>
+      </ol>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════
+//  TOGGLE CARDS
+// ═══════════════════════════════════════════════════════
+function toggleCard(head) {
+  head.closest('.section-card').classList.toggle('open');
+}
+
+// ═══════════════════════════════════════════════════════
+//  AUTO-SAVE (capturar cambios en inputs)
+// ═══════════════════════════════════════════════════════
+function wireAutoSave() {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    el.addEventListener('input', () => markUnsaved());
+  });
+}
+function markUnsaved() {
+  unsaved = true;
+  const b = document.getElementById('save-badge');
+  b.textContent = 'Cambios sin guardar';
+  b.className = 'badge unsaved';
+}
+
+// ═══════════════════════════════════════════════════════
+//  GUARDAR LOCAL
+// ═══════════════════════════════════════════════════════
+function saveLocal() {
+  collectFormData();
+  localStorage.setItem('eq_content', JSON.stringify(content));
+  unsaved = false;
+  const b = document.getElementById('save-badge');
+  b.textContent = 'Guardado ✓';
+  b.className = 'badge saved';
+  showToast('Cambios guardados localmente ✓', 'ok');
+}
+
+function collectFormData() {
+  document.querySelectorAll('[data-key]').forEach(el => {
+    setNestedKey(content, el.dataset.key, el.value);
+  });
+}
+
+function setNestedKey(obj, keyPath, value) {
+  // Supports: 'home.hero.tagline', 'home.capabilities.items[0].num', etc.
+  const parts = keyPath.replace(/\[(\d+)\]/g, '.$1').split('.');
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (cur[parts[i]] === undefined) cur[parts[i]] = {};
+    cur = cur[parts[i]];
+  }
+  cur[parts[parts.length - 1]] = value;
+}
+
+// ═══════════════════════════════════════════════════════
+//  LIST EDITOR helpers
+// ═══════════════════════════════════════════════════════
+function removeListItem(btn, keyPrefix) {
+  btn.closest('.list-item').remove();
+  markUnsaved();
+}
+function addListItem(keyPrefix, _items) {
+  // Re-read current items from DOM
+  const container = document.getElementById('le-' + keyPrefix);
+  const inputs = container.querySelectorAll('input');
+  const n = inputs.length;
+  const div = document.createElement('div');
+  div.className = 'list-item';
+  div.style.gridTemplateColumns = '1fr auto';
+  div.innerHTML = `<input type="text" data-key="${keyPrefix}[${n}]" value="" placeholder="Nuevo elemento" />
+    <button class="list-item__del" onclick="removeListItem(this,'${keyPrefix}')">×</button>`;
+  container.appendChild(div);
+  wireAutoSave();
+  div.querySelector('input').focus();
+  markUnsaved();
+}
+
+// ═══════════════════════════════════════════════════════
+//  PUBLISH
+// ═══════════════════════════════════════════════════════
+function openPublishModal() {
+  saveLocal();
+  const pat = localStorage.getItem('eq_gh_pat');
+  if (pat) document.getElementById('gh-pat').value = pat;
+  document.getElementById('publishModal').classList.add('show');
+  document.getElementById('publishLog').classList.remove('show');
+  document.getElementById('publishLog').textContent = '';
+  document.getElementById('btn-confirm-publish').disabled = false;
+  document.getElementById('btn-confirm-publish').textContent = 'Publicar cambios';
+}
+function closePublishModal() {
+  document.getElementById('publishModal').classList.remove('show');
+}
+
+async function doPublish() {
+  const pat = document.getElementById('gh-pat').value.trim();
+  if (!pat) { showToast('Ingresa el GitHub Token primero', 'err'); return; }
+  localStorage.setItem('eq_gh_pat', pat);
+
+  const btn = document.getElementById('btn-confirm-publish');
+  btn.disabled = true;
+  btn.textContent = 'Publicando…';
+
+  const log = document.getElementById('publishLog');
+  log.classList.add('show');
+  const addLog = (msg) => { log.textContent += msg + '\n'; log.scrollTop = log.scrollHeight; };
+
+  addLog('🔄 Conectando con GitHub…');
+
+  try {
+    // Get current file SHA (needed to update)
+    addLog('📄 Obteniendo archivo actual…');
+    const getResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}`, {
+      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+
+    let sha = null;
+    if (getResp.ok) {
+      const fileData = await getResp.json();
+      sha = fileData.sha;
+      addLog('✓ Archivo encontrado (sha: ' + sha.substring(0,8) + '…)');
+    } else {
+      addLog('ℹ️ Archivo nuevo (primer deploy)');
+    }
+
+    // Encode content
+    const jsonStr = JSON.stringify(content, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    // Push to GitHub
+    addLog('⬆️  Subiendo content.json…');
+    const body = {
+      message: 'Admin: actualización de contenido desde panel',
+      content: encoded,
+      committer: { name: 'Equiterra Admin', email: 'admin@equiterra.capital' }
+    };
+    if (sha) body.sha = sha;
+
+    const putResp = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${pat}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!putResp.ok) {
+      const err = await putResp.json();
+      throw new Error(err.message || 'Error al subir archivo');
+    }
+
+    addLog('✅ content.json publicado correctamente');
+    addLog('🌐 GitHub Pages reconstruirá el sitio en ~30 segundos');
+    addLog('🔗 https://01akua.github.io/equiterra/');
+
+    btn.textContent = '✓ Publicado';
+    showToast('¡Sitio publicado exitosamente! ✓', 'ok');
+
+  } catch (err) {
+    addLog('❌ Error: ' + err.message);
+    btn.disabled = false;
+    btn.textContent = 'Reintentar';
+    showToast('Error al publicar: ' + err.message, 'err');
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  GITHUB CONFIG
+// ═══════════════════════════════════════════════════════
+function saveGhPat() {
+  const pat = document.getElementById('gh-pat-config').value.trim();
+  localStorage.setItem('eq_gh_pat', pat);
+  document.getElementById('gh-pat').value = pat;
+  showToast('Token guardado ✓', 'ok');
+}
+async function testGhPat() {
+  const pat = document.getElementById('gh-pat-config').value.trim();
+  const result = document.getElementById('gh-test-result');
+  result.textContent = 'Probando conexión…';
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (r.ok) {
+      const d = await r.json();
+      result.style.color = 'var(--green-ok)';
+      result.textContent = `✅ Conectado correctamente a ${d.full_name}`;
+    } else {
+      result.style.color = 'var(--red)';
+      result.textContent = '❌ Token inválido o sin acceso al repositorio';
+    }
+  } catch {
+    result.style.color = 'var(--red)';
+    result.textContent = '❌ Error de red';
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+//  PREVIEW
+// ═══════════════════════════════════════════════════════
+function openPreview() {
+  saveLocal();
+  const pages = { home:'../index.html', about:'../about.html', solutions:'../solutions.html', cbam:'../cbam.html', partner:'../partner.html' };
+  const url = pages[currentPage] || '../index.html';
+  window.open(url, '_blank');
+}
+
+// ═══════════════════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════════════════
+let toastTimer;
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.className = 'toast'; }, 3200);
+}
+</script>
+</body>
+</html>

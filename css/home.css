@@ -136,7 +136,7 @@ a.eq-project { cursor: pointer; }
 /* ---------- CAPABILITIES con encabezado sticky ---------- */
 .eq-caps__layout { display: grid; grid-template-columns: .9fr 1.6fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 @media (max-width: 880px) { .eq-caps__layout { grid-template-columns: 1fr; } }
-.eq-caps__aside { position: sticky; top: 110px; }
+.eq-caps__aside { position: sticky; top: 116px; }
 @media (max-width: 880px) { .eq-caps__aside { position: static; } }
 .eq-caps__list { display: grid; gap: 1.3rem; }
 .eq-caps__list .eq-cap { padding: 2rem 2rem; }

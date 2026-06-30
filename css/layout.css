@@ -10,9 +10,9 @@
 }
 .eq-header__inner {
   display: flex; align-items: center; justify-content: space-between;
-  gap: 2rem; height: 78px;
+  gap: 2rem; height: 96px;
 }
-.eq-header__logo img { height: 34px; width: auto; transition: opacity var(--eq-dur); }
+.eq-header__logo img { height: 40px; width: auto; transition: opacity var(--eq-dur); }
 .eq-header__logo .logo-light { display: block; }
 .eq-header__logo .logo-dark  { display: none; }
 
@@ -70,7 +70,7 @@
   .eq-nav, .eq-header__cta .eq-btn { display: none; }
   .eq-burger { display: flex; }
   .eq-mobile {
-    position: fixed; inset: 78px 0 0 0; z-index: 99;
+    position: fixed; inset: 96px 0 0 0; z-index: 99;
     background: var(--eq-forest); color: var(--eq-white);
     display: flex; flex-direction: column; gap: .5rem; padding: 2rem var(--eq-gutter);
     transform: translateX(100%); transition: transform var(--eq-dur) var(--eq-ease);
