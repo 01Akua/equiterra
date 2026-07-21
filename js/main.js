@@ -227,10 +227,17 @@
   const hsTrack = hs && hs.querySelector('.eq-hscroll__track');
   const isMobile = () => window.matchMedia('(max-width: 760px)').matches;
 
+  /* Chrome no incluye el padding final de un flex con overflow en scrollWidth
+     (a diferencia del padding inicial), así que la última tarjeta queda pegada
+     al borde sin aire. Se suma manualmente el padding-inline-end del track. */
+  function trackExtra() {
+    const gutter = parseFloat(getComputedStyle(hsTrack).paddingRight) || 0;
+    return Math.max(0, hsTrack.scrollWidth - window.innerWidth + gutter);
+  }
+
   function sizeHscroll() {
     if (!hs || isMobile()) { if (hs) hs.style.height = ''; return; }
-    const extra = Math.max(0, hsTrack.scrollWidth - window.innerWidth);
-    hs.style.height = (window.innerHeight + extra) + 'px';
+    hs.style.height = (window.innerHeight + trackExtra()) + 'px';
   }
 
   let ticking = false;
@@ -247,7 +254,7 @@
     if (hs && hsTrack && !isMobile()) {
       const total = hs.offsetHeight - window.innerHeight;
       const prog = Math.min(Math.max(-hs.getBoundingClientRect().top / total, 0), 1);
-      const extra = Math.max(0, hsTrack.scrollWidth - window.innerWidth);
+      const extra = trackExtra();
       hsTrack.style.transform = `translateX(${(-prog * extra).toFixed(1)}px)`;
     }
   }
