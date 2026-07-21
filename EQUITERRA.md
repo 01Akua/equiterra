@@ -30,13 +30,22 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 - El sitio actual YA está hecho en Elementor → portar el rediseño será directo.
 - Alcance del modelo: multipágina (Home, About, Solutions, CBAM, Partner With Us).
 
-## Proyecto Sierra Nevada (flagship)
-- Proyecto real de carbono tipo ARR (reforestación) en la Sierra Nevada de Santa Marta, territorio Arhuaco, Colombia.
-- **Página dedicada: proyecto-sierra-nevada.html** (hero con foto+parallax, fact sheet, galería mosaico, feature comunidad, impacto, quote band, CTA).
-- La card del Home (marco dorado) enlaza a esa página; Home tiene id="projects" para el "back".
-- Assets: assets/images/sierra-nevada-1.jpg (aldea+montaña) y -2.jpg (reunión comunidad).
-- ⚠️ El zip OneDrive (7.5GB) llegó CORRUPTO/truncado → solo 2 fotos + 28 videos .MOV parciales en `_fuentes-sierra-nevada (raw, no-web)`.
-- ⚠️ 2º intento (2026-06-24): zip de 677B solo con logs de error de OneDrive (AccessExpiredMeTAException, sesión expirada). Sigue pendiente re-envío. Texto del proyecto es PLACEHOLDER hasta tener datos reales (hectáreas, tCO2e, fechas, cita real).
+## Proyectos reales (2026-07-17, desde OneDrive "Equiterra Projects")
+- 3º intento de descarga por fin funcionó: `equiterra archivos.zip` (11GB, Zip64 — usar Python/7z, NO el unzip nativo de macOS que falla en archivos >4GB). Carpeta origen: SharePoint `equiterracapital.sharepoint.com/sites/Repository-Communication` → `Communications Equiterra/Equiterra Projects`.
+- Estructura: **NBS Projects** (ARR Moba, ARR Sierra Nevada, Bouake Cookstoves) y **TBS Projects** (Copidega Biogas, PANAM Biogas, Rafey Landfill Project, SOS Carbon Project).
+- Solo 4 proyectos tenían deck (PPTX/PDF) con datos reales: Sierra Nevada, Moba, Bouaké Cookstoves, Rafey Landfill. Copidega no tiene NADA (ni fotos ni deck). PANAM y SOS solo tienen fotos de campo, sin deck.
+- **7 páginas de proyecto** (mismo template `.eq-proj-hero`/`.eq-facts`/`.eq-pgallery`/`.eq-feature`/`.eq-timeline`/CTA):
+  - `proyecto-sierra-nevada.html` — **Ancestro que Seremos**, actualizada con datos reales (9 comunidades Arhuaco, ~5,000 ha, 90 predios, 40 años, Equitable Earth M001 v1.2, Saumama Foundation). Ya NO es placeholder.
+  - `proyecto-moba.html` — Moba ARR, DRC. 10,000 ha, Gold Standard, Graine de Vie/FERKAM.
+  - `proyecto-bouake-cookstoves.html` — Bouaké Clean Cooking Initiative, Côte d'Ivoire. 90,000 cookstoves, GS4GG.
+  - `proyecto-rafey-landfill.html` — Rafey Landfill Gas Project, Rep. Dominicana. 9.6M m³/año, Art. 6.4.
+  - `proyecto-panam-biogas.html` — página ligera (solo hero+intro+1 foto), sin deck, honesto "in structuring".
+  - `proyecto-sos-carbon.html` — página ligera, sargassum/blue carbon, Rep. Dominicana (inferido de nombres de archivo "DR_SOS"), sin deck.
+  - Copidega Biogas — sin página propia (cero contenido); solo card "in structuring" sin link en el Home.
+- Home (`index.html#projects`, carrusel horizontal): las 5 tarjetas placeholder (Amazon Reforestation, etc.) fueron reemplazadas por las 7 tarjetas reales con foto+tag+ubicación.
+- Fotos reales extraídas y optimizadas (sips, 1600px/q60) en `assets/images/`: moba-1/2, bouake-1/2, rafey-1/2, panam-1, sos-1/2/3. Varias venían rotadas 90° (HEIC sin EXIF orientation) → corregidas con `sips -r 90`.
+- Contenido de los decks es CONFIDENCIAL (marcado así en el propio PDF) pero es material propio de Equiterra para su propio sitio — no hay problema de terceros.
+- [2026-07-18] Traducciones ES/PT completas en `js/i18n.js` para las 6 páginas nuevas/actualizadas y las tarjetas del Home (397 claves por idioma). Verificado en navegador con inyección directa del diccionario (ojo: el servidor de dev local cachea agresivamente `js/i18n.js`, usar `fetch({cache:'no-store'})` o hard-reload al probar cambios de i18n).
 
 ## Multi-idioma (sistema híbrido)
 - **EN**: original. **ES + PT**: traducción CURADA a mano (diccionario js/i18n.js) — natural, no literal. Instantáneo y funciona hasta en localhost.

@@ -19,8 +19,9 @@
 .eq-feature + .eq-feature { margin-top: clamp(3rem, 7vw, 6rem); }
 .eq-feature--flip .eq-feature__media { order: -1; }
 @media (max-width: 860px) { .eq-feature { grid-template-columns: 1fr; } .eq-feature--flip .eq-feature__media { order: 0; } }
-.eq-feature__media { aspect-ratio: 4/3; border-radius: var(--eq-radius-lg); background: linear-gradient(155deg, var(--eq-forest-600), var(--eq-forest)); box-shadow: var(--eq-shadow); display: grid; place-items: center; color: rgba(255,255,255,.18); }
+.eq-feature__media { aspect-ratio: 4/3; border-radius: var(--eq-radius-lg); background: linear-gradient(155deg, var(--eq-forest-600), var(--eq-forest)); box-shadow: var(--eq-shadow); display: grid; place-items: center; color: rgba(255,255,255,.18); overflow: hidden; }
 .eq-feature__media svg { width: 88px; height: 88px; }
+.eq-feature__media img { width: 100%; height: 100%; object-fit: cover; }
 .eq-feature h2 { font-size: var(--eq-fs-h2); margin: 1rem 0; }
 .eq-feature ul { list-style: none; padding: 0; margin-top: 1.4rem; display: grid; gap: .7rem; }
 .eq-feature li { padding-left: 1.6rem; position: relative; color: var(--eq-text-soft); }
