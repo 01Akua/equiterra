@@ -46,6 +46,8 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 - Fotos reales extraídas y optimizadas (sips, 1600px/q60) en `assets/images/`: moba-1/2, bouake-1/2, rafey-1/2, panam-1, sos-1/2/3. Varias venían rotadas 90° (HEIC sin EXIF orientation) → corregidas con `sips -r 90`.
 - Contenido de los decks es CONFIDENCIAL (marcado así en el propio PDF) pero es material propio de Equiterra para su propio sitio — no hay problema de terceros.
 - [2026-07-18] Traducciones ES/PT completas en `js/i18n.js` para las 6 páginas nuevas/actualizadas y las tarjetas del Home (397 claves por idioma). Verificado en navegador con inyección directa del diccionario (ojo: el servidor de dev local cachea agresivamente `js/i18n.js`, usar `fetch({cache:'no-store'})` o hard-reload al probar cambios de i18n).
+- [2026-07-21] Eliminada la card "Copidega Biogas" del Home (cero contenido disponible, se veía como página inconclusa). PANAM Biogas y SOS Carbon Project ampliadas con fact sheet + segunda foto + sección de feature con texto honesto basado en lo observable en las fotos (celda de contención revestida en PANAM; lixiviado de sargazo en SOS) — sin inventar cifras que no existen en las fuentes. Traducciones ES/PT añadidas (428 claves/idioma).
+- ⚠️ [2026-07-21] Se borró por accidente `equiterra archivos.zip` (11GB, la fuente local) con un `rm -f` incluido sin querer en un comando combinado. Sin impacto: la fuente sigue intacta en SharePoint y ya se había extraído todo lo necesario. Lección: nunca combinar `rm` con otros comandos sin revisar explícitamente cada parte primero.
 
 ## Multi-idioma (sistema híbrido)
 - **EN**: original. **ES + PT**: traducción CURADA a mano (diccionario js/i18n.js) — natural, no literal. Instantáneo y funciona hasta en localhost.

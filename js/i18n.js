@@ -454,7 +454,42 @@ window.EQ_I18N = {
     "A sargassum collection and valorization project on the Dominican Republic coast, turning a recurring coastal crisis into a structured climate and carbon opportunity.": "Un proyecto de recolección y valorización de sargazo en la costa de República Dominicana, que convierte una crisis costera recurrente en una oportunidad climática y de carbono estructurada.",
     "Field assessment underway on the Caribbean coast.": "Evaluación de campo en curso en la costa del Caribe.",
     "Recurring sargassum influxes damage coastal ecosystems and tourism-dependent economies across the Caribbean. Equiterra's field team has conducted site visits to assess collection, valorization and carbon-accounting pathways. Project scope, methodology and standard are still under structuring.": "Las llegadas recurrentes de sargazo dañan los ecosistemas costeros y las economías dependientes del turismo en todo el Caribe. El equipo de campo de Equiterra ha realizado visitas al sitio para evaluar rutas de recolección, valorización y contabilidad de carbono. El alcance, la metodología y el estándar del proyecto siguen en estructuración.",
-    "Equiterra is structuring capital for coastal and blue-carbon resilience across the Caribbean.": "Equiterra está estructurando capital para la resiliencia costera y de carbono azul en todo el Caribe."
+    "Equiterra is structuring capital for coastal and blue-carbon resilience across the Caribbean.": "Equiterra está estructurando capital para la resiliencia costera y de carbono azul en todo el Caribe.",
+
+    // --- PANAM Biogas: contenido ampliado 2026-07-21 ---
+    "An engineered landfill site under technical assessment for landfill-gas capture and valorization, part of Equiterra's waste-to-energy pipeline.": "Un relleno sanitario diseñado técnicamente bajo evaluación para la captura y valorización de gas de relleno sanitario, parte de la cartera de residuos a energía de Equiterra.",
+    "Landfill Gas": "Gas de relleno sanitario",
+    "Capture & valorization": "Captura y valorización",
+    "Site": "Sitio",
+    "Engineered landfill": "Relleno sanitario diseñado",
+    "Lined containment cell in operation": "Celda de contención revestida en operación",
+    "Stage": "Etapa",
+    "Field assessment": "Evaluación de campo",
+    "Technical due diligence underway": "Debida diligencia técnica en curso",
+    "Scope to be confirmed": "Alcance por confirmar",
+    "PANAM Biogas is part of Equiterra's pipeline of waste-to-energy and methane-abatement projects. Field visits have confirmed an active, engineered site with a lined containment cell already in operation, alongside the main waste mass. Project scope, standard and carbon figures will be published once feasibility and baseline work are complete.": "PANAM Biogas forma parte de la cartera de Equiterra de proyectos de residuos a energía y reducción de metano. Las visitas de campo han confirmado un sitio activo y diseñado técnicamente, con una celda de contención revestida ya en operación junto a la masa principal de residuos. El alcance del proyecto, el estándar y las cifras de carbono se publicarán una vez completados los estudios de factibilidad y línea base.",
+    "What we're assessing": "Qué estamos evaluando",
+    "An engineered site, ready for technical due diligence": "Un sitio diseñado técnicamente, listo para la debida diligencia técnica",
+    "Aerial field visits show a working landfill with terraced waste cells, access roads and a lined containment pond already in place, conditions that support a structured gas-capture assessment rather than a greenfield build.": "Las visitas de campo aéreas muestran un relleno sanitario en operación con celdas de residuos en terrazas, vías de acceso y una laguna de contención revestida ya instalada, condiciones que favorecen una evaluación estructurada de captura de gas en lugar de una construcción desde cero.",
+    "Lined containment cell observed in active operation": "Celda de contención revestida observada en operación activa",
+    "Terraced waste mass with established access infrastructure": "Masa de residuos en terrazas con infraestructura de acceso ya establecida",
+    "Site conditions support gas-capture feasibility work": "Las condiciones del sitio favorecen los estudios de factibilidad de captura de gas",
+    "Part of Equiterra's broader waste-to-energy pipeline": "Parte de la cartera más amplia de residuos a energía de Equiterra",
+
+    // --- SOS Carbon Project: contenido ampliado 2026-07-21 ---
+    "Caribbean coast": "Costa del Caribe",
+    "Focus": "Enfoque",
+    "Collection & valorization": "Recolección y valorización",
+    "Field visit": "Visita de campo",
+    "Site assessment day": "Día de evaluación de sitio",
+    "Methodology under review": "Metodología en revisión",
+    "What we observed": "Qué observamos",
+    "A visible environmental challenge, and a resource waiting to be valorized": "Un desafío ambiental visible, y un recurso a la espera de ser valorizado",
+    "Decomposing sargassum releases a dark, nutrient-rich leachate that pools at collection sites, a visible sign of the environmental pressure recurring influxes place on coastal land and groundwater. Structured collection and valorization pathways could convert this liability into a managed resource stream.": "El sargazo en descomposición libera un lixiviado oscuro y rico en nutrientes que se acumula en los sitios de recolección, una señal visible de la presión ambiental que las llegadas recurrentes ejercen sobre el suelo costero y las aguas subterráneas. Las rutas estructuradas de recolección y valorización podrían convertir este pasivo en un flujo de recursos gestionado.",
+    "Leachate runoff observed at collection and storage sites": "Escurrimiento de lixiviado observado en los sitios de recolección y almacenamiento",
+    "Large biomass volumes collected along the coastline": "Grandes volúmenes de biomasa recolectados a lo largo de la costa",
+    "Site visits assessing collection, drying and valorization pathways": "Visitas de campo evaluando rutas de recolección, secado y valorización",
+    "Carbon-accounting methodology still under evaluation": "Metodología de contabilidad de carbono aún en evaluación"
   },
 
   pt: {
@@ -886,6 +921,41 @@ window.EQ_I18N = {
     "A sargassum collection and valorization project on the Dominican Republic coast, turning a recurring coastal crisis into a structured climate and carbon opportunity.": "Um projeto de coleta e valorização de sargaço na costa da República Dominicana, transformando uma crise costeira recorrente em uma oportunidade climática e de carbono estruturada.",
     "Field assessment underway on the Caribbean coast.": "Avaliação de campo em andamento na costa do Caribe.",
     "Recurring sargassum influxes damage coastal ecosystems and tourism-dependent economies across the Caribbean. Equiterra's field team has conducted site visits to assess collection, valorization and carbon-accounting pathways. Project scope, methodology and standard are still under structuring.": "As chegadas recorrentes de sargaço danificam os ecossistemas costeiros e as economias dependentes do turismo em todo o Caribe. A equipe de campo da Equiterra realizou visitas ao local para avaliar rotas de coleta, valorização e contabilidade de carbono. O escopo, a metodologia e o padrão do projeto ainda estão em estruturação.",
-    "Equiterra is structuring capital for coastal and blue-carbon resilience across the Caribbean.": "A Equiterra está estruturando capital para resiliência costeira e de carbono azul em todo o Caribe."
+    "Equiterra is structuring capital for coastal and blue-carbon resilience across the Caribbean.": "A Equiterra está estruturando capital para resiliência costeira e de carbono azul em todo o Caribe.",
+
+    // --- PANAM Biogas: conteúdo ampliado 2026-07-21 ---
+    "An engineered landfill site under technical assessment for landfill-gas capture and valorization, part of Equiterra's waste-to-energy pipeline.": "Um aterro sanitário projetado tecnicamente em avaliação para captura e valorização de gás de aterro, parte do portfólio de resíduos em energia da Equiterra.",
+    "Landfill Gas": "Gás de aterro",
+    "Capture & valorization": "Captura e valorização",
+    "Site": "Local",
+    "Engineered landfill": "Aterro sanitário projetado",
+    "Lined containment cell in operation": "Célula de contenção revestida em operação",
+    "Stage": "Etapa",
+    "Field assessment": "Avaliação de campo",
+    "Technical due diligence underway": "Due diligence técnica em andamento",
+    "Scope to be confirmed": "Escopo a confirmar",
+    "PANAM Biogas is part of Equiterra's pipeline of waste-to-energy and methane-abatement projects. Field visits have confirmed an active, engineered site with a lined containment cell already in operation, alongside the main waste mass. Project scope, standard and carbon figures will be published once feasibility and baseline work are complete.": "PANAM Biogas faz parte do portfólio da Equiterra de projetos de resíduos em energia e redução de metano. As visitas de campo confirmaram um local ativo e projetado tecnicamente, com uma célula de contenção revestida já em operação ao lado da massa principal de resíduos. O escopo do projeto, o padrão e os números de carbono serão publicados assim que os estudos de viabilidade e linha de base forem concluídos.",
+    "What we're assessing": "O que estamos avaliando",
+    "An engineered site, ready for technical due diligence": "Um local projetado tecnicamente, pronto para due diligence técnica",
+    "Aerial field visits show a working landfill with terraced waste cells, access roads and a lined containment pond already in place, conditions that support a structured gas-capture assessment rather than a greenfield build.": "As visitas de campo aéreas mostram um aterro em operação com células de resíduos em terraços, vias de acesso e uma lagoa de contenção revestida já instalada, condições que favorecem uma avaliação estruturada de captura de gás em vez de uma construção do zero.",
+    "Lined containment cell observed in active operation": "Célula de contenção revestida observada em operação ativa",
+    "Terraced waste mass with established access infrastructure": "Massa de resíduos em terraços com infraestrutura de acesso já estabelecida",
+    "Site conditions support gas-capture feasibility work": "As condições do local favorecem os estudos de viabilidade de captura de gás",
+    "Part of Equiterra's broader waste-to-energy pipeline": "Parte do portfólio mais amplo de resíduos em energia da Equiterra",
+
+    // --- SOS Carbon Project: conteúdo ampliado 2026-07-21 ---
+    "Caribbean coast": "Costa do Caribe",
+    "Focus": "Foco",
+    "Collection & valorization": "Coleta e valorização",
+    "Field visit": "Visita de campo",
+    "Site assessment day": "Dia de avaliação de local",
+    "Methodology under review": "Metodologia em revisão",
+    "What we observed": "O que observamos",
+    "A visible environmental challenge, and a resource waiting to be valorized": "Um desafio ambiental visível, e um recurso à espera de ser valorizado",
+    "Decomposing sargassum releases a dark, nutrient-rich leachate that pools at collection sites, a visible sign of the environmental pressure recurring influxes place on coastal land and groundwater. Structured collection and valorization pathways could convert this liability into a managed resource stream.": "O sargaço em decomposição libera um lixiviado escuro e rico em nutrientes que se acumula nos locais de coleta, um sinal visível da pressão ambiental que as chegadas recorrentes exercem sobre o solo costeiro e as águas subterrâneas. Rotas estruturadas de coleta e valorização poderiam converter esse passivo em um fluxo de recursos gerenciado.",
+    "Leachate runoff observed at collection and storage sites": "Escoamento de lixiviado observado nos locais de coleta e armazenamento",
+    "Large biomass volumes collected along the coastline": "Grandes volumes de biomassa coletados ao longo da costa",
+    "Site visits assessing collection, drying and valorization pathways": "Visitas de campo avaliando rotas de coleta, secagem e valorização",
+    "Carbon-accounting methodology still under evaluation": "Metodologia de contabilidade de carbono ainda em avaliação"
   }
 };
