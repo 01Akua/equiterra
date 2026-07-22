@@ -9,6 +9,7 @@ window.EQ_I18N = {
   es: {
     // --- Nav / header / footer ---
     "Home": "Inicio",
+    "Projects": "Proyectos",
     "About": "Nosotros",
     "About Equiterra": "Sobre Equiterra",
     "Solutions": "Soluciones",
@@ -494,6 +495,7 @@ window.EQ_I18N = {
 
   pt: {
     "Home": "Início",
+    "Projects": "Projetos",
     "About": "Sobre",
     "About Equiterra": "Sobre a Equiterra",
     "Solutions": "Soluções",

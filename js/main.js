@@ -209,6 +209,29 @@
     document.addEventListener('click', () => document.querySelectorAll('.eq-lang.is-open').forEach(w => w.classList.remove('is-open')));
   })();
 
+  /* ---- Projects nav dropdown (desktop) ---- */
+  document.querySelectorAll('.eq-navdrop__btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const drop = btn.closest('.eq-navdrop');
+      const open = drop.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', () => document.querySelectorAll('.eq-navdrop.is-open').forEach(d => {
+    d.classList.remove('is-open');
+    d.querySelector('.eq-navdrop__btn').setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ---- Projects accordion (mobile menu) ---- */
+  document.querySelectorAll('.eq-mobile__drop-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const drop = btn.closest('.eq-mobile__drop');
+      const open = drop.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
   /* ---- FAQ accordion ---- */
   document.querySelectorAll('.eq-faq__q').forEach(btn => {
     btn.addEventListener('click', () => {
