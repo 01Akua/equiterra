@@ -12,7 +12,7 @@
   display: flex; align-items: center; justify-content: space-between;
   gap: 2rem; height: 96px;
 }
-.eq-header__logo img { height: 54px; width: auto; transition: opacity var(--eq-dur); }
+.eq-header__logo img { height: 72px; width: auto; transition: opacity var(--eq-dur); }
 .eq-header__logo .logo-light { display: block; }
 .eq-header__logo .logo-dark  { display: none; }
 

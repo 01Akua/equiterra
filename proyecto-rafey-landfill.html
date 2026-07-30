@@ -34,7 +34,6 @@
               <span class="eq-navdrop__label">NBS</span>
               <a class="notranslate" href="proyecto-sierra-nevada.html">Ancestro que Seremos</a>
               <a class="notranslate" href="proyecto-moba.html">Moba ARR</a>
-              <a class="notranslate" href="proyecto-bouake-cookstoves.html">Bouaké Clean Cooking Initiative</a>
             </div>
             <div class="eq-navdrop__col">
               <span class="eq-navdrop__label">TBS</span>
@@ -57,7 +56,6 @@
         <span class="eq-mobile__drop-label">NBS</span>
         <a class="notranslate" href="proyecto-sierra-nevada.html">Ancestro que Seremos</a>
         <a class="notranslate" href="proyecto-moba.html">Moba ARR</a>
-        <a class="notranslate" href="proyecto-bouake-cookstoves.html">Bouaké Clean Cooking Initiative</a>
         <span class="eq-mobile__drop-label">TBS</span>
         <a class="notranslate" href="proyecto-rafey-landfill.html">Rafey Landfill Gas Project</a>
         <a class="notranslate" href="proyecto-sos-carbon.html">SOS Carbon Project</a>
@@ -85,6 +83,16 @@
         <div class="eq-fact"><dt>Status</dt><dd>Art. 6.4<small>Prior consideration, PACM</small></dd></div>
         <div class="eq-fact"><dt>Total volume</dt><dd>~1.4 Mt<small>CO₂e · 2027–2041</small></dd></div>
       </dl>
+    </div>
+  </section>
+
+  <!-- [CÓDIGO] Project brief download prompt -->
+  <section class="eq-section" style="padding-top:0;">
+    <div class="eq-container">
+      <div class="eq-brief-prompt">
+        <p>Want the full project overview?<small>Status, methodology and timeline in one document.</small></p>
+        <button type="button" class="eq-btn eq-btn--primary" data-open-modal="modal-brief-rafey">Download project brief <span class="eq-arrow">→</span></button>
+      </div>
     </div>
   </section>
 
@@ -136,6 +144,21 @@ to first carbon issuance</h2>
   </section>
 
   <!-- [NATIVO] CTA -->
+  <!-- ===================== WHY PARTNER WITH EQUITERRA ===================== -->
+  <section class="eq-section">
+    <div class="eq-container">
+      <div class="eq-head">
+        <span class="eq-eyebrow" data-anim="rise">Why Equiterra</span>
+        <h2 class="eq-h2 eq-why-h2" data-anim="lines">We combine regulatory, financial, and market expertise to deliver scalable climate solutions.</h2>
+      </div>
+      <div class="eq-grid eq-grid--3" data-stagger>
+        <div class="eq-why"><div class="eq-why__mark">01</div><div><h3>Regulatory &amp; Market Expertise</h3><p>Experience navigating carbon markets, CBAM, and complex regulatory frameworks across multiple jurisdictions.</p></div></div>
+        <div class="eq-why"><div class="eq-why__mark">02</div><div><h3>Climate Finance Structuring</h3><p>Design financial structures that unlock investment and scale environmental projects.</p></div></div>
+        <div class="eq-why"><div class="eq-why__mark">03</div><div><h3>Global Execution Capability</h3><p>Delivering projects across regions with cross-border coordination and on-the-ground implementation.</p></div></div>
+      </div>
+    </div>
+  </section>
+
   <section class="eq-section eq-cta-band" style="text-align:center;">
     <div class="eq-container">
       <h2 class="eq-h2" data-anim="lines" style="color:var(--eq-forest)">Want to support or co-finance this project?</h2>
@@ -166,8 +189,50 @@ to first carbon issuance</h2>
     </div>
   </footer>
 
+  <!-- [CÓDIGO] Project brief modal -->
+  <div class="eq-modal-overlay" id="modal-brief-rafey">
+    <div class="eq-modal">
+      <button type="button" class="eq-modal__close" data-close-modal aria-label="Close">×</button>
+      <div class="eq-modal__intro">
+        <h3 class="notranslate">Get the Rafey Landfill Gas Project project brief</h3>
+        <p>Leave your details and our team will send you the full project overview.</p>
+      </div>
+      <form data-brief-form data-project="Rafey Landfill Gas Project">
+        <div>
+          <label for="brief-name-rafey">Full name</label>
+          <input id="brief-name-rafey" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="brief-email-rafey">Email</label>
+          <input id="brief-email-rafey" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="brief-org-rafey">Organization</label>
+          <input id="brief-org-rafey" name="org" type="text" />
+        </div>
+        <div>
+          <label for="brief-interest-rafey">I'm reaching out as a...</label>
+          <select id="brief-interest-rafey" name="interest">
+            <option value="investor">Investor</option>
+            <option value="partner">Partner / developer</option>
+            <option value="media">Media / researcher</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <p class="eq-modal__error">Please enter your name and a valid email address.</p>
+        <button type="submit" class="eq-btn eq-btn--primary eq-modal__submit">Request project brief</button>
+      </form>
+      <div class="eq-modal__success">
+        <div class="eq-modal__success-icon">✓</div>
+        <h3>Thanks, <span data-success-name></span>.</h3>
+        <p>We've received your request. Our team will send the Rafey Landfill Gas Project project overview to your email shortly.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="js/i18n.js"></script>
 
   <script src="js/main.js"></script>
+  <script src="js/download-modal.js"></script>
 </body>
 </html>
