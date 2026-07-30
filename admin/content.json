@@ -63,7 +63,7 @@
         "pt": ""
       },
       "p2": {
-        "en": "Not narrative. Not pledges. A financial architecture that turns sustainability into a return.",
+        "en": "Not narrative. Not pledges. A financial architecture that turns sustainability into a financeable outcome.",
         "es": "",
         "pt": ""
       }
@@ -259,7 +259,7 @@
             "pt": ""
           },
           "p": {
-            "en": "Clear roles, data and accountability across every counterparty.",
+            "en": "MRV that turns outcomes into verifiable, financeable results.",
             "es": "",
             "pt": ""
           }
@@ -272,7 +272,7 @@
             "pt": ""
           },
           "p": {
-            "en": "Structured to meet compliance, CBAM and buyer requirements.",
+            "en": "Clear roles, data and accountability across every counterparty.",
             "es": "",
             "pt": ""
           }
@@ -285,7 +285,7 @@
             "pt": ""
           },
           "p": {
-            "en": "MRV that turns outcomes into verifiable, financeable results.",
+            "en": "Structured to meet compliance, CBAM and buyer requirements.",
             "es": "",
             "pt": ""
           }
@@ -294,7 +294,7 @@
     },
     "impact": {
       "eyebrow": {
-        "en": "Impact in numbers",
+        "en": "Track record",
         "es": "",
         "pt": ""
       },
@@ -305,7 +305,7 @@
       },
       "stats": [
         {
-          "num": "15+",
+          "num": "40+",
           "label": {
             "en": "Years structuring climate finance",
             "es": "",
@@ -313,7 +313,7 @@
           }
         },
         {
-          "num": "$2B+",
+          "num": "$500M+",
           "label": {
             "en": "In projects developed & advised",
             "es": "",
@@ -321,22 +321,27 @@
           }
         },
         {
-          "num": "20+",
+          "num": "15+",
           "label": {
-            "en": "Countries across LATAM & beyond",
+            "en": "Countries across LATAM & West Africa",
             "es": "",
             "pt": ""
           }
         },
         {
-          "num": "5M",
+          "num": "XX M",
           "label": {
-            "en": "tCO₂e under management pathways",
+            "en": "Estimated tCO₂e across Equiterra's active portfolio",
             "es": "",
             "pt": ""
           }
         }
-      ]
+      ],
+      "qualifier": {
+        "en": "The first three figures reflect the cumulative track record of Equiterra's leadership. Portfolio volume reflects projects currently under Equiterra mandate.",
+        "es": "",
+        "pt": ""
+      }
     },
     "founder": {
       "eyebrow": {

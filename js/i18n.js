@@ -44,7 +44,7 @@ window.EQ_I18N = {
     "The gap we close": "La brecha que cerramos",
     "Climate ambition is everywhere. The capital architecture to deliver it is not.": "La ambición climática está en todas partes. La arquitectura de capital para hacerla realidad, no.",
     "Equiterra sits between policy, capital and the ground — translating environmental value into structures that institutions can actually finance.": "Equiterra se sitúa entre la política, el capital y el territorio, traduciendo el valor ambiental en estructuras que las instituciones realmente pueden financiar.",
-    "Not narrative. Not pledges. A financial architecture that turns sustainability into a return.": "Sin discursos. Sin promesas. Una arquitectura financiera que convierte la sostenibilidad en rentabilidad.",
+    "Not narrative. Not pledges. A financial architecture that turns sustainability into a financeable outcome.": "Sin discursos. Sin promesas. Una arquitectura financiera que convierte la sostenibilidad en un resultado financiable.",
 
     // --- Marquee ---
     "Climate Finance": "Finanzas climáticas",
@@ -148,9 +148,7 @@ window.EQ_I18N = {
     // --- Projects ---
     "Selected highlights": "Proyectos destacados",
     "Projects shaping resilient economies": "Proyectos que construyen economías resilientes",
-    "Flagship · ARR — Natural Capital": "Insignia · ARR — Capital natural",
-    "Flagship project · ARR — Natural Capital": "Proyecto insignia · ARR — Capital natural",
-    "Sierra Nevada de Santa Marta, Colombia · Arhuaco territory": "Sierra Nevada de Santa Marta, Colombia · Territorio arhuaco",
+    "Early-stage · NBS, ARR": "Etapa temprana · NBS, ARR",
     "View project →": "Ver proyecto →",
     "Amazon Reforestation": "Reforestación del Amazonas",
     "Watershed Restoration": "Restauración de cuencas",
@@ -163,12 +161,13 @@ window.EQ_I18N = {
     "Brazil": "Brasil",
 
     // --- Impact ---
-    "Impact in numbers": "Impacto en cifras",
+    "Track record": "Trayectoria",
     "Proof, not promises": "Pruebas, no promesas",
     "Years structuring climate finance": "Años estructurando finanzas climáticas",
     "In projects developed & advised": "En proyectos desarrollados y asesorados",
-    "Countries across LATAM & beyond": "Países en LATAM y más allá",
-    "tCO₂e under management pathways": "tCO₂e en rutas de gestión",
+    "Countries across LATAM & West Africa": "Países en LATAM y África Occidental",
+    "Estimated tCO₂e across Equiterra's active portfolio": "tCO₂e estimadas del portafolio activo de Equiterra",
+    "The first three figures reflect the cumulative track record of Equiterra's leadership. Portfolio volume reflects projects currently under Equiterra mandate.": "Las primeras tres cifras reflejan la trayectoria acumulada del liderazgo de Equiterra. El volumen de portafolio corresponde a proyectos bajo mandato vigente de Equiterra.",
 
     // --- Why partner ---
     "Why Equiterra": "Por qué Equiterra",
@@ -203,7 +202,7 @@ window.EQ_I18N = {
     "Equiterra exists to close the distance between climate ambition and deployable capital — combining regulatory depth, market structuring and on-the-ground delivery.": "Equiterra existe para cerrar la distancia entre la ambición climática y el capital desplegable — combinando profundidad regulatoria, estructuración de mercado y ejecución en territorio.",
     "Our mandate": "Nuestro mandato",
     "Capital that meets integrity": "Capital que se encuentra con la integridad",
-    "We structure environmental assets so they hold up to regulation and to the market at the same time — additionality, governance and returns aligned from day one.": "Estructuramos activos ambientales para que resistan la regulación y el mercado a la vez — adicionalidad, gobernanza y retornos alineados desde el primer día.",
+    "We structure environmental assets so they hold up to regulation and to the market at the same time, with additionality, governance and long-term viability aligned from day one.": "Estructuramos activos ambientales para que resistan la regulación y el mercado a la vez, con adicionalidad, gobernanza y viabilidad de largo plazo alineadas desde el primer día.",
     "Climate finance structuring & blended capital": "Estructuración de finanzas climáticas y capital combinado",
     "Carbon market design, pricing and offtake": "Diseño de mercados de carbono, precios y comercialización",
     "Regulatory & CBAM positioning": "Posicionamiento regulatorio y CBAM",
@@ -301,7 +300,6 @@ window.EQ_I18N = {
 
     // --- Sierra Nevada page ---
     "← Back to projects": "← Volver a proyectos",
-    "A forest-restoration and natural-capital project in the Sierra Nevada de Santa Marta, developed hand-in-hand with the Arhuaco people on their ancestral territory.": "Un proyecto de restauración forestal y capital natural en la Sierra Nevada de Santa Marta, desarrollado de la mano del pueblo arhuaco en su territorio ancestral.",
     "Location": "Ubicación",
     "Type": "Tipo",
     "Afforestation, Reforestation & Revegetation": "Forestación, reforestación y revegetación",
@@ -313,12 +311,10 @@ window.EQ_I18N = {
     "de Santa Marta, Colombia": "de Santa Marta, Colombia",
     "The project": "El proyecto",
     "Restoring one of the planet's most irreplaceable ecosystems.": "Restaurando uno de los ecosistemas más irremplazables del planeta.",
-    "The Sierra Nevada de Santa Marta is the world's highest coastal mountain range and a biodiversity hotspot — and the ancestral home of the Arhuaco people. Equiterra is structuring an ARR carbon project that restores degraded forest and watersheds while putting indigenous stewardship and benefit-sharing at the center of the financial architecture.": "La Sierra Nevada de Santa Marta es la cadena montañosa costera más alta del mundo y un punto crítico de biodiversidad — y el hogar ancestral del pueblo arhuaco. Equiterra estructura un proyecto de carbono ARR que restaura bosque y cuencas degradadas, poniendo la custodia indígena y la distribución de beneficios en el centro de la arquitectura financiera.",
     "More imagery coming": "Más imágenes en camino",
     "from the field": "desde el territorio",
     "Community at the core": "La comunidad en el centro",
-    "Built with the Arhuaco, not around them": "Construido con los arhuacos, no a su alrededor",
-    "This project is co-designed with Arhuaco authorities. Carbon revenue flows back into the community through transparent benefit-sharing, and traditional ecological knowledge guides what gets restored and how.": "Este proyecto se co-diseña con las autoridades arhuacas. Los ingresos por carbono regresan a la comunidad mediante una distribución transparente de beneficios, y el conocimiento ecológico tradicional guía qué se restaura y cómo.",
+    "Built with the community, not around them": "Construido con la comunidad, no a su alrededor",
     "Free, prior and informed consent": "Consentimiento libre, previo e informado",
     "Transparent benefit-sharing agreements": "Acuerdos transparentes de distribución de beneficios",
     "Ancestral knowledge guiding restoration": "Conocimiento ancestral que guía la restauración",
@@ -334,24 +330,23 @@ window.EQ_I18N = {
     "The mountain is the heart of the world. Restoring it is not charity — it is architecture.": "La montaña es el corazón del mundo. Restaurarla no es caridad — es arquitectura.",
     "— Equiterra, on the Sierra Nevada project": "— Equiterra, sobre el proyecto Sierra Nevada",
     "Want to support or co-finance this project?": "¿Quieres apoyar o cofinanciar este proyecto?",
-    "We're structuring participation for institutions and impact investors aligned with indigenous-led restoration.": "Estamos estructurando la participación de instituciones e inversionistas de impacto alineados con la restauración liderada por comunidades indígenas.",
+    "We're structuring participation for institutions and impact investors aligned with community-led restoration.": "Estamos estructurando la participación de instituciones e inversionistas de impacto alineados con la restauración liderada por la comunidad.",
     "See all projects": "Ver todos los proyectos",
 
     // --- Sierra Nevada page (datos reales 2026-07) ---
-    "Flagship · NBS, ARR": "Insignia · NBS, ARR",
-    "Flagship project · NBS, ARR": "Proyecto insignia · NBS, ARR",
-    "Indigenous-led forest restoration and carbon origination in the Sierra Nevada de Santa Marta, structured with 9 Arhuaco communities of the Cuenca Durankwa Meyna on their ancestral territory.": "Restauración forestal y origen de carbono liderados por comunidades indígenas en la Sierra Nevada de Santa Marta, estructurados con 9 comunidades arhuacas de la Cuenca Durankwa Meyna en su territorio ancestral.",
+    "Early-stage project · NBS, ARR": "Proyecto en etapa temprana · NBS, ARR",
+    "Community-led forest restoration and carbon origination in the Sierra Nevada de Santa Marta, structured in partnership with local indigenous communities under active FPIC and benefit-sharing agreements.": "Restauración forestal y origen de carbono liderados por la comunidad en la Sierra Nevada de Santa Marta, estructurados en alianza con comunidades indígenas locales bajo acuerdos activos de CLPI y reparto de beneficios.",
     "Scale": "Escala",
     "90 collectively-titled predios": "90 predios de titulación colectiva",
     "Communities": "Comunidades",
     "Crediting period": "Periodo de acreditación",
     "40 years": "40 años",
-    "The Sierra Nevada de Santa Marta is a UNESCO Biosphere Reserve and Colombia's highest coastal mountain range, home to four indigenous peoples who have governed it under their own legal and spiritual systems for centuries. Within the Río Ariguaní watershed, Equiterra is structuring an ARR project restoring ~5,000 hectares of degraded forest across 90 collectively-titled Arhuaco predios, targeting at least 6 tCO₂e per hectare (net), with Saumama Foundation as community-side counsel.": "La Sierra Nevada de Santa Marta es una Reserva de Biosfera de la UNESCO y la cadena montañosa costera más alta de Colombia, hogar de cuatro pueblos indígenas que la han gobernado bajo sus propios sistemas legales y espirituales durante siglos. Dentro de la cuenca del río Ariguaní, Equiterra está estructurando un proyecto ARR que restaura ~5.000 hectáreas de bosque degradado en 90 predios arhuacos de titulación colectiva, con una meta de al menos 6 tCO₂e por hectárea (neto), con la Fundación Saumama como asesora comunitaria.",
-    "This project is co-designed with Arhuaco authorities in accordance with their ley de origen and traditional territorial authority. Saumama Foundation accompanies the communities as neutral legal and social adviser, and carbon revenue flows back through the governance of the 9 communities of the Cuenca Durankwa Meyna.": "Este proyecto se co-diseña con las autoridades arhuacas conforme a su ley de origen y autoridad territorial tradicional. La Fundación Saumama acompaña a las comunidades como asesora legal y social neutral, y los ingresos por carbono retornan a través de la gobernanza de las 9 comunidades de la Cuenca Durankwa Meyna.",
+    "The Sierra Nevada de Santa Marta is a UNESCO Biosphere Reserve and Colombia's highest coastal mountain range — home to indigenous peoples who have governed it under their own legal and spiritual systems for centuries. Within the Río Ariguaní watershed, Equiterra is structuring an early-stage ARR project restoring ~5,000 hectares of degraded forest across 90 collectively-titled predios, targeting at least 6 tCO₂e per hectare (net), with Saumama Foundation as community-side counsel.": "La Sierra Nevada de Santa Marta es una Reserva de Biosfera de la UNESCO y la cadena montañosa costera más alta de Colombia — hogar de pueblos indígenas que la han gobernado bajo sus propios sistemas legales y espirituales durante siglos. Dentro de la cuenca del río Ariguaní, Equiterra está estructurando un proyecto ARR en etapa temprana que restaura ~5.000 hectáreas de bosque degradado en 90 predios de titulación colectiva, con una meta de al menos 6 tCO₂e por hectárea (neto), con la Fundación Saumama como asesora comunitaria.",
+    "This project is co-designed with local indigenous authorities in accordance with their traditional legal and territorial governance. Saumama Foundation accompanies the communities as neutral legal and social adviser, and carbon revenue flows back through the governance of the 9 participating communities.": "Este proyecto se co-diseña con autoridades indígenas locales conforme a su gobernanza legal y territorial tradicional. La Fundación Saumama acompaña a las comunidades como asesora legal y social neutral, y los ingresos por carbono retornan a través de la gobernanza de las 9 comunidades participantes.",
     "Free, prior and informed consent (FPIC)": "Consentimiento libre, previo e informado (CLPI)",
     "Validation Agreement signed with Equiterra Capital and Saumama Foundation": "Acuerdo de Validación firmado con Equiterra Capital y la Fundación Saumama",
-    "Ancestral knowledge guiding restoration under ley de origen": "Conocimiento ancestral que guía la restauración bajo la ley de origen",
-    "40-year Contrato de Asociación with the 9 communities": "Contrato de Asociación de 40 años con las 9 comunidades",
+    "Ancestral knowledge guiding restoration practices": "Conocimiento ancestral que guía las prácticas de restauración",
+    "40-year community association agreement with the 9 communities": "Acuerdo de asociación comunitaria de 40 años con las 9 comunidades",
 
     // --- Proyectos reales 2026-07: tags/ubicaciones compartidos ---
     "NBS · ARR & Agroforestry": "NBS · ARR y agroforestería",
@@ -389,7 +384,7 @@ window.EQ_I18N = {
     "Structuring & first issuance": "Estructuración y primera emisión",
 
     // --- Moba ARR page ---
-    "A nature-based investment structured to generate verifiable carbon credits, measurable environmental impact and long-term financial returns in the Democratic Republic of Congo.": "Una inversión basada en la naturaleza estructurada para generar créditos de carbono verificables, impacto ambiental medible y rendimientos financieros de largo plazo en la República Democrática del Congo.",
+    "A nature-based project structured to generate verifiable carbon credits, measurable environmental impact and long-term financial viability in the Democratic Republic of Congo.": "Un proyecto basado en la naturaleza estructurado para generar créditos de carbono verificables, impacto ambiental medible y viabilidad financiera de largo plazo en la República Democrática del Congo.",
     "Restoring degraded miombo savanna in the Tanganyika corridor.": "Restaurando la sabana miombo degradada en el corredor de Tanganica.",
     "The Congo Basin holds the world's largest tropical carbon reservoir. Equiterra is structuring an ARR and agroforestry project across 10,000 hectares in Kayabala, Kansabala and Manda chefferies, Moba Territory, sitting within DRC's priority restoration belt under the 2021 NDC, paired with a community permaculture component.": "La Cuenca del Congo alberga el mayor reservorio de carbono tropical del mundo. Equiterra está estructurando un proyecto de ARR y agroforestería en 10.000 hectáreas de las jefaturas de Kayabala, Kansabala y Manda, Territorio de Moba, dentro del cinturón prioritario de restauración de la RDC bajo la NDC de 2021, junto con un componente de permacultura comunitaria.",
     "What we're building": "Qué estamos construyendo",
@@ -408,7 +403,7 @@ window.EQ_I18N = {
     "Equiterra is structuring capital for high-integrity ARR and agroforestry across the Tanganyika restoration belt.": "Equiterra está estructurando capital para ARR y agroforestería de alta integridad en todo el cinturón de restauración de Tanganica.",
 
     // --- Bouaké Clean Cooking page ---
-    "Community-led climate action through clean energy access: reducing household emissions, improving health and generating verifiable carbon credits in Côte d'Ivoire.": "Acción climática liderada por la comunidad a través del acceso a energía limpia: reduciendo las emisiones domésticas, mejorando la salud y generando créditos de carbono verificables en Costa de Marfil.",
+    "Community-led climate action through clean energy access: reducing household emissions, improving health and targeting verifiable carbon credits in Côte d'Ivoire.": "Acción climática liderada por la comunidad a través del acceso a energía limpia: reduciendo las emisiones domésticas, mejorando la salud y con miras a créditos de carbono verificables en Costa de Marfil.",
     "Clean cooking as a national policy priority.": "La cocción limpia como prioridad de política nacional.",
     "Côte d'Ivoire loses approximately 2 million hectares of forest per year to charcoal production. Bouaké, the country's second largest city, has committed to a 38% city-level emission reduction, above the national target, with clean cooking as its first sector of intervention. Equiterra is structuring the distribution of 90,000 locally manufactured improved cookstoves, paired with a biochar component for soil restoration.": "Costa de Marfil pierde aproximadamente 2 millones de hectáreas de bosque al año por la producción de carbón vegetal. Bouaké, la segunda ciudad más grande del país, se ha comprometido a una reducción de emisiones del 38% a nivel urbano, por encima de la meta nacional, con la cocción limpia como su primer sector de intervención. Equiterra está estructurando la distribución de 90.000 estufas mejoradas de fabricación local, junto con un componente de biocarbón para la restauración del suelo.",
     "Women at the center": "Las mujeres en el centro",
@@ -428,7 +423,7 @@ window.EQ_I18N = {
     "Equiterra is structuring capital for clean-cooking access and biochar innovation across West Africa.": "Equiterra está estructurando capital para el acceso a cocción limpia y la innovación en biocarbón en toda África Occidental.",
 
     // --- Rafey Landfill page ---
-    "Transforming a major climate liability into a sustainable energy asset: capturing 9.6M m³/year of landfill gas in the Dominican Republic through high-efficiency methane destruction and fossil-fuel displacement.": "Transformando un pasivo climático mayor en un activo energético sostenible: capturando 9,6 millones de m³ al año de gas de relleno sanitario en República Dominicana mediante destrucción de metano de alta eficiencia y desplazamiento de combustibles fósiles.",
+    "Transforming a major climate liability into a sustainable energy asset: structuring the capture of 9.6M m³/year of landfill gas in the Dominican Republic through high-efficiency methane destruction and fossil-fuel displacement.": "Transformando un pasivo climático mayor en un activo energético sostenible: estructurando la captura de 9,6 millones de m³ al año de gas de relleno sanitario en República Dominicana mediante destrucción de metano de alta eficiencia y desplazamiento de combustibles fósiles.",
     "Turning a 40-year-old liability into a climate asset.": "Convirtiendo un pasivo de 40 años en un activo climático.",
     "The Rafey landfill has received waste for over 40 years, 679,000 tons in 2025 alone, across 13 municipalities. Equiterra is structuring the capture and transportation of landfill gas to neighboring industrial facilities in Santiago de los Caballeros, displacing imported fossil fuels for industrial heat and process fuel.": "El relleno sanitario de Rafey ha recibido residuos durante más de 40 años, 679.000 toneladas solo en 2025, de 13 municipios. Equiterra está estructurando la captura y transporte de gas de relleno sanitario hacia instalaciones industriales cercanas en Santiago de los Caballeros, desplazando combustibles fósiles importados para calor industrial y combustible de proceso.",
     "A circular economy project": "Un proyecto de economía circular",
@@ -528,7 +523,7 @@ window.EQ_I18N = {
     "The gap we close": "A lacuna que fechamos",
     "Climate ambition is everywhere. The capital architecture to deliver it is not.": "A ambição climática está em toda parte. A arquitetura de capital para realizá-la, não.",
     "Equiterra sits between policy, capital and the ground — translating environmental value into structures that institutions can actually finance.": "A Equiterra se posiciona entre a política, o capital e o território, traduzindo o valor ambiental em estruturas que as instituições realmente podem financiar.",
-    "Not narrative. Not pledges. A financial architecture that turns sustainability into a return.": "Sem discursos. Sem promessas. Uma arquitetura financeira que transforma sustentabilidade em retorno.",
+    "Not narrative. Not pledges. A financial architecture that turns sustainability into a financeable outcome.": "Sem discursos. Sem promessas. Uma arquitetura financeira que transforma sustentabilidade em um resultado financiável.",
 
     "Climate Finance": "Finanças climáticas",
     "CBAM Strategy": "Estratégia CBAM",
@@ -626,7 +621,7 @@ window.EQ_I18N = {
     "Projects shaping resilient economies": "Projetos que constroem economias resilientes",
     "Flagship · ARR — Natural Capital": "Carro-chefe · ARR — Capital natural",
     "Flagship project · ARR — Natural Capital": "Projeto carro-chefe · ARR — Capital natural",
-    "Sierra Nevada de Santa Marta, Colombia · Arhuaco territory": "Sierra Nevada de Santa Marta, Colômbia · Território arhuaco",
+    "Early-stage · NBS, ARR": "Estágio inicial · NBS, ARR",
     "View project →": "Ver projeto →",
     "Amazon Reforestation": "Reflorestamento da Amazônia",
     "Watershed Restoration": "Restauração de bacias",
@@ -638,12 +633,13 @@ window.EQ_I18N = {
     "Panama": "Panamá",
     "Brazil": "Brasil",
 
-    "Impact in numbers": "Impacto em números",
+    "Track record": "Histórico",
     "Proof, not promises": "Provas, não promessas",
     "Years structuring climate finance": "Anos estruturando finanças climáticas",
     "In projects developed & advised": "Em projetos desenvolvidos e assessorados",
-    "Countries across LATAM & beyond": "Países na América Latina e além",
-    "tCO₂e under management pathways": "tCO₂e em rotas de gestão",
+    "Countries across LATAM & West Africa": "Países na América Latina e África Ocidental",
+    "Estimated tCO₂e across Equiterra's active portfolio": "tCO₂e estimadas do portfólio ativo da Equiterra",
+    "The first three figures reflect the cumulative track record of Equiterra's leadership. Portfolio volume reflects projects currently under Equiterra mandate.": "Os três primeiros números refletem o histórico acumulado da liderança da Equiterra. O volume do portfólio corresponde a projetos sob mandato vigente da Equiterra.",
 
     "Why Equiterra": "Por que a Equiterra",
     "A partner built for the hard part": "Um parceiro feito para a parte difícil",
@@ -675,7 +671,7 @@ window.EQ_I18N = {
     "Equiterra exists to close the distance between climate ambition and deployable capital — combining regulatory depth, market structuring and on-the-ground delivery.": "A Equiterra existe para fechar a distância entre a ambição climática e o capital implantável — combinando profundidade regulatória, estruturação de mercado e execução no território.",
     "Our mandate": "Nosso mandato",
     "Capital that meets integrity": "Capital que encontra a integridade",
-    "We structure environmental assets so they hold up to regulation and to the market at the same time — additionality, governance and returns aligned from day one.": "Estruturamos ativos ambientais para que resistam à regulação e ao mercado ao mesmo tempo — adicionalidade, governança e retornos alinhados desde o primeiro dia.",
+    "We structure environmental assets so they hold up to regulation and to the market at the same time, with additionality, governance and long-term viability aligned from day one.": "Estruturamos ativos ambientais para que resistam à regulação e ao mercado ao mesmo tempo, com adicionalidade, governança e viabilidade de longo prazo alinhadas desde o primeiro dia.",
     "Climate finance structuring & blended capital": "Estruturação de finanças climáticas e capital combinado",
     "Carbon market design, pricing and offtake": "Desenho de mercados de carbono, precificação e comercialização",
     "Regulatory & CBAM positioning": "Posicionamento regulatório e CBAM",
@@ -769,7 +765,6 @@ window.EQ_I18N = {
     "English · Español": "Inglês · Espanhol",
 
     "← Back to projects": "← Voltar aos projetos",
-    "A forest-restoration and natural-capital project in the Sierra Nevada de Santa Marta, developed hand-in-hand with the Arhuaco people on their ancestral territory.": "Um projeto de restauração florestal e capital natural na Sierra Nevada de Santa Marta, desenvolvido lado a lado com o povo arhuaco em seu território ancestral.",
     "Location": "Localização",
     "Type": "Tipo",
     "Afforestation, Reforestation & Revegetation": "Florestamento, reflorestamento e revegetação",
@@ -781,12 +776,10 @@ window.EQ_I18N = {
     "de Santa Marta, Colombia": "de Santa Marta, Colômbia",
     "The project": "O projeto",
     "Restoring one of the planet's most irreplaceable ecosystems.": "Restaurando um dos ecossistemas mais insubstituíveis do planeta.",
-    "The Sierra Nevada de Santa Marta is the world's highest coastal mountain range and a biodiversity hotspot — and the ancestral home of the Arhuaco people. Equiterra is structuring an ARR carbon project that restores degraded forest and watersheds while putting indigenous stewardship and benefit-sharing at the center of the financial architecture.": "A Sierra Nevada de Santa Marta é a cadeia montanhosa costeira mais alta do mundo e um ponto crítico de biodiversidade — e o lar ancestral do povo arhuaco. A Equiterra estrutura um projeto de carbono ARR que restaura floresta e bacias degradadas, colocando a custódia indígena e a repartição de benefícios no centro da arquitetura financeira.",
     "More imagery coming": "Mais imagens a caminho",
     "from the field": "do território",
     "Community at the core": "A comunidade no centro",
-    "Built with the Arhuaco, not around them": "Construído com os arhuacos, não ao redor deles",
-    "This project is co-designed with Arhuaco authorities. Carbon revenue flows back into the community through transparent benefit-sharing, and traditional ecological knowledge guides what gets restored and how.": "Este projeto é co-desenhado com as autoridades arhuacas. A receita de carbono retorna à comunidade por meio de uma repartição transparente de benefícios, e o conhecimento ecológico tradicional orienta o que é restaurado e como.",
+    "Built with the community, not around them": "Construído com a comunidade, não ao redor dela",
     "Free, prior and informed consent": "Consentimento livre, prévio e informado",
     "Transparent benefit-sharing agreements": "Acordos transparentes de repartição de benefícios",
     "Ancestral knowledge guiding restoration": "Conhecimento ancestral guiando a restauração",
@@ -802,24 +795,25 @@ window.EQ_I18N = {
     "The mountain is the heart of the world. Restoring it is not charity — it is architecture.": "A montanha é o coração do mundo. Restaurá-la não é caridade — é arquitetura.",
     "— Equiterra, on the Sierra Nevada project": "— Equiterra, sobre o projeto Sierra Nevada",
     "Want to support or co-finance this project?": "Quer apoiar ou cofinanciar este projeto?",
-    "We're structuring participation for institutions and impact investors aligned with indigenous-led restoration.": "Estamos estruturando a participação de instituições e investidores de impacto alinhados com a restauração liderada por indígenas.",
+    "We're structuring participation for institutions and impact investors aligned with community-led restoration.": "Estamos estruturando a participação de instituições e investidores de impacto alinhados com a restauração liderada pela comunidade.",
     "See all projects": "Ver todos os projetos",
 
     // --- Sierra Nevada page (dados reais 2026-07) ---
     "Flagship · NBS, ARR": "Carro-chefe · NBS, ARR",
     "Flagship project · NBS, ARR": "Projeto carro-chefe · NBS, ARR",
-    "Indigenous-led forest restoration and carbon origination in the Sierra Nevada de Santa Marta, structured with 9 Arhuaco communities of the Cuenca Durankwa Meyna on their ancestral territory.": "Restauração florestal e origem de carbono liderados por indígenas na Sierra Nevada de Santa Marta, estruturados com 9 comunidades arhuacas da Bacia Durankwa Meyna em seu território ancestral.",
+    "Early-stage project · NBS, ARR": "Projeto em estágio inicial · NBS, ARR",
+    "Community-led forest restoration and carbon origination in the Sierra Nevada de Santa Marta, structured in partnership with local indigenous communities under active FPIC and benefit-sharing agreements.": "Restauração florestal e geração de carbono lideradas pela comunidade na Sierra Nevada de Santa Marta, estruturadas em parceria com comunidades indígenas locais sob acordos ativos de CLPI e repartição de benefícios.",
     "Scale": "Escala",
     "90 collectively-titled predios": "90 propriedades de titulação coletiva",
     "Communities": "Comunidades",
     "Crediting period": "Período de creditação",
     "40 years": "40 anos",
-    "The Sierra Nevada de Santa Marta is a UNESCO Biosphere Reserve and Colombia's highest coastal mountain range, home to four indigenous peoples who have governed it under their own legal and spiritual systems for centuries. Within the Río Ariguaní watershed, Equiterra is structuring an ARR project restoring ~5,000 hectares of degraded forest across 90 collectively-titled Arhuaco predios, targeting at least 6 tCO₂e per hectare (net), with Saumama Foundation as community-side counsel.": "A Sierra Nevada de Santa Marta é uma Reserva da Biosfera da UNESCO e a cadeia montanhosa costeira mais alta da Colômbia, lar de quatro povos indígenas que a governam sob seus próprios sistemas legais e espirituais há séculos. Dentro da bacia do rio Ariguaní, a Equiterra está estruturando um projeto ARR que restaura ~5.000 hectares de floresta degradada em 90 propriedades arhuacas de titulação coletiva, com meta de pelo menos 6 tCO₂e por hectare (líquido), com a Fundação Saumama como assessora comunitária.",
-    "This project is co-designed with Arhuaco authorities in accordance with their ley de origen and traditional territorial authority. Saumama Foundation accompanies the communities as neutral legal and social adviser, and carbon revenue flows back through the governance of the 9 communities of the Cuenca Durankwa Meyna.": "Este projeto é co-desenhado com as autoridades arhuacas conforme sua ley de origen e autoridade territorial tradicional. A Fundação Saumama acompanha as comunidades como assessora legal e social neutra, e a receita de carbono retorna por meio da governança das 9 comunidades da Bacia Durankwa Meyna.",
+    "The Sierra Nevada de Santa Marta is a UNESCO Biosphere Reserve and Colombia's highest coastal mountain range — home to indigenous peoples who have governed it under their own legal and spiritual systems for centuries. Within the Río Ariguaní watershed, Equiterra is structuring an early-stage ARR project restoring ~5,000 hectares of degraded forest across 90 collectively-titled predios, targeting at least 6 tCO₂e per hectare (net), with Saumama Foundation as community-side counsel.": "A Sierra Nevada de Santa Marta é uma Reserva da Biosfera da UNESCO e a cadeia montanhosa costeira mais alta da Colômbia — lar de povos indígenas que a governam sob seus próprios sistemas legais e espirituais há séculos. Dentro da bacia do rio Ariguaní, a Equiterra está estruturando um projeto ARR em estágio inicial que restaura ~5.000 hectares de floresta degradada em 90 propriedades de titulação coletiva, com meta de pelo menos 6 tCO₂e por hectare (líquido), com a Fundação Saumama como assessora comunitária.",
+    "This project is co-designed with local indigenous authorities in accordance with their traditional legal and territorial governance. Saumama Foundation accompanies the communities as neutral legal and social adviser, and carbon revenue flows back through the governance of the 9 participating communities.": "Este projeto é co-desenhado com autoridades indígenas locais conforme sua governança legal e territorial tradicional. A Fundação Saumama acompanha as comunidades como assessora legal e social neutra, e a receita de carbono retorna por meio da governança das 9 comunidades participantes.",
     "Free, prior and informed consent (FPIC)": "Consentimento livre, prévio e informado (CLPI)",
     "Validation Agreement signed with Equiterra Capital and Saumama Foundation": "Acordo de Validação assinado com a Equiterra Capital e a Fundação Saumama",
-    "Ancestral knowledge guiding restoration under ley de origen": "Conhecimento ancestral guiando a restauração sob a ley de origen",
-    "40-year Contrato de Asociación with the 9 communities": "Contrato de Asociación de 40 anos com as 9 comunidades",
+    "Ancestral knowledge guiding restoration practices": "Conhecimento ancestral guiando as práticas de restauração",
+    "40-year community association agreement with the 9 communities": "Acordo de associação comunitária de 40 anos com as 9 comunidades",
 
     // --- Projetos reais 2026-07: tags/localizações compartilhadas ---
     "NBS · ARR & Agroforestry": "NBS · ARR e agrofloresta",
@@ -857,7 +851,7 @@ window.EQ_I18N = {
     "Structuring & first issuance": "Estruturação e primeira emissão",
 
     // --- Moba ARR page ---
-    "A nature-based investment structured to generate verifiable carbon credits, measurable environmental impact and long-term financial returns in the Democratic Republic of Congo.": "Um investimento baseado na natureza estruturado para gerar créditos de carbono verificáveis, impacto ambiental mensurável e retornos financeiros de longo prazo na República Democrática do Congo.",
+    "A nature-based project structured to generate verifiable carbon credits, measurable environmental impact and long-term financial viability in the Democratic Republic of Congo.": "Um projeto baseado na natureza estruturado para gerar créditos de carbono verificáveis, impacto ambiental mensurável e viabilidade financeira de longo prazo na República Democrática do Congo.",
     "Restoring degraded miombo savanna in the Tanganyika corridor.": "Restaurando a savana miombo degradada no corredor de Tanganica.",
     "The Congo Basin holds the world's largest tropical carbon reservoir. Equiterra is structuring an ARR and agroforestry project across 10,000 hectares in Kayabala, Kansabala and Manda chefferies, Moba Territory, sitting within DRC's priority restoration belt under the 2021 NDC, paired with a community permaculture component.": "A Bacia do Congo abriga o maior reservatório de carbono tropical do mundo. A Equiterra está estruturando um projeto de ARR e agrofloresta em 10.000 hectares nas chefaturas de Kayabala, Kansabala e Manda, Território de Moba, dentro do cinturão prioritário de restauração da RDC segundo a NDC de 2021, aliado a um componente de permacultura comunitária.",
     "What we're building": "O que estamos construindo",
@@ -876,7 +870,7 @@ window.EQ_I18N = {
     "Equiterra is structuring capital for high-integrity ARR and agroforestry across the Tanganyika restoration belt.": "A Equiterra está estruturando capital para ARR e agrofloresta de alta integridade em todo o cinturão de restauração de Tanganica.",
 
     // --- Bouaké Clean Cooking page ---
-    "Community-led climate action through clean energy access: reducing household emissions, improving health and generating verifiable carbon credits in Côte d'Ivoire.": "Ação climática liderada pela comunidade por meio do acesso a energia limpa: reduzindo as emissões domésticas, melhorando a saúde e gerando créditos de carbono verificáveis na Costa do Marfim.",
+    "Community-led climate action through clean energy access: reducing household emissions, improving health and targeting verifiable carbon credits in Côte d'Ivoire.": "Ação climática liderada pela comunidade por meio do acesso a energia limpa: reduzindo as emissões domésticas, melhorando a saúde e com vistas a créditos de carbono verificáveis na Costa do Marfim.",
     "Clean cooking as a national policy priority.": "A cocção limpa como prioridade de política nacional.",
     "Côte d'Ivoire loses approximately 2 million hectares of forest per year to charcoal production. Bouaké, the country's second largest city, has committed to a 38% city-level emission reduction, above the national target, with clean cooking as its first sector of intervention. Equiterra is structuring the distribution of 90,000 locally manufactured improved cookstoves, paired with a biochar component for soil restoration.": "A Costa do Marfim perde aproximadamente 2 milhões de hectares de floresta por ano devido à produção de carvão vegetal. Bouaké, a segunda maior cidade do país, se comprometeu com uma redução de emissões de 38% em nível municipal, acima da meta nacional, com a cocção limpa como seu primeiro setor de intervenção. A Equiterra está estruturando a distribuição de 90.000 fogões melhorados de fabricação local, aliados a um componente de biocarvão para restauração do solo.",
     "Women at the center": "As mulheres no centro",
@@ -896,7 +890,7 @@ window.EQ_I18N = {
     "Equiterra is structuring capital for clean-cooking access and biochar innovation across West Africa.": "A Equiterra está estruturando capital para acesso a cocção limpa e inovação em biocarvão em toda a África Ocidental.",
 
     // --- Rafey Landfill page ---
-    "Transforming a major climate liability into a sustainable energy asset: capturing 9.6M m³/year of landfill gas in the Dominican Republic through high-efficiency methane destruction and fossil-fuel displacement.": "Transformando um grande passivo climático em um ativo energético sustentável: capturando 9,6 milhões de m³ por ano de gás de aterro na República Dominicana por meio de destruição de metano de alta eficiência e substituição de combustíveis fósseis.",
+    "Transforming a major climate liability into a sustainable energy asset: structuring the capture of 9.6M m³/year of landfill gas in the Dominican Republic through high-efficiency methane destruction and fossil-fuel displacement.": "Transformando um grande passivo climático em um ativo energético sustentável: estruturando a captura de 9,6 milhões de m³ por ano de gás de aterro na República Dominicana por meio de destruição de metano de alta eficiência e substituição de combustíveis fósseis.",
     "Turning a 40-year-old liability into a climate asset.": "Transformando um passivo de 40 anos em um ativo climático.",
     "The Rafey landfill has received waste for over 40 years, 679,000 tons in 2025 alone, across 13 municipalities. Equiterra is structuring the capture and transportation of landfill gas to neighboring industrial facilities in Santiago de los Caballeros, displacing imported fossil fuels for industrial heat and process fuel.": "O aterro de Rafey recebe resíduos há mais de 40 anos, 679.000 toneladas somente em 2025, de 13 municípios. A Equiterra está estruturando a captura e transporte de gás de aterro para instalações industriais vizinhas em Santiago de los Caballeros, substituindo combustíveis fósseis importados para calor industrial e combustível de processo.",
     "A circular economy project": "Um projeto de economia circular",

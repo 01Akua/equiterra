@@ -173,3 +173,13 @@
 .eq-ptype__ic { width: 46px; height: 46px; border-radius: 12px; background: var(--eq-mint-200); color: var(--eq-forest); display: grid; place-items: center; margin-bottom: 1.2rem; }
 .eq-ptype h3 { font-size: 1.2rem; margin-bottom: .6rem; }
 .eq-ptype p { font-size: .94rem; }
+
+/* ---------- LEGAL PAGES (Disclaimer / Privacy / Terms) ---------- */
+.eq-legal { max-width: 68ch; margin: 0 auto; }
+.eq-legal p { margin-bottom: 1.1rem; }
+.eq-legal h2 { font-size: var(--eq-fs-h3); margin: 2.6rem 0 1rem; }
+.eq-legal h2:first-child { margin-top: 0; }
+.eq-legal ul, .eq-legal ol { margin: 0 0 1.1rem 1.3rem; color: var(--eq-text-soft); }
+.eq-legal li { margin-bottom: .5rem; }
+.eq-legal .eq-legal__updated { font-size: .85rem; color: var(--eq-text-soft); margin-bottom: 2.4rem; }
+.eq-legal .eq-legal__notice { background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.3rem 1.5rem; font-size: .92rem; color: var(--eq-forest); margin-bottom: 2.4rem; }

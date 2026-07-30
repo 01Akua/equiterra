@@ -46,6 +46,7 @@
       '.eq-framework .eq-btn':                       'home.cm4ge.cta',
       '.eq-impact .eq-eyebrow':                      'home.impact.eyebrow',
       '.eq-impact h2.eq-h2':                         'home.impact.h2',
+      '.eq-impact__qualifier':                       'home.impact.qualifier',
       '.eq-founder .eq-eyebrow':                     'home.founder.eyebrow',
       '.eq-founder blockquote':                      'home.founder.quote',
       '.eq-founder__name':                           'home.founder.name',

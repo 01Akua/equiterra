@@ -34,6 +34,7 @@
 .eq-impact .eq-stat { border-left: 2px solid var(--eq-forest); }
 .eq-impact .eq-stat__num, .eq-impact .eq-stat__num span { color: var(--eq-forest); }
 .eq-impact .eq-stat__label { color: var(--eq-text-soft); }
+.eq-impact__qualifier { margin-top: 2rem; font-size: .8rem; line-height: 1.6; color: var(--eq-text-soft); max-width: 60ch; }
 
 /* ---------- SECTION HEAD genérico ---------- */
 .eq-head { max-width: 52rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
