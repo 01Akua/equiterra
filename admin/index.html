@@ -136,6 +136,22 @@
     @media (max-width: 600px) { .field--row { grid-template-columns: 1fr; } }
     .field-hint { font-size: .78rem; color: var(--gray); margin-top: .25rem; }
 
+    /* ── MULTILINGUAL FIELD TABS ── */
+    .field__head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .35rem; }
+    .field__head label { margin-bottom: 0; }
+    .field__langtabs { display: flex; gap: .3rem; flex: none; }
+    .field__langtab { display: flex; align-items: center; gap: .32rem; padding: .2rem .55rem; border: 1.5px solid var(--border); border-radius: 100px; background: var(--white); font: inherit; font-size: .72rem; font-weight: 700; letter-spacing: .03em; color: var(--gray); cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+    .field__langtab:hover { border-color: var(--forest); }
+    .field__langtab.is-active { background: var(--forest); border-color: var(--forest); color: var(--white); }
+    .field__dot { width: 6px; height: 6px; border-radius: 50%; background: #e2a33d; }
+    .field__dot.is-filled { background: var(--green-ok); }
+    .field__dot.is-loading { background: var(--blue); animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: .3; } }
+    .field__langpanel[hidden] { display: none; }
+    .field__retranslate { margin-top: .4rem; background: none; border: none; color: var(--blue); font: inherit; font-size: .78rem; font-weight: 600; cursor: pointer; padding: 0; }
+    .field__retranslate:hover { text-decoration: underline; }
+    .field__retranslate:disabled { opacity: .5; cursor: default; text-decoration: none; }
+
     /* ── LIST EDITOR ── */
     .list-editor { border: 1.5px solid var(--border); border-radius: 9px; overflow: hidden; }
     .list-item {
@@ -438,6 +454,106 @@ function renderPage(page) {
   const builders = { home: buildHome, about: buildAbout, solutions: buildSolutions, cbam: buildCbam, partner: buildPartner, settings: buildSettings, github: buildGithub };
   area.innerHTML = (builders[page] || (() => '<p>Página no encontrada</p>'))();
   wireAutoSave();
+  wireLangTabs();
+  wireAutoTranslateOnBlur();
+  wireRetranslate();
+}
+
+// ═══════════════════════════════════════════════════════
+//  CAMPOS MULTIIDIOMA: tabs EN/ES/PT + traducción automática
+// ═══════════════════════════════════════════════════════
+function wireLangTabs() {
+  document.querySelectorAll('[data-lang-tab]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const group = btn.dataset.group, lang = btn.dataset.langTab;
+      document.querySelectorAll(`[data-group="${group}"][data-lang-tab]`).forEach(b => b.classList.toggle('is-active', b === btn));
+      document.querySelectorAll(`[data-group="${group}"][data-lang-panel]`).forEach(p => { p.hidden = p.dataset.langPanel !== lang; });
+    });
+  });
+}
+
+function setDotState(group, lang, state) {
+  const dot = document.querySelector(`[data-group="${group}"][data-lang-tab="${lang}"] .field__dot`);
+  if (!dot) return;
+  dot.classList.toggle('is-loading', state === 'loading');
+  dot.classList.toggle('is-filled', state === 'filled');
+}
+
+// Al salir del campo EN, si ES/PT están vacíos los completa solo (no pisa texto ya escrito).
+function wireAutoTranslateOnBlur() {
+  document.querySelectorAll('.field[data-multilingual]').forEach(fieldEl => {
+    const enInput = fieldEl.querySelector('[data-lang="en"]');
+    if (!enInput) return;
+    enInput.addEventListener('blur', () => autoFillField(fieldEl));
+  });
+}
+
+async function autoFillField(fieldEl) {
+  const group = fieldEl.dataset.group;
+  const enInput = fieldEl.querySelector('[data-lang="en"]');
+  const enVal = enInput.value.trim();
+  if (!enVal) return;
+  for (const lang of ['es', 'pt']) {
+    const input = fieldEl.querySelector(`[data-lang="${lang}"]`);
+    if (input && !input.value.trim()) {
+      setDotState(group, lang, 'loading');
+      input.value = await translateText(enVal, lang);
+      setDotState(group, lang, 'filled');
+      markUnsaved();
+    }
+  }
+}
+
+// Confirmación sin diálogos nativos (que bloquean el navegador): primer clic arma
+// el botón con una advertencia, el segundo clic (dentro de 3s) ejecuta.
+function wireRetranslate() {
+  document.querySelectorAll('[data-retranslate]').forEach(btn => {
+    let armed = false, armTimer = null;
+    const reset = () => { armed = false; btn.textContent = '🌐 Volver a traducir con IA'; };
+    btn.addEventListener('click', async () => {
+      const fieldEl = btn.closest('.field');
+      const enInput = fieldEl.querySelector('[data-lang="en"]');
+      const enVal = enInput.value.trim();
+      if (!enVal) { showToast('Escribe primero el texto en inglés', 'err'); return; }
+
+      if (!armed) {
+        armed = true;
+        btn.textContent = '⚠️ Clic de nuevo para sobrescribir ES/PT';
+        clearTimeout(armTimer);
+        armTimer = setTimeout(reset, 3000);
+        return;
+      }
+      clearTimeout(armTimer);
+      armed = false;
+      const group = fieldEl.dataset.group;
+      btn.disabled = true; btn.textContent = '⏳ Traduciendo…';
+      for (const lang of ['es', 'pt']) {
+        setDotState(group, lang, 'loading');
+        const input = fieldEl.querySelector(`[data-lang="${lang}"]`);
+        input.value = await translateText(enVal, lang);
+        setDotState(group, lang, 'filled');
+      }
+      btn.disabled = false; btn.textContent = '🌐 Volver a traducir con IA';
+      markUnsaved();
+    });
+  });
+}
+
+// Red de seguridad: antes de guardar, completa cualquier ES/PT que haya quedado vacío.
+async function autoTranslateMissing(onProgress) {
+  const pending = [...document.querySelectorAll('.field[data-multilingual]')].filter(fieldEl => {
+    const en = fieldEl.querySelector('[data-lang="en"]')?.value.trim();
+    if (!en) return false;
+    return ['es', 'pt'].some(l => !fieldEl.querySelector(`[data-lang="${l}"]`)?.value.trim());
+  });
+  if (!pending.length) return 0;
+  let done = 0;
+  for (const fieldEl of pending) {
+    await autoFillField(fieldEl);
+    done++;
+    if (onProgress) onProgress(done, pending.length);
+  }
+  return pending.length;
 }
 
 // ─── Helpers de UI ──────────────────────────────────
@@ -451,13 +567,39 @@ function fieldKey(val, key) {
   return (val && typeof val === 'object' && 'en' in val) ? key + '.en' : key;
 }
 
+let fieldGroupSeq = 0;
 function field(label, val, key, type='text', hint='') {
-  const dk = fieldKey(val, key);
-  const dv = getVal(val);
-  const tag = type === 'textarea'
-    ? `<textarea data-key="${dk}">${esc(dv)}</textarea>`
-    : `<input type="text" data-key="${dk}" value="${esc(dv)}" />`;
-  return `<div class="field"><label>${label}</label>${tag}${hint ? `<p class="field-hint">${hint}</p>` : ''}</div>`;
+  const isMulti = val && typeof val === 'object' && 'en' in val;
+  if (!isMulti) {
+    const dk = fieldKey(val, key);
+    const dv = getVal(val);
+    const tag = type === 'textarea'
+      ? `<textarea data-key="${dk}">${esc(dv)}</textarea>`
+      : `<input type="text" data-key="${dk}" value="${esc(dv)}" />`;
+    return `<div class="field"><label>${label}</label>${tag}${hint ? `<p class="field-hint">${hint}</p>` : ''}</div>`;
+  }
+
+  const group = 'fg' + (fieldGroupSeq++);
+  const langs = [['en','EN'],['es','ES'],['pt','PT']];
+  const tabs = langs.map(([code, lab]) => {
+    const filled = ((val[code] || '').trim().length > 0);
+    const dot = code !== 'en' ? `<span class="field__dot${filled ? ' is-filled' : ''}"></span>` : '';
+    return `<button type="button" class="field__langtab${code === 'en' ? ' is-active' : ''}" data-lang-tab="${code}" data-group="${group}">${lab}${dot}</button>`;
+  }).join('');
+  const panels = langs.map(([code]) => {
+    const dv = esc(val[code] || '');
+    const dk = `${key}.${code}`;
+    const inputTag = type === 'textarea'
+      ? `<textarea data-key="${dk}" data-lang="${code}">${dv}</textarea>`
+      : `<input type="text" data-key="${dk}" data-lang="${code}" value="${dv}" />`;
+    return `<div class="field__langpanel" data-lang-panel="${code}" data-group="${group}" ${code === 'en' ? '' : 'hidden'}>${inputTag}</div>`;
+  }).join('');
+  return `<div class="field" data-multilingual data-group="${group}">
+    <div class="field__head"><label>${label}</label><div class="field__langtabs">${tabs}</div></div>
+    ${panels}
+    <button type="button" class="field__retranslate" data-retranslate data-group="${group}">🌐 Volver a traducir con IA</button>
+    ${hint ? `<p class="field-hint">${hint}</p>` : ''}
+  </div>`;
 }
 function fieldRow(...fields) {
   return `<div class="field--row">${fields.join('')}</div>`;
@@ -831,14 +973,18 @@ function markUnsaved() {
 // ═══════════════════════════════════════════════════════
 //  GUARDAR LOCAL
 // ═══════════════════════════════════════════════════════
-function saveLocal() {
+async function saveLocal() {
+  const b = document.getElementById('save-badge');
+  const n = await autoTranslateMissing((done, total) => {
+    b.textContent = `⏳ Traduciendo ${done}/${total}…`;
+    b.className = 'badge unsaved';
+  });
   collectFormData();
   localStorage.setItem('eq_content', JSON.stringify(content));
   unsaved = false;
-  const b = document.getElementById('save-badge');
   b.textContent = 'Guardado ✓';
   b.className = 'badge saved';
-  showToast('Cambios guardados localmente ✓', 'ok');
+  showToast(n ? `Guardado ✓ — se tradujeron ${n} campo(s) automáticamente` : 'Cambios guardados localmente ✓', 'ok');
 }
 
 function collectFormData() {
@@ -939,6 +1085,11 @@ async function translatePage() {
       if (current && current.trim()) continue; // already translated
       const translated = await translateText(f.en, lang);
       setNestedKey(content, f.path + '.' + lang, translated);
+      // Reflejar en el input visible, si existe, para que saveLocal() no lo pise con un valor vacío.
+      const input = document.querySelector(`[data-key="${f.path}.${lang}"]`);
+      if (input) input.value = translated;
+      const group = input?.closest('.field')?.dataset.group;
+      if (group) setDotState(group, lang, 'filled');
     }
     done++;
     btn.textContent = `⏳ ${done}/${fields.length}`;
