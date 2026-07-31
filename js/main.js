@@ -109,6 +109,9 @@
     });
     document.documentElement.lang = lang;
   }
+  // Expuesto para content-loader.js: re-traducir después de inyectar contenido
+  // del CMS (content.json), que puede pisar texto ya traducido con su fallback en inglés.
+  window.EQ_applyI18n = () => applyI18n(currentLang());
 
   function initText() {
     applyI18n(currentLang());           // 1) traducir

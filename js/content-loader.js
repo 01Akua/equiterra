@@ -187,8 +187,9 @@
 
     let c;
     try {
-      const base = document.querySelector('base')?.href || location.origin;
-      const url = new URL('/admin/content.json', base).href + '?t=' + Date.now();
+      // Ruta relativa: funciona tanto en localhost (raíz) como en GitHub Pages
+      // (subpath /equiterra/) — una ruta absoluta '/admin/...' rompe en el subpath.
+      const url = 'admin/content.json?t=' + Date.now();
       const r = await fetch(url, { cache: 'no-store' });
       if (!r.ok) return;
       c = await r.json();
@@ -232,6 +233,10 @@
     const emails = document.querySelectorAll('a[href^="mailto:"]');
     const email = get(c, 'site.email');
     if (email) emails.forEach(a => { a.href = 'mailto:' + email; a.textContent = email; });
+
+    // Re-aplicar el diccionario ES/PT: los campos de content.json sin traducir
+    // cayeron a su valor en inglés y acaban de pisar texto que main.js ya había traducido.
+    if (window.EQ_applyI18n) window.EQ_applyI18n();
   }
 
   if (document.readyState === 'loading') {
