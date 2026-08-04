@@ -1,5 +1,5 @@
 <!-- ELEMENTOR.md — Guía de pase del modelo en código a Elementor -->
-<!-- last_updated: 2026-06-23 -->
+<!-- last_updated: 2026-08-04 -->
 
 # Equiterra → Elementor: guía de pase
 
@@ -39,6 +39,11 @@ Esta tabla resume qué hacer con cada bloque.
 | **FAQ accordion** | PRO | Widget **Accordion** nativo de Elementor (reemplaza nuestro JS) |
 | **Formulario contacto** | PRO | Widget **Form** de Elementor Pro (reemplaza el `<form>` HTML; añade envío real) |
 | Footer | NATIVO | Theme Builder > Footer |
+| **Página de proyecto** (`.eq-proj-hero`/`.eq-facts`/`.eq-pgallery`/`.eq-feature`/`.eq-timeline`) | CÓDIGO/NATIVO mixto | Template único reutilizado por las 4 páginas activas (Sierra Nevada, Moba, Rafey, SOS). Hero+facts+feature = NATIVO (columnas/heading/icon list); galería = **Gallery widget** nativo; timeline = Icon List. Crear como **Elementor Theme Builder > Single template** con campos dinámicos (ACF o Pro's Dynamic Tags) en vez de duplicar HTML por proyecto |
+| Modal "Download project brief" (`js/download-modal.js`) | PRO | **Popup Builder** de Elementor Pro (trigger por click) reemplaza el modal JS a mano; conectar a **Form** widget real en vez del guardado local de leads |
+| Dropdown nav "Projects" (NBS/TBS) | NATIVO | Nav Menu widget con submenú de 2 niveles |
+| Sección "Why Partner" (repetida en varias páginas) | NATIVO | Guardar como **Global Widget/Section** de Elementor y reutilizar por referencia — evita mantener el copy pegado 7 veces |
+| Páginas legales (privacy/terms/disclaimer) | NATIVO | Páginas simples de texto; heading + rich text |
 
 ## Reglas al pegar código
 1. Todo está scopeado con `.eq-*` → no choca con clases de Elementor.
@@ -46,8 +51,13 @@ Esta tabla resume qué hacer con cada bloque.
 3. Animaciones que dependen de `clip-path` (wipe) usan un IntersectionObserver con `threshold:0` — ya resuelto en `main.js`. No usar la entrance animation nativa de Elementor para esos bloques.
 
 ## Multi-idioma
-- **Modelo en código:** selector EN/ES/PT/FR/DE/IT en el header → traducción automática Google (proxy `translate.goog`). Funciona solo en la URL pública (tunnel), no en localhost. Marca protegida con `notranslate`.
-- **Producción Elementor/WP:** instalar **Polylang** o **WPML** o **TranslatePress** con traducción automática (DeepL/Google). Dan URLs por idioma (`/es/`, `/en/`), hreflang y SEO multilingüe — superior al proxy para producción. El selector nativo del plugin reemplaza el nuestro.
+- **Modelo en código (actualizado):** EN nativo + **ES/PT curados a mano** (diccionario `js/i18n.js`, ~440+ claves) — funcionan instantáneo, hasta en localhost, sin depender de un proxy externo. FR/DE/IT siguen vía proxy Google (`translate.goog`), solo en la URL pública. Marca protegida con `notranslate`.
+- **Producción Elementor/WP:** instalar **Polylang** o **WPML** o **TranslatePress** con traducción automática (DeepL/Google). Dan URLs por idioma (`/es/`, `/en/`), hreflang y SEO multilingüe — superior al proxy para producción. Las cadenas ya curadas de `i18n.js` sirven como base ES/PT lista para importar, en vez de partir de traducción automática desde cero.
+
+## Panel de administración (CMS del modelo, no porta directo)
+- `admin/index.html` + `admin/content.json` + `js/content-loader.js` son un **CMS casero exclusivo del modelo en código** — permiten editar contenido (con tabs EN/ES/PT y traducción automática vía MyMemory) sin tocar HTML, para iterar rápido con el cliente antes del pase.
+- **No se porta a Elementor.** En WordPress el rol de este panel lo cumple el propio wp-admin: cada campo editable del modelo (hero, facts, founder, proyectos, etc.) debe mapearse a **ACF (Advanced Custom Fields)** o a los **Dynamic Tags** de Elementor Pro, y la traducción la maneja el plugin multilenguaje (Polylang/WPML/TranslatePress), no un traductor JS a mano.
+- Al planear el pase: usar `admin/content.json` como fuente de verdad de qué campos son editables y su estructura, para definir los grupos de campos ACF.
 
 ## Recomendación
-Híbrido: estructura + estilos base en Elementor nativo; animaciones premium y la galería horizontal como código pegado por sección. FAQ y formulario: usar los widgets Pro nativos (mejor que nuestro JS para esos dos casos).
+Híbrido: estructura + estilos base en Elementor nativo; animaciones premium y la galería horizontal como código pegado por sección. FAQ y formulario: usar los widgets Pro nativos (mejor que nuestro JS para esos dos casos). Modal de leads → Popup Builder + Form Pro. Contenido editable → ACF/Dynamic Tags en vez del CMS casero.
