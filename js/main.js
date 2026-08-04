@@ -152,6 +152,7 @@
      EN original · ES/PT curados (diccionario, instantáneo, sirve en localhost)
      · FR/DE/IT traducción automática (proxy Google translate.goog) ---- */
   (function languageSwitcher() {
+    return; // Selector oculto a pedido del cliente (2026-08-04): FR/DE/IT son traducción automática (proxy Google) y se notó en el sitio ("Maison" en vez de "Accueil"). Reactivar solo cuando esos idiomas tengan traducción curada por el equipo, no automática.
     const LANGS = [['en', 'English'], ['es', 'Español'], ['pt', 'Português'], ['fr', 'Français'], ['de', 'Deutsch'], ['it', 'Italiano']];
     const PROXY = ['fr', 'de', 'it'];
     const onProxy = location.host.endsWith('.translate.goog');

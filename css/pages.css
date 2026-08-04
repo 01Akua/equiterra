@@ -154,7 +154,7 @@
   text-transform: uppercase; color: var(--eq-mint); margin-bottom: .25rem;
 }
 @media (max-width: 720px) {
-  .eq-cluster { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 36vw); }
+  .eq-cluster { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, 36vw); }
   .eq-cluster__item:nth-child(1) { grid-column: 1 / span 2; grid-row: auto; }
 }
 

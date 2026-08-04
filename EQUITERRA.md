@@ -1,5 +1,5 @@
 <!-- EQUITERRA.md — Proyecto Korve, web en Elementor (WordPress) -->
-<!-- last_updated: 2026-07-31 | status: activo -->
+<!-- last_updated: 2026-08-04 | status: activo -->
 
 # Equiterra
 
@@ -102,6 +102,7 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 
 ## Decisiones
 <!-- Append-only. [FECHA] Decisión — Razón -->
+- [2026-08-04] Ronda de correcciones post-revisión móvil del cliente: (1) nombre correcto del framework "CM4GE — Carbon Markets for Global Equity" (no "Carbon Markets for Green Economies") y lenguaje de "framework" en vez de "guía", corregido en index.html, solutions.html, admin/content.json y js/i18n.js (ES/PT) — verificado contra el PDF real `Content/260801_CM4GE_V5.0.pdf` v5.0, que ahora vive en `assets/docs/CM4GE-V5.0.pdf` y es el destino real del botón "Download the framework" del Home (antes enlazaba a solutions.html). (2) Logo del header (72px→86px) y footer (38px→52px) agrandado. (3) About: "Sole focus: Climate" → "Sole focus: Impact finance" (copy + content.json + i18n.js). (4) Bug de hueco blanco en la cluster gallery de About en mobile: `grid-template-rows` definía 3 filas explícitas de 36vw pero solo se usan 2 → filas explícitas vacías siempre ocupan espacio en CSS Grid aunque no tengan contenido. Fix: `repeat(3,36vw)` → `repeat(2,36vw)` en el media query de 720px (css/pages.css). (5) CBAM: el panel `.eq-feature__media` de "Our role" tenía un SVG placeholder (líneas cruzadas) nunca reemplazado por una imagen real — se veía como imagen rota ("cruz en recuadro verde"). Reemplazado por `assets/images/solutions-markets.jpg`. (6) Selector de idioma ocultado site-wide (`js/main.js`, IIFE `languageSwitcher` con `return` temprano) — el cliente detectó "Maison" (traducción automática vía proxy Google) en vez de "Accueil" en francés y pidió quitar el selector hasta que FR/DE/IT tengan traducción curada por el equipo en vez de automática. ES/PT (curados) quedan listos para cuando se reactive.
 - [2026-06-23] Entregar código por partes/bloques — la página vive en Elementor y debe pegarse por widget para no romper el layout.
 - [2026-06-23] Mantener header + video de intro del sitio actual — requisito del cliente.
 - [2026-06-23] Modelo inicial full-código estático, mostrado vía Cloudflare tunnel — antes de portar a Elementor.
