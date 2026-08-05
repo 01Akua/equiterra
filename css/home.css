@@ -104,11 +104,17 @@ a.eq-project { cursor: pointer; }
 .eq-projects__nav button:hover { background: var(--eq-forest); color: var(--eq-white); }
 .eq-projects__nav button:disabled { opacity: .35; cursor: default; }
 
-/* ---------- WHY PARTNER ---------- */
-.eq-why { display: flex; gap: 1.3rem; align-items: flex-start; }
-.eq-why__mark { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--eq-mint); color: var(--eq-forest); display: grid; place-items: center; font-weight: 700; }
-.eq-why h3 { font-size: 1.15rem; margin-bottom: .5rem; }
-.eq-why p { font-size: .95rem; }
+/* ---------- WHY PARTNER (mint band, matches equiterra.capital) ---------- */
+.eq-whyband { background: var(--eq-mint); border-radius: var(--eq-radius-lg); padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4rem); text-align: center; }
+.eq-whyband__head { max-width: 42rem; margin: 0 auto clamp(2rem, 4vw, 3rem); }
+.eq-whyband__head h2 { margin-bottom: .9rem; }
+.eq-whyband__head p { font-size: 1.05rem; color: var(--eq-text-soft); }
+.eq-whyband__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.8rem, 4vw, 3rem); margin-bottom: clamp(2rem, 4vw, 3rem); }
+@media (max-width: 760px) { .eq-whyband__grid { grid-template-columns: 1fr; } }
+.eq-whycard__ic { width: 42px; height: 42px; margin: 0 auto .9rem; color: var(--eq-forest); }
+.eq-whycard__ic svg { width: 100%; height: 100%; }
+.eq-whycard h3 { font-size: 1.1rem; margin-bottom: .55rem; }
+.eq-whycard p { font-size: .92rem; color: var(--eq-text-soft); max-width: 30ch; margin: 0 auto; }
 
 /* ---------- CTA BAND ---------- */
 .eq-cta-band { text-align: center; }
