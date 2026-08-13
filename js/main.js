@@ -292,3 +292,38 @@
     window.addEventListener('resize', () => { sizeHscroll(); frame(); });
   }
 })();
+
+/* ---------- PROVISIONAL: hard-refresh button (clears cache, forces reload) ---------- */
+(function () {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = '⟳ Hard refresh';
+  btn.setAttribute('aria-label', 'Clear cache and reload the page');
+  Object.assign(btn.style, {
+    position: 'fixed', bottom: '16px', right: '16px', zIndex: '99999',
+    padding: '.55rem 1rem', fontSize: '.75rem', fontFamily: 'system-ui, sans-serif',
+    letterSpacing: '.02em', color: '#fff', background: '#0f2e15',
+    border: '1px solid rgba(255,255,255,.25)', borderRadius: '999px',
+    cursor: 'pointer', boxShadow: '0 4px 14px rgba(0,0,0,.25)', opacity: '.85'
+  });
+  btn.addEventListener('mouseenter', () => { btn.style.opacity = '1'; });
+  btn.addEventListener('mouseleave', () => { btn.style.opacity = '.85'; });
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    btn.textContent = 'Clearing…';
+    try {
+      if ('caches' in window) {
+        const keys = await caches.keys();
+        await Promise.all(keys.map((k) => caches.delete(k)));
+      }
+      if ('serviceWorker' in navigator) {
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map((r) => r.unregister()));
+      }
+      localStorage.clear();
+      sessionStorage.clear();
+    } catch (e) { /* best-effort cache clear */ }
+    window.location.href = window.location.pathname + '?nocache=' + Date.now();
+  });
+  document.body.appendChild(btn);
+})();
