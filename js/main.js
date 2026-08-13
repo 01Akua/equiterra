@@ -295,19 +295,32 @@
 
 /* ---------- PROVISIONAL: hard-refresh button (clears cache, forces reload) ---------- */
 (function () {
+  const style = document.createElement('style');
+  style.textContent = `
+    .eq-hardrefresh-btn {
+      position: fixed; top: 108px; right: 16px; z-index: 99999;
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .6rem 1.1rem; font-size: .8rem; font-weight: 600;
+      font-family: system-ui, sans-serif; letter-spacing: .02em;
+      color: var(--eq-forest, #0f2e15); background: var(--eq-mint, #dae2cb);
+      border: 0; border-radius: 999px; cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,.28);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .eq-hardrefresh-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(0,0,0,.32); }
+    .eq-hardrefresh-btn:active { transform: translateY(0); }
+    @media (max-width: 600px) {
+      .eq-hardrefresh-btn { top: auto; bottom: 16px; right: 16px; padding: .65rem; }
+      .eq-hardrefresh-btn .eq-hardrefresh-label { display: none; }
+    }
+  `;
+  document.head.appendChild(style);
+
   const btn = document.createElement('button');
   btn.type = 'button';
-  btn.textContent = '⟳ Hard refresh';
+  btn.className = 'eq-hardrefresh-btn';
+  btn.innerHTML = '⟳ <span class="eq-hardrefresh-label">Hard refresh</span>';
   btn.setAttribute('aria-label', 'Clear cache and reload the page');
-  Object.assign(btn.style, {
-    position: 'fixed', bottom: '16px', right: '16px', zIndex: '99999',
-    padding: '.55rem 1rem', fontSize: '.75rem', fontFamily: 'system-ui, sans-serif',
-    letterSpacing: '.02em', color: '#fff', background: '#0f2e15',
-    border: '1px solid rgba(255,255,255,.25)', borderRadius: '999px',
-    cursor: 'pointer', boxShadow: '0 4px 14px rgba(0,0,0,.25)', opacity: '.85'
-  });
-  btn.addEventListener('mouseenter', () => { btn.style.opacity = '1'; });
-  btn.addEventListener('mouseleave', () => { btn.style.opacity = '.85'; });
   btn.addEventListener('click', async () => {
     btn.disabled = true;
     btn.textContent = 'Clearing…';
