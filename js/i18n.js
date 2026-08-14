@@ -164,7 +164,7 @@ window.EQ_I18N = {
     // --- Impact ---
     "Track record": "Trayectoria",
     "Proof, not promises": "Pruebas, no promesas",
-    "Years structuring climate finance": "Años estructurando finanzas climáticas",
+    "Years of team experience structuring projects": "Años de experiencia del equipo estructurando proyectos",
     "In projects developed & advised": "En proyectos desarrollados y asesorados",
     "Countries across LATAM & West Africa": "Países en LATAM y África Occidental",
     "Estimated tCO₂e across Equiterra's active portfolio": "tCO₂e estimadas del portafolio activo de Equiterra",
@@ -793,7 +793,7 @@ window.EQ_I18N = {
 
     "Track record": "Histórico",
     "Proof, not promises": "Provas, não promessas",
-    "Years structuring climate finance": "Anos estruturando finanças climáticas",
+    "Years of team experience structuring projects": "Anos de experiência da equipe estruturando projetos",
     "In projects developed & advised": "Em projetos desenvolvidos e assessorados",
     "Countries across LATAM & West Africa": "Países na América Latina e África Ocidental",
     "Estimated tCO₂e across Equiterra's active portfolio": "tCO₂e estimadas do portfólio ativo da Equiterra",
