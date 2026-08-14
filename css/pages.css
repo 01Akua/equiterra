@@ -183,6 +183,10 @@
 .eq-legal li { margin-bottom: .5rem; }
 .eq-legal .eq-legal__updated { font-size: .85rem; color: var(--eq-text-soft); margin-bottom: 2.4rem; }
 .eq-legal .eq-legal__notice { background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.3rem 1.5rem; font-size: .92rem; color: var(--eq-forest); margin-bottom: 2.4rem; }
+.eq-legal table { width: 100%; border-collapse: collapse; margin: 0 0 1.6rem; font-size: .9rem; }
+.eq-legal th, .eq-legal td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--eq-border); }
+.eq-legal th { color: var(--eq-forest); font-weight: 600; }
+.eq-legal td { color: var(--eq-text-soft); }
 
 /* ---------- PROJECT BRIEF DOWNLOAD PROMPT + MODAL ---------- */
 .eq-brief-prompt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.8rem 2rem; }
