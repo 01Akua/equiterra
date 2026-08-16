@@ -187,6 +187,12 @@
 .eq-legal th, .eq-legal td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--eq-border); }
 .eq-legal th { color: var(--eq-forest); font-weight: 600; }
 .eq-legal td { color: var(--eq-text-soft); }
+.eq-compliance-docs { display: grid; gap: .9rem; margin-bottom: 1.6rem; }
+.eq-compliance-doc { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.1rem 1.4rem; transition: background var(--eq-dur); }
+.eq-compliance-doc:hover { background: var(--eq-mint); }
+.eq-compliance-doc strong { display: block; color: var(--eq-forest); font-weight: 600; }
+.eq-compliance-doc small { display: block; color: var(--eq-text-soft); font-size: .82rem; margin-top: .15rem; }
+.eq-compliance-doc .eq-arrow { flex-shrink: 0; font-size: 1.1rem; color: var(--eq-forest); }
 
 /* ---------- PROJECT BRIEF DOWNLOAD PROMPT + MODAL ---------- */
 .eq-brief-prompt { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem; background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.8rem 2rem; }
