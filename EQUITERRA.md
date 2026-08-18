@@ -1,5 +1,5 @@
 <!-- EQUITERRA.md — Proyecto Korve, web en Elementor (WordPress) -->
-<!-- last_updated: 2026-08-17 | status: activo -->
+<!-- last_updated: 2026-08-18 | status: activo -->
 
 # Equiterra
 
@@ -76,12 +76,18 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
   - `disclaimer.html` sección 9: los 3 compliance documents ahora piden registro (nombre/email/org) antes de descargar — modal + `js/download-modal.js` (`saveComplianceDownload()`, guardado local `eq_compliance_downloads`, dispara la descarga real tras validar).
   - Selector de idioma: **NO se construyó desde cero** — ya existía completo en `js/main.js` (líneas ~151-214: dropdown EN/ES/PT/FR/DE/IT, lógica de proxy Google para no-curados) pero estaba apagado con un `return;` temprano desde la decisión del 2026-08-04. Se quitó el `return`, se agregó `fr` a `CURATED`, se sacó de `PROXY`, y un subagente en background escribió la traducción curada de FR completa (579 claves). Verificado en navegador: EN/ES/FR funcionando en nav, hero (incluye el `<h1 data-anim="words">` partido en spans), manifiesto y marquee.
   - Lección para próximas sesiones: **antes de construir un selector de idioma o motor i18n "desde cero", grep primero `EQ_applyI18n`/`eq-lang`/`languageSwitcher` en `js/main.js`** — ya existe una implementación completa con soporte de proxy Google incluido; casi se duplicó por no revisar esto primero.
-- ⚠️ Pendiente inmediato (próxima sesión, en este orden):
-  1. `./cache-bust.sh` (obligatorio, css/js tocados) + QA visual local (`python3 -m http.server 8099`) de: marquee del Home, `projects.html`, las 3 subpáginas nuevas, modal de compliance en `disclaimer.html`, selector de idioma en 2-3 páginas más.
-  2. `git add` + commit + push (nada de esta sesión está commiteado — ver `git status` para la lista completa de archivos modificados/nuevos).
-  3. Sitio-wide: auditoría de fotos duplicadas (pedido explícito del cliente, dejado para el final).
-  4. Reemplazar la foto del tractor en about.html (`.eq-cluster` "Restoration at scale", `assets/images/moba-3.jpg`) por otra — dejado para el final junto con el punto anterior.
-  5. Auditar textos de Home/About/CBAM contra el sitio real (solo Solutions se comparó a fondo esta sesión).
+- [2026-08-18] Sesión de continuación — checklist "Pendiente inmediato" de la sesión anterior, completado:
+  1. `./cache-bust.sh` corrido + QA visual local (`python3 -m http.server 8099` en puerto 8099) de marquee, `projects.html`, las 3 subpáginas nuevas, modal de compliance, selector de idioma — **2 bugs reales encontrados y arreglados en el proceso**:
+     - `projects.html` tenía `class="eq-header eq-header--inner"` — ese modificador solo seteaba `position:sticky` en CSS (código muerto, nunca completado con el resto del estilo "solid"), dejando el header sin logo ni nav visibles (texto blanco sobre header blanco). Fix: sacar el modificador (queda como el resto de páginas) + borrar la regla CSS muerta de `css/layout.css`.
+     - Las 3 subpáginas nuevas (`climate-advisory.html`, `carbon-markets.html`, `project-financing.html`) tenían `data-page="solutions"` copiado por error del template de Solutions → `js/content-loader.js` las hidrataba con el contenido de `admin/content.json` de la página Solutions, pisando su copy único con el de Solutions en cada carga (bug invisible a simple vista porque el texto solo aparece tras el fade-in del scroll-reveal). Fix: cada una con su propio `data-page` único (no gestionado por CMS, como las páginas legales).
+  2. Commit local hecho (`276ff2c`) con todo el código de la sesión anterior + los 2 fixes — **sin pushear a origin/main todavía**, decisión explícita del usuario (queda para cuando él decida pushear).
+  3. Auditoría de fotos duplicadas: `moba-3.jpg` (tractor) corregido en about.html → `moba-7.jpg` (vivero, no usado en ningún otro lado). Detectado pero sin tocar (necesita criterio/fotos nuevas): `solutions-markets.jpg`/`solutions-banner.jpg`/`solutions-advisory.jpg`/`solutions-development.jpg` se repiten 2-4 veces entre Solutions y sus 3 subpáginas (imágenes stock genéricas, probablemente intencional). Huérfanos sin usar en ninguna página: `founder-alexis-field.jpg`, `founder-alexis-leroy.jpg` (el sitio usa `founder-mangroves.jpg`).
+  4. Tractor reemplazado (ver punto 3).
+  5. Auditoría de copy Home/About/CBAM vs sitio real: Home y About alinean bien (hero, vision, approach, bio del founder — coincide en sustancia). **CBAM diverge fuerte**: el sitio real (`equiterra.capital/cbam`) ahora tiene un producto nuevo "CBAM Benchmark Certificate (CBC)" con precio en vivo tipo trading (€75.36, actualizado 31 marzo 2026, flujo BUY→HOLD→COMPLY) que no existe en nuestro `cbam.html` (que es solo explainer/FAQ regulatorio). Es una decisión de alcance del cliente, no un copy fix — **pendiente de decidir si se rediseña la página CBAM para reflejar el producto CBC real**.
+- ⚠️ Pendiente inmediato (próxima sesión):
+  1. Decidir con el cliente si `cbam.html` se rediseña para incluir el producto CBC (precio en vivo, flujo buy/hold/comply) — ver hallazgo arriba.
+  2. Pushear el commit `276ff2c` a origin/main cuando el usuario lo autorice.
+  3. Decidir qué hacer con la reutilización de `solutions-*.jpg` entre Solutions y sus 3 subpáginas (¿conseguir fotos nuevas o dejar como lenguaje visual intencional?).
 - Pendiente (no bloqueante): backend real de formulario de leads/compliance + PDF por proyecto, decisión de pase a Elementor, logo SEDESU (Querétaro) sin conseguir.
 
 ## Páginas
