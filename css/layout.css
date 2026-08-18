@@ -77,9 +77,6 @@
 .eq-header.is-solid .eq-nav a { color: var(--eq-text); }
 .eq-header.is-solid .eq-btn--ghost { color: var(--eq-forest); }
 
-/* Variante para páginas internas sin hero oscuro: header siempre sólido */
-.eq-header--inner { position: sticky; }
-
 /* Hamburguesa */
 .eq-burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 8px; }
 .eq-burger span { width: 24px; height: 2px; background: currentColor; color: var(--eq-white); transition: transform var(--eq-dur), opacity var(--eq-dur); }

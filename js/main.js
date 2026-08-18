@@ -81,7 +81,7 @@
 
   /* ---- i18n curado (ES/PT): reemplaza texto del DOM ANTES de splittear ---- */
   const I18N_STORE = 'eq_lang';
-  const CURATED = ['es', 'pt'];
+  const CURATED = ['es', 'pt', 'fr'];
   function currentLang() {
     if (location.host.endsWith('.translate.goog')) return new URLSearchParams(location.search).get('_x_tr_tl') || 'en';
     return localStorage.getItem(I18N_STORE) || 'en';
@@ -149,12 +149,11 @@
   document.querySelectorAll('.eq-marquee__track').forEach(t => { t.innerHTML += t.innerHTML; });
 
   /* ---- Selector de idioma ----
-     EN original · ES/PT curados (diccionario, instantáneo, sirve en localhost)
-     · FR/DE/IT traducción automática (proxy Google translate.goog) ---- */
+     EN original · ES/PT/FR curados (diccionario, instantáneo, sirve en localhost)
+     · DE/IT traducción automática (proxy Google translate.goog) ---- */
   (function languageSwitcher() {
-    return; // Selector oculto a pedido del cliente (2026-08-04): FR/DE/IT son traducción automática (proxy Google) y se notó en el sitio ("Maison" en vez de "Accueil"). Reactivar solo cuando esos idiomas tengan traducción curada por el equipo, no automática.
     const LANGS = [['en', 'English'], ['es', 'Español'], ['pt', 'Português'], ['fr', 'Français'], ['de', 'Deutsch'], ['it', 'Italiano']];
-    const PROXY = ['fr', 'de', 'it'];
+    const PROXY = ['de', 'it'];
     const onProxy = location.host.endsWith('.translate.goog');
     const isLocal = /^(127\.|localhost|0\.0\.0\.0|192\.168\.|10\.)/.test(location.host);
     const current = currentLang();

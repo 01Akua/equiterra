@@ -1,5 +1,5 @@
 <!-- EQUITERRA.md — Proyecto Korve, web en Elementor (WordPress) -->
-<!-- last_updated: 2026-08-04 | status: activo -->
+<!-- last_updated: 2026-08-17 | status: activo -->
 
 # Equiterra
 
@@ -56,8 +56,9 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 - [2026-07-30/31] Panel de administración (CMS) construido en `admin/index.html` + `admin/content.json`, servido por `js/content-loader.js` (wireado en las 5 páginas con contenido editable). Edición en vivo del sitio sin tocar HTML directamente.
 
 ## Multi-idioma (sistema híbrido)
-- **EN**: original. **ES + PT**: traducción CURADA a mano (diccionario js/i18n.js) — natural, no literal. Instantáneo y funciona hasta en localhost.
-- **FR/DE/IT**: traducción automática vía proxy Google (translate.goog) — solo en URL pública.
+- **EN**: original. **ES + PT + FR**: traducción CURADA a mano (diccionario js/i18n.js) — natural, no literal. Instantáneo y funciona hasta en localhost.
+- **DE/IT**: traducción automática vía proxy Google (translate.goog) — solo en URL pública.
+- [2026-08-17] Selector reactivado (ver Decisiones) + FR pasó de proxy a curado: 579 claves nuevas en `js/i18n.js` (bloque `fr:`, mismo keyset exacto que `es`/`pt`, registro formal "vous", términos de marca intactos, FPIC→CLPI igual que en es/pt). `CURATED` en `js/main.js` ahora `['es','pt','fr']`, `PROXY` quedó en `['de','it']`.
 - Motor en main.js: applyI18n() reemplaza text nodes + placeholders ANTES del splitter de animación (clave para titulares partidos). Idioma se guarda en localStorage; al volver del proxy se pasa por #lang=xx.
 - Diccionario: ~440+ cadenas x ES y PT (crecido de ~290 tras auditoría de cobertura completa el 2026-07-30: home, about, solutions, cbam, partner, 3 páginas legales, 4 páginas de proyecto activas). Términos de marca (Equiterra, CBAM, ARR, MRV, CM4GE, Arhuaco, nombres propios, emails) se omiten → quedan igual. `.notranslate` excluye nodos (ej. h1 "Proyecto Sierra Nevada").
 - Para añadir/editar copy: actualizar el string en el HTML y su entrada en js/i18n.js (es y pt).
@@ -66,18 +67,32 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 - [2026-07-31] **Panel admin (`admin/index.html`) con tabs EN/ES/PT por campo** + punto de estado, en vez de solo exponer el valor en inglés. Traducción automática de campos vacíos vía MyMemory (`translateText()`) al salir del input en inglés (sin pisar traducciones ya escritas a mano); "Guardar" corre el mismo pase como red de seguridad antes de guardar, con progreso en vivo en el badge de guardado. El botón de re-traducir usa un patrón de dos clics (armar/confirmar) en vez de `confirm()` nativo, porque `confirm()` bloquea toda la página (y la automatización de navegador) sin forma de cerrarlo programáticamente.
 
 ## Estado actual
-- Fase: modelo en código — sitio multipágina completo, post stage-1 scope decision del cliente (2026-07-30)
-- Done: Home premium + 4 páginas internas (about, solutions, cbam, partner) + 3 páginas legales (privacy, terms, disclaimer) + 4 páginas de proyecto activas (Sierra Nevada, Moba, Rafey, SOS/Coastal Carbon), motor de animación v2, video header, selector de idioma funcional site-wide (EN/ES/PT curado + FR/DE/IT proxy), panel admin/CMS con edición en vivo y traducción automática, modal de captura de leads en páginas de proyecto, guía ELEMENTOR.md, tunnel activo
-- En progreso: pendientes menores post-revisión (punch list de lanzamiento, ver commit de56243)
-- Pendiente: backend real de formulario de leads + PDF por proyecto, decisión de pase a Elementor
+- Fase: modelo en código — sitio multipágina completo, post stage-1 scope decision del cliente (2026-07-30). **Sesión 2026-08-17 con cambios grandes sin commitear** (ver abajo).
+- Done: Home premium + 4 páginas internas (about, solutions, cbam, partner) + 3 páginas legales (privacy, terms, disclaimer) + 4 páginas de proyecto activas (Sierra Nevada, Moba, Rafey, SOS/Coastal Carbon), motor de animación v2, video header, selector de idioma funcional site-wide (EN/ES/PT/FR curado + DE/IT proxy), panel admin/CMS con edición en vivo y traducción automática, modal de captura de leads en páginas de proyecto, guía ELEMENTOR.md, tunnel activo.
+- [2026-08-17] Hecho en esta sesión (**todo sin commitear todavía, ver "⚠️ Pendiente inmediato"**):
+  - Home: banner/marquee de servicios reemplazado por marquee de logos de partners (Saumama, Carbon Growth Partners, Cilpen, Territoire de Moba, SOS Carbon, Graine de Vie). Bug encontrado y corregido: el filtro `brightness(0) invert(1)` (pensado para volver blancos los logos monocromo-transparentes) volvía ilegibles a Carbon Growth Partners (JPG con fondo blanco opaco) y Territoire de Moba (escudo multicolor detallado) — se les da clase `.is-color` con chip blanco y sin filtro (`css/home.css`).
+  - `projects.html` — nueva "biblioteca" de proyectos con filtro NBS/TBS sobre los 4 proyectos reales.
+  - 3 subpáginas nuevas con copy completo y original del sitio real (navegado en vivo vía Chrome "Universidad"): `climate-advisory.html`, `carbon-markets.html`, `project-financing.html`. `solutions.html` enlaza a las 3 ("Learn more →"). Footers de todo el sitio actualizados (Projects → projects.html, Solutions → las 3 subpáginas).
+  - `disclaimer.html` sección 9: los 3 compliance documents ahora piden registro (nombre/email/org) antes de descargar — modal + `js/download-modal.js` (`saveComplianceDownload()`, guardado local `eq_compliance_downloads`, dispara la descarga real tras validar).
+  - Selector de idioma: **NO se construyó desde cero** — ya existía completo en `js/main.js` (líneas ~151-214: dropdown EN/ES/PT/FR/DE/IT, lógica de proxy Google para no-curados) pero estaba apagado con un `return;` temprano desde la decisión del 2026-08-04. Se quitó el `return`, se agregó `fr` a `CURATED`, se sacó de `PROXY`, y un subagente en background escribió la traducción curada de FR completa (579 claves). Verificado en navegador: EN/ES/FR funcionando en nav, hero (incluye el `<h1 data-anim="words">` partido en spans), manifiesto y marquee.
+  - Lección para próximas sesiones: **antes de construir un selector de idioma o motor i18n "desde cero", grep primero `EQ_applyI18n`/`eq-lang`/`languageSwitcher` en `js/main.js`** — ya existe una implementación completa con soporte de proxy Google incluido; casi se duplicó por no revisar esto primero.
+- ⚠️ Pendiente inmediato (próxima sesión, en este orden):
+  1. `./cache-bust.sh` (obligatorio, css/js tocados) + QA visual local (`python3 -m http.server 8099`) de: marquee del Home, `projects.html`, las 3 subpáginas nuevas, modal de compliance en `disclaimer.html`, selector de idioma en 2-3 páginas más.
+  2. `git add` + commit + push (nada de esta sesión está commiteado — ver `git status` para la lista completa de archivos modificados/nuevos).
+  3. Sitio-wide: auditoría de fotos duplicadas (pedido explícito del cliente, dejado para el final).
+  4. Reemplazar la foto del tractor en about.html (`.eq-cluster` "Restoration at scale", `assets/images/moba-3.jpg`) por otra — dejado para el final junto con el punto anterior.
+  5. Auditar textos de Home/About/CBAM contra el sitio real (solo Solutions se comparó a fondo esta sesión).
+- Pendiente (no bloqueante): backend real de formulario de leads/compliance + PDF por proyecto, decisión de pase a Elementor, logo SEDESU (Querétaro) sin conseguir.
 
 ## Páginas
-- index.html — Home (carrusel con 4 proyectos activos, sin Bouake/PANAM/Copidega)
+- index.html — Home (marquee de logos de partners, carrusel con 4 proyectos activos, sin Bouake/PANAM/Copidega)
 - about.html — quiénes somos, cluster gallery (3 paneles agrupados, reveal escalonado + parallax), mandato/cómo trabajamos (text rows editoriales), founder, valores, sección Why Partner
-- solutions.html — 3 capabilities detalladas, CM4GE, proceso, sección Why Partner
+- solutions.html — 3 capabilities detalladas, CM4GE, proceso, sección Why Partner, enlaza a las 3 subpáginas
+- climate-advisory.html / carbon-markets.html / project-financing.html — [2026-08-17] subpáginas dedicadas por solución, copy completo del sitio real, cross-links entre sí
 - cbam.html — explainer, timeline, FAQ (accordion), cómo ayudamos, sección Why Partner
 - partner.html — tipos de partner, why, formulario de contacto
-- privacy.html / terms.html / disclaimer.html — páginas legales, disclaimer con cláusula de no-solicitación aprobada, sección Why Partner
+- projects.html — [2026-08-17] biblioteca de proyectos con filtro NBS/TBS
+- privacy.html / terms.html / disclaimer.html — páginas legales; disclaimer con cláusula de no-solicitación aprobada y (desde 2026-08-17) compliance docs gateados por registro; sección Why Partner
 - proyecto-sierra-nevada.html, proyecto-moba.html, proyecto-rafey-landfill.html, proyecto-sos-carbon.html — únicas páginas de proyecto vivas; cada una con modal "Download project brief" y footer con link real a LinkedIn
 - admin/index.html + admin/content.json — panel CMS (edición de contenido en vivo, tabs EN/ES/PT, traducción automática)
 - Cada sección marcada con [NATIVO]/[PRO]/[CÓDIGO]; mapeo en ELEMENTOR.md
@@ -102,6 +117,9 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 
 ## Decisiones
 <!-- Append-only. [FECHA] Decisión — Razón -->
+- [2026-08-17] Reactivar el selector de idioma y sumar FR a los idiomas curados (sacándolo del proxy Google) — cumple el pedido explícito del cliente de "mejorar la traducción, incluyendo el francés" y resuelve la razón original del `return` del 2026-08-04 (calidad de "Maison" vs "Accueil" del proxy). DE/IT se quedan en proxy: no fueron pedidos y no hay traducción curada para ellos todavía.
+- [2026-08-17] Gate de registro (nombre/email/org) para los 3 compliance documents en disclaimer.html, guardado local en `eq_compliance_downloads` — mismo patrón que `eq_leads` de los project briefs, sin backend real todavía (pedido explícito del cliente: llevar registro de quién descarga qué).
+- [2026-08-17] Logos de partners con fondo blanco opaco o multicolor detallado (Carbon Growth Partners, Territoire de Moba) usan chip blanco sin filtro en vez del `invert(1)` monocromo — ese filtro solo funciona con logos transparentes de una tinta; forzarlo en los otros dos los volvía ilegibles (caja blanca lisa).
 - [2026-08-05] Cache-busting para css/js: el sitio se sirve vía GitHub Pages (`https://01akua.github.io/equiterra/`, confirmado con `gh api repos/01Akua/equiterra/pages`), que manda `cache-control: max-age=600` en todos los assets sin versión en la URL — el cliente reportó que "no le salían ciertos cambios", causado por el navegador sirviendo css/js del disco sin siquiera revalidar dentro de esa ventana de 10 min (y a veces más tiempo por cache de disco del navegador). Fix: `cache-bust.sh` reescribe el query param `?v=<timestamp>` de todos los `href="css/*.css"` / `src="js/*.js"` en las 12 páginas HTML. **Correr `./cache-bust.sh` antes de cada `git push` a main** (o después de tocar cualquier archivo en `css/` o `js/`) para que los clientes bajen la versión nueva sin necesitar hard-refresh. `content.json` (CMS) ya usaba `fetch(..., {cache:'no-store'})`, no necesitaba fix.
 - [2026-08-04] Ronda de correcciones post-revisión móvil del cliente: (1) nombre correcto del framework "CM4GE — Carbon Markets for Global Equity" (no "Carbon Markets for Green Economies") y lenguaje de "framework" en vez de "guía", corregido en index.html, solutions.html, admin/content.json y js/i18n.js (ES/PT) — verificado contra el PDF real `Content/260801_CM4GE_V5.0.pdf` v5.0, que ahora vive en `assets/docs/CM4GE-V5.0.pdf` y es el destino real del botón "Download the framework" del Home (antes enlazaba a solutions.html). (2) Logo del header (72px→86px) y footer (38px→52px) agrandado. (3) About: "Sole focus: Climate" → "Sole focus: Impact finance" (copy + content.json + i18n.js). (4) Bug de hueco blanco en la cluster gallery de About en mobile: `grid-template-rows` definía 3 filas explícitas de 36vw pero solo se usan 2 → filas explícitas vacías siempre ocupan espacio en CSS Grid aunque no tengan contenido. Fix: `repeat(3,36vw)` → `repeat(2,36vw)` en el media query de 720px (css/pages.css). (5) CBAM: el panel `.eq-feature__media` de "Our role" tenía un SVG placeholder (líneas cruzadas) nunca reemplazado por una imagen real — se veía como imagen rota ("cruz en recuadro verde"). Reemplazado por `assets/images/solutions-markets.jpg`. (6) Selector de idioma ocultado site-wide (`js/main.js`, IIFE `languageSwitcher` con `return` temprano) — el cliente detectó "Maison" (traducción automática vía proxy Google) en vez de "Accueil" en francés y pidió quitar el selector hasta que FR/DE/IT tengan traducción curada por el equipo en vez de automática. ES/PT (curados) quedan listos para cuando se reactive.
 - [2026-06-23] Entregar código por partes/bloques — la página vive en Elementor y debe pegarse por widget para no romper el layout.

@@ -188,7 +188,7 @@
 .eq-legal th { color: var(--eq-forest); font-weight: 600; }
 .eq-legal td { color: var(--eq-text-soft); }
 .eq-compliance-docs { display: grid; gap: .9rem; margin-bottom: 1.6rem; }
-.eq-compliance-doc { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.1rem 1.4rem; transition: background var(--eq-dur); }
+.eq-compliance-doc { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--eq-mint-200); border-radius: var(--eq-radius); padding: 1.1rem 1.4rem; transition: background var(--eq-dur); width: 100%; border: 0; font: inherit; text-align: left; cursor: pointer; }
 .eq-compliance-doc:hover { background: var(--eq-mint); }
 .eq-compliance-doc strong { display: block; color: var(--eq-forest); font-weight: 600; }
 .eq-compliance-doc small { display: block; color: var(--eq-text-soft); font-size: .82rem; margin-top: .15rem; }
@@ -216,3 +216,12 @@
 .eq-modal.is-success form, .eq-modal.is-success .eq-modal__intro { display: none; }
 .eq-modal.is-success .eq-modal__success { display: block; }
 .eq-modal__success-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--eq-mint-200); color: var(--eq-forest); display: grid; place-items: center; margin: 0 auto 1.2rem; font-size: 1.4rem; }
+
+/* ---------- PROJECT LIBRARY ---------- */
+.eq-plibrary__filters { display: flex; flex-wrap: wrap; gap: .8rem; justify-content: center; }
+.eq-btn--filter { background: transparent; border: 1px solid var(--eq-border); color: var(--eq-text); }
+.eq-btn--filter:hover { border-color: var(--eq-forest); }
+.eq-btn--filter.is-active { background: var(--eq-forest); border-color: var(--eq-forest); color: var(--eq-white); }
+.eq-plibrary__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.eq-plibrary__card { aspect-ratio: 3/3.6; }
+@media (max-width: 640px) { .eq-plibrary__grid { grid-template-columns: 1fr; } }
