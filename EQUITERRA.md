@@ -1,5 +1,5 @@
 <!-- EQUITERRA.md — Proyecto Korve, web en Elementor (WordPress) -->
-<!-- last_updated: 2026-08-18 | status: activo -->
+<!-- last_updated: 2026-08-19 | status: activo -->
 
 # Equiterra
 
@@ -80,15 +80,21 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
   1. `./cache-bust.sh` corrido + QA visual local (`python3 -m http.server 8099` en puerto 8099) de marquee, `projects.html`, las 3 subpáginas nuevas, modal de compliance, selector de idioma — **2 bugs reales encontrados y arreglados en el proceso**:
      - `projects.html` tenía `class="eq-header eq-header--inner"` — ese modificador solo seteaba `position:sticky` en CSS (código muerto, nunca completado con el resto del estilo "solid"), dejando el header sin logo ni nav visibles (texto blanco sobre header blanco). Fix: sacar el modificador (queda como el resto de páginas) + borrar la regla CSS muerta de `css/layout.css`.
      - Las 3 subpáginas nuevas (`climate-advisory.html`, `carbon-markets.html`, `project-financing.html`) tenían `data-page="solutions"` copiado por error del template de Solutions → `js/content-loader.js` las hidrataba con el contenido de `admin/content.json` de la página Solutions, pisando su copy único con el de Solutions en cada carga (bug invisible a simple vista porque el texto solo aparece tras el fade-in del scroll-reveal). Fix: cada una con su propio `data-page` único (no gestionado por CMS, como las páginas legales).
-  2. Commit local hecho (`276ff2c`) con todo el código de la sesión anterior + los 2 fixes — **sin pushear a origin/main todavía**, decisión explícita del usuario (queda para cuando él decida pushear).
+  2. Commit local hecho (`276ff2c`, luego `524ed20` con el fix del tractor) — pusheado a origin/main y verificado en el sitio en vivo (`01akua.github.io/equiterra`) más tarde en la misma sesión.
   3. Auditoría de fotos duplicadas: `moba-3.jpg` (tractor) corregido en about.html → `moba-7.jpg` (vivero, no usado en ningún otro lado). Detectado pero sin tocar (necesita criterio/fotos nuevas): `solutions-markets.jpg`/`solutions-banner.jpg`/`solutions-advisory.jpg`/`solutions-development.jpg` se repiten 2-4 veces entre Solutions y sus 3 subpáginas (imágenes stock genéricas, probablemente intencional). Huérfanos sin usar en ninguna página: `founder-alexis-field.jpg`, `founder-alexis-leroy.jpg` (el sitio usa `founder-mangroves.jpg`).
   4. Tractor reemplazado (ver punto 3).
   5. Auditoría de copy Home/About/CBAM vs sitio real: Home y About alinean bien (hero, vision, approach, bio del founder — coincide en sustancia). **CBAM diverge fuerte**: el sitio real (`equiterra.capital/cbam`) ahora tiene un producto nuevo "CBAM Benchmark Certificate (CBC)" con precio en vivo tipo trading (€75.36, actualizado 31 marzo 2026, flujo BUY→HOLD→COMPLY) que no existe en nuestro `cbam.html` (que es solo explainer/FAQ regulatorio). Es una decisión de alcance del cliente, no un copy fix — **pendiente de decidir si se rediseña la página CBAM para reflejar el producto CBC real**.
+- [2026-08-19] Aplicadas las correcciones de dos documentos del cliente (`260728_Equiterra_Website_Launch_PunchList.docx` y `260730_Equiterra_Revision_Sitio_Web_2026-07-30.docx`, ambos vía WhatsApp) — la mayoría de los puntos ya estaban resueltos de sesiones previas (CM4GE realineado, Ancestro sin "Flagship"/cita atribuida, Moba sin el 50%, SOS "Coastal Carbon · Sargassum", disclaimer con cláusula de no-solicitación exacta, Bouaké/PANAM en 404 real). Se encontraron y corrigieron **2 regresiones reales**:
+  - Home: el bloque "Proof, not promises" había sido revertido por error en una sesión anterior a cifras incorrectas (15+ años / 7+ países en vez de 40+ / 15+). Corregido en `index.html` **y** en `admin/content.json` (el CMS lo hubiera vuelto a pisar en la próxima carga vía `content-loader.js`). Traducciones ES/FR/PT agregadas para el label nuevo.
+  - Rafey (`proyecto-rafey-landfill.html`): la entrada de timeline "2026–2028" todavía decía "Structuring & first issuance" con "Crediting period begins 2027–2041" como si fuera un hecho consumado, contradiciendo la entrada siguiente (ya corregida en sesión previa) que dice "targeted". Simplificada a solo "Structuring", sin cifras/fechas de proyección. Traducciones ES/FR/PT agregadas.
+  - Verificado: las 3 subpáginas (`climate-advisory.html`, `carbon-markets.html`, `project-financing.html`) no repiten ninguna de las cifras/lenguaje corregido — no necesitaron cambios.
+  - Commiteado y pusheado (`f01c851`), build de GitHub Pages confirmado y verificado visualmente en el sitio en vivo.
+- [2026-08-19] Marquee de partners del Home: agregado título "Working with" (eyebrow centrado, como tenía la sección de partners antigua antes de fusionarse con el marquee) + logos agrandados (~26–36px → ~38–54px de alto, los de fondo blanco tipo Carbon Growth Partners escalan proporcional). Traducción ES/FR/PT del título agregada a `js/i18n.js`. **Sin commitear todavía** — pendiente confirmar push en la próxima sesión (`css/home.css`, `index.html`, `js/i18n.js`).
 - ⚠️ Pendiente inmediato (próxima sesión):
-  1. Decidir con el cliente si `cbam.html` se rediseña para incluir el producto CBC (precio en vivo, flujo buy/hold/comply) — ver hallazgo arriba.
-  2. Pushear el commit `276ff2c` a origin/main cuando el usuario lo autorice.
+  1. Commit + push del cambio de marquee (título + tamaño de logos) — ver punto arriba.
+  2. Decidir con el cliente si `cbam.html` se rediseña para incluir el producto CBC (precio en vivo, flujo buy/hold/comply) — hallazgo de la sesión 2026-08-18, ver detalle debajo.
   3. Decidir qué hacer con la reutilización de `solutions-*.jpg` entre Solutions y sus 3 subpáginas (¿conseguir fotos nuevas o dejar como lenguaje visual intencional?).
-- Pendiente (no bloqueante): backend real de formulario de leads/compliance + PDF por proyecto, decisión de pase a Elementor, logo SEDESU (Querétaro) sin conseguir.
+- Pendiente (no bloqueante): backend real de formulario de leads/compliance + PDF por proyecto, decisión de pase a Elementor, logo SEDESU (Querétaro) sin conseguir, migración de hosting de la cuenta personal de GitHub a equiterra.capital con DNS propio (bloqueante de lanzamiento según el punch list, pero es infraestructura/dominio — no depende de código).
 
 ## Páginas
 - index.html — Home (marquee de logos de partners, carrusel con 4 proyectos activos, sin Bouake/PANAM/Copidega)
@@ -123,6 +129,7 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
 
 ## Decisiones
 <!-- Append-only. [FECHA] Decisión — Razón -->
+- [2026-08-19] Marquee de partners del Home con título "Working with" y logos más grandes — pedido explícito del cliente ("hacerlo más grande" + "colocarle un título como el que teníamos antes"), recuperando el eyebrow que tenía la sección de partners original antes de fusionarse con el marquee de logos el 2026-08-17.
 - [2026-08-17] Reactivar el selector de idioma y sumar FR a los idiomas curados (sacándolo del proxy Google) — cumple el pedido explícito del cliente de "mejorar la traducción, incluyendo el francés" y resuelve la razón original del `return` del 2026-08-04 (calidad de "Maison" vs "Accueil" del proxy). DE/IT se quedan en proxy: no fueron pedidos y no hay traducción curada para ellos todavía.
 - [2026-08-17] Gate de registro (nombre/email/org) para los 3 compliance documents en disclaimer.html, guardado local en `eq_compliance_downloads` — mismo patrón que `eq_leads` de los project briefs, sin backend real todavía (pedido explícito del cliente: llevar registro de quién descarga qué).
 - [2026-08-17] Logos de partners con fondo blanco opaco o multicolor detallado (Carbon Growth Partners, Territoire de Moba) usan chip blanco sin filtro en vez del `invert(1)` monocromo — ese filtro solo funciona con logos transparentes de una tinta; forzarlo en los otros dos los volvía ilegibles (caja blanca lisa).
