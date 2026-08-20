@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/variables.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/base.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/anim.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/layout.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/home.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/pages.css?v=20260819213948" />
+  <link rel="stylesheet" href="css/variables.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/base.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/anim.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/layout.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/home.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/pages.css?v=20260820123130" />
 </head>
 <body data-page="projects">
 
@@ -85,7 +85,7 @@
     <div class="eq-container">
       <div class="eq-plibrary__grid" data-stagger>
         <a class="eq-project eq-plibrary__card" data-cat="nbs" href="proyecto-sierra-nevada.html">
-          <div class="eq-project__bg" style="background-image:url('assets/images/sierra-nevada-1.jpg')"></div>
+          <div class="eq-project__bg" style="background-image:url('assets/images/sierra-nevada-13.jpg')"></div>
           <div class="eq-project__body">
             <span class="eq-project__tag">NBS · ARR</span>
             <h3 class="notranslate">Ancestro que Seremos</h3>
@@ -160,10 +160,41 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=20260819213948"></script>
+  <div class="eq-modal-overlay" id="modal-projects-register" data-auto-open>
+    <div class="eq-modal">
+      <button type="button" class="eq-modal__close" data-close-modal aria-label="Close">×</button>
+      <div class="eq-modal__intro">
+        <h3>Explore our projects</h3>
+        <p>Register your details to browse full project profiles and receive updates as new ones are added.</p>
+      </div>
+      <form data-project-register-form>
+        <div>
+          <label for="preg-name">Full name</label>
+          <input id="preg-name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="preg-email">Email</label>
+          <input id="preg-email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="preg-org">Organization</label>
+          <input id="preg-org" name="org" type="text" required />
+        </div>
+        <p class="eq-modal__error">Please enter your name, organization and a valid email address.</p>
+        <button type="submit" class="eq-btn eq-btn--primary eq-modal__submit">Continue</button>
+      </form>
+      <div class="eq-modal__success">
+        <div class="eq-modal__success-icon">✓</div>
+        <p>Thanks, <span data-success-name></span> — enjoy exploring our projects.</p>
+      </div>
+    </div>
+  </div>
 
-  <script src="js/content-loader.js?v=20260819213948"></script>
-  <script src="js/main.js?v=20260819213948"></script>
+  <script src="js/i18n.js?v=20260820123130"></script>
+
+  <script src="js/content-loader.js?v=20260820123130"></script>
+  <script src="js/main.js?v=20260820123130"></script>
+  <script src="js/download-modal.js?v=20260820123130"></script>
   <script>
     (function () {
       var btns = document.querySelectorAll('.eq-btn--filter');

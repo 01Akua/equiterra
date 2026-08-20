@@ -150,7 +150,7 @@ a.eq-project { cursor: pointer; }
 .eq-marquee__logoset img { height: clamp(38px, 4.4vw, 54px); width: auto; max-width: 190px; object-fit: contain; filter: brightness(0) invert(1); opacity: .8; transition: opacity var(--eq-dur); }
 .eq-marquee:hover .eq-marquee__logoset img { opacity: .8; }
 .eq-marquee__logoset img:hover { opacity: 1; }
-.eq-marquee__logoset img.is-color { filter: none; opacity: 1; background: var(--eq-white); border-radius: 8px; padding: .4rem .7rem; height: clamp(42px, 4.8vw, 58px); }
+.eq-marquee__logoset img.eq-marquee__logo--wide { filter: none; opacity: 1; background: var(--eq-white); border-radius: 8px; padding: .5rem .9rem; height: clamp(52px, 6vw, 72px); max-width: 280px; }
 
 /* ---------- CAPABILITIES con encabezado sticky ---------- */
 .eq-caps__layout { display: grid; grid-template-columns: .9fr 1.6fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }

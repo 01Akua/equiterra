@@ -20,6 +20,11 @@
 .eq-feature--flip .eq-feature__media { order: -1; }
 @media (max-width: 860px) { .eq-feature { grid-template-columns: 1fr; } .eq-feature--flip .eq-feature__media { order: 0; } }
 .eq-feature__media { aspect-ratio: 4/3; border-radius: var(--eq-radius-lg); background: linear-gradient(155deg, var(--eq-forest-600), var(--eq-forest)); box-shadow: var(--eq-shadow); display: grid; place-items: center; color: rgba(255,255,255,.18); overflow: hidden; }
+
+/* ---------- APPROACH BAND (solutions.html intro band — distinct class so content-loader's positional .eq-feature[I] mapping isn't shifted) ---------- */
+.eq-approach-band { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+@media (max-width: 860px) { .eq-approach-band { grid-template-columns: 1fr; } }
+.eq-approach-band h2 { font-size: var(--eq-fs-h2); margin: 1rem 0; }
 .eq-feature__media svg { width: 88px; height: 88px; }
 .eq-feature__media img { width: 100%; height: 100%; object-fit: cover; }
 .eq-feature h2 { font-size: var(--eq-fs-h2); margin: 1rem 0; }
@@ -246,3 +251,22 @@
 @media (max-width: 620px) { .eq-tradepanel .eq-form__row { grid-template-columns: 1fr; } }
 .eq-tradepanel__note { font-size: .82rem; color: var(--eq-text-soft); margin-top: 1rem; }
 @media (max-width: 640px) { .eq-plibrary__grid { grid-template-columns: 1fr; } }
+
+/* ---------- CBC LIVE TICKER ---------- */
+.eq-ticker { border-radius: var(--eq-radius-lg); background: linear-gradient(155deg, var(--eq-forest-600), var(--eq-forest)); box-shadow: var(--eq-shadow); padding: clamp(1.8rem, 4vw, 2.8rem); color: var(--eq-white); display: flex; flex-direction: column; gap: .7rem; align-items: flex-start; }
+.eq-ticker__label { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--eq-mint); display: flex; align-items: center; gap: .55rem; }
+.eq-ticker__dot { width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 0 rgba(61,220,132,.6); animation: eq-ticker-pulse 1.8s infinite; }
+@keyframes eq-ticker-pulse { 0% { box-shadow: 0 0 0 0 rgba(61,220,132,.55); } 70% { box-shadow: 0 0 0 10px rgba(61,220,132,0); } 100% { box-shadow: 0 0 0 0 rgba(61,220,132,0); } }
+.eq-ticker__price { font-size: clamp(2.4rem, 5vw, 3.4rem); font-weight: 600; letter-spacing: -.02em; display: flex; align-items: baseline; gap: .7rem; }
+.eq-ticker__delta { font-size: .95rem; font-weight: 600; }
+.eq-ticker__delta.up { color: #3ddc84; }
+.eq-ticker__delta.down { color: #ff8a80; }
+.eq-ticker__meta { font-size: .85rem; color: rgba(255,255,255,.62); }
+.eq-ticker__note { font-size: .72rem; color: rgba(255,255,255,.4); margin-top: .2rem; }
+
+/* ---------- CBC VALUE PROPS ---------- */
+.eq-cbcvalue { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+@media (max-width: 720px) { .eq-cbcvalue { grid-template-columns: 1fr; } }
+.eq-cbcvalue__card { border: 1px solid var(--eq-border); border-radius: var(--eq-radius-lg); padding: clamp(1.4rem, 3vw, 1.9rem); }
+.eq-cbcvalue__card h3 { font-size: 1.1rem; margin-bottom: .6rem; }
+.eq-cbcvalue__card p { font-size: .92rem; color: var(--eq-text-soft); }

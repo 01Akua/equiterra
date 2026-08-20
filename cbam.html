@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/variables.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/base.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/anim.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/layout.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/home.css?v=20260819213948" />
-  <link rel="stylesheet" href="css/pages.css?v=20260819213948" />
+  <link rel="stylesheet" href="css/variables.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/base.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/anim.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/layout.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/home.css?v=20260820123130" />
+  <link rel="stylesheet" href="css/pages.css?v=20260820123130" />
 </head>
 <body data-page="cbam">
 
@@ -113,9 +113,29 @@
             <li>Decarbonisation &amp; offset strategy</li>
             <li>Reporting &amp; certificate management</li>
           </ul>
-          <a href="assets/docs/CM4GE-V5.0.pdf" download class="eq-btn eq-btn--primary" data-anim="rise" style="margin-top:1.4rem;--d:.3s">Download the CM4GE framework <span class="eq-arrow">→</span></a>
+          <button type="button" class="eq-btn eq-btn--primary" data-anim="rise" style="margin-top:1.4rem;--d:.3s" data-open-modal="modal-compliance" data-doc-file="assets/docs/CM4GE-V5.0.pdf" data-doc-name="CM4GE Framework">Download the CM4GE framework <span class="eq-arrow">→</span></button>
         </div>
         <div class="eq-feature__media" data-anim="wipe"><img src="assets/images/solutions-development.jpg" alt="On-site emissions and compliance monitoring visit" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="eq-section">
+    <div class="eq-container">
+      <div class="eq-feature">
+        <div>
+          <span class="eq-eyebrow" data-anim="rise">The CBAM Benchmark Certificate</span>
+          <h2 data-anim="lines">What is Equiterra CBC?</h2>
+          <p data-anim="rise" style="--d:.15s">CBC is a digital financial instrument that mirrors EU ETS pricing, allowing companies to manage their carbon exposure in real time. Instead of reacting to costs at the moment of compliance, organizations can plan, hedge, and execute their strategy in advance.</p>
+          <p data-anim="rise" style="--d:.22s;margin-top:.6rem;font-weight:600">1 CBC = 1 CBAM certificate.</p>
+          <p data-anim="rise" style="--d:.28s;margin-top:.8rem;color:var(--eq-text-soft)">Access a transparent, real-time price directly linked to EU carbon markets, enabling informed and timely compliance decisions.</p>
+        </div>
+        <div class="eq-ticker" data-anim="wipe">
+          <span class="eq-ticker__label"><span class="eq-ticker__dot"></span>Live CBAM Certificate Price</span>
+          <div class="eq-ticker__price"><span id="cbcPrice">€75.36</span><span id="cbcDelta" class="eq-ticker__delta"></span></div>
+          <span class="eq-ticker__meta">Last update: <span id="cbcUpdated">31 Mar 2026, 09:00</span></span>
+          <span class="eq-ticker__note">Indicative live pricing for demonstration. Connects to the live EU ETS feed at launch.</span>
+        </div>
       </div>
     </div>
   </section>
@@ -154,6 +174,40 @@
         <button type="submit" class="eq-btn eq-btn--primary" style="justify-self:start">Trade Now <span class="eq-arrow">→</span></button>
         <p class="eq-tradepanel__note">A member of our CBAM team will follow up with live CBC pricing and next steps.</p>
       </form>
+    </div>
+  </section>
+
+  <section class="eq-section eq-section--alt eq-cbc-faq">
+    <div class="eq-container">
+      <div class="eq-head">
+        <span class="eq-eyebrow" data-anim="rise">Questions</span>
+        <h2 class="eq-h2" data-anim="lines">Quick FAQ on Equiterra CBC</h2>
+      </div>
+      <div class="eq-faq">
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">What is the conversion rate between CBC and CBAM Certificates? <span class="ic"></span></button><div class="eq-faq__a"><p>The conversion follows a 1:1 ratio. One CBC equals one CBAM certificate, ensuring simplicity and alignment with regulatory requirements.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">How is the CBC price determined? <span class="ic"></span></button><div class="eq-faq__a"><p>CBC pricing is directly linked to EU ETS market dynamics, reflecting real-time carbon prices.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">Is CBC compliant with CBAM regulation? <span class="ic"></span></button><div class="eq-faq__a"><p>Yes. CBC is designed to support companies in managing and settling their CBAM obligations in alignment with EU requirements.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">Who should use CBC? <span class="ic"></span></button><div class="eq-faq__a"><p>Importers, manufacturers, and companies exposed to CBAM-regulated sectors seeking to manage carbon costs efficiently.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">When should I buy CBCs? <span class="ic"></span></button><div class="eq-faq__a"><p>CBCs can be purchased at any time, allowing companies to take advantage of favorable market conditions and manage price volatility.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">Can CBC be used as a hedging tool? <span class="ic"></span></button><div class="eq-faq__a"><p>Yes. CBC enables companies to hedge against future carbon price increases by securing costs in advance.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">How does settlement work? <span class="ic"></span></button><div class="eq-faq__a"><p>CBCs can be converted into CBAM certificates and surrendered through the EU registry at the time of compliance.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">What risks does CBC help mitigate? <span class="ic"></span></button><div class="eq-faq__a"><p>CBC reduces exposure to carbon price volatility, regulatory uncertainty, and timing mismatches in compliance obligations.</p></div></div>
+        <div class="eq-faq__item"><button class="eq-faq__q" aria-expanded="false">Is this only for EU-based companies? <span class="ic"></span></button><div class="eq-faq__a"><p>No. It is especially relevant for exporters and global companies trading into the EU market.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="eq-section">
+    <div class="eq-container">
+      <div class="eq-head">
+        <span class="eq-eyebrow" data-anim="rise">Why CBC</span>
+        <h2 class="eq-h2" data-anim="lines">Why Procurement Managers Buy Equiterra CBC?</h2>
+      </div>
+      <div class="eq-cbcvalue" data-stagger>
+        <div class="eq-cbcvalue__card"><h3>Live Pricing</h3><p>We offer a live, transparent spot price. You pay what the market says right now.</p></div>
+        <div class="eq-cbcvalue__card"><h3>Instant Liquidity</h3><p>Turn cash into compliance assets instantly. No long consulting lead times.</p></div>
+        <div class="eq-cbcvalue__card"><h3>Zero Basis Risk</h3><p>The CBC is anchored directly to the Benchmark. There is no gap between what you buy and what you owe.</p></div>
+      </div>
     </div>
   </section>
 
@@ -219,9 +273,43 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=20260819213948"></script>
+  <div class="eq-modal-overlay" id="modal-compliance">
+    <div class="eq-modal">
+      <button type="button" class="eq-modal__close" data-close-modal aria-label="Close">×</button>
+      <div class="eq-modal__intro">
+        <h3>Register to download</h3>
+        <p>We keep a record of who downloads each document. Enter your details once — the download starts immediately after.</p>
+      </div>
+      <form data-compliance-form>
+        <input type="hidden" name="docFile" />
+        <input type="hidden" name="docName" />
+        <div>
+          <label for="compliance-name">Full name</label>
+          <input id="compliance-name" name="name" type="text" required />
+        </div>
+        <div>
+          <label for="compliance-email">Email</label>
+          <input id="compliance-email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="compliance-org">Organization</label>
+          <input id="compliance-org" name="org" type="text" required />
+        </div>
+        <p class="eq-modal__error">Please enter your name, organization and a valid email address.</p>
+        <button type="submit" class="eq-btn eq-btn--primary eq-modal__submit">Download document</button>
+      </form>
+      <div class="eq-modal__success">
+        <div class="eq-modal__success-icon">✓</div>
+        <p>Thanks, <span data-success-name></span> — your download should start automatically. If it doesn't, <a data-success-link href="#" download>click here</a>.</p>
+      </div>
+    </div>
+  </div>
 
-  <script src="js/content-loader.js?v=20260819213948"></script>
-  <script src="js/main.js?v=20260819213948"></script>
+  <script src="js/i18n.js?v=20260820123130"></script>
+
+  <script src="js/content-loader.js?v=20260820123130"></script>
+  <script src="js/main.js?v=20260820123130"></script>
+  <script src="js/cbc-ticker.js?v=20260820123130"></script>
+  <script src="js/download-modal.js?v=20260820123130"></script>
 </body>
 </html>

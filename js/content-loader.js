@@ -158,7 +158,7 @@
         { child: 'h3',           key: 'cbam.timeline[I].h3' },
         { child: 'p',            key: 'cbam.timeline[I].p' },
       ]},
-      { sel: '.eq-faq__item', fields: [
+      { sel: '.eq-cbam-faq .eq-faq__item', fields: [
         { child: '.eq-faq__q', key: 'cbam.faq[I].q', html: true },
         { child: '.eq-faq__a p', key: 'cbam.faq[I].a' },
       ]},

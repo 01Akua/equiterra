@@ -41,6 +41,29 @@
     } catch (e) { /* localStorage unavailable — non-blocking */ }
   }
 
+  // TODO: once the Firebase backend is wired up, mirror saveProjectRegistration()
+  // (and the two save*() functions above) to a Firestore write instead of/alongside localStorage.
+  function saveProjectRegistration(record) {
+    try {
+      const key = 'eq_project_registrations';
+      const existing = JSON.parse(localStorage.getItem(key) || '[]');
+      existing.push(record);
+      localStorage.setItem(key, JSON.stringify(existing));
+    } catch (e) { /* localStorage unavailable — non-blocking */ }
+  }
+
+  // Auto-open modals marked [data-auto-open], once per browser session.
+  document.querySelectorAll('.eq-modal-overlay[data-auto-open]').forEach(function (modal) {
+    const seenKey = 'eq_seen_modal_' + modal.id;
+    try {
+      if (sessionStorage.getItem(seenKey)) return;
+    } catch (e) { /* sessionStorage unavailable — skip auto-open */ return; }
+    setTimeout(function () {
+      openModal(modal);
+      try { sessionStorage.setItem(seenKey, '1'); } catch (e) { /* non-blocking */ }
+    }, 1200);
+  });
+
   document.addEventListener('click', function (e) {
     const trigger = e.target.closest('[data-open-modal]');
     if (trigger) {
@@ -134,6 +157,33 @@
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+    });
+  });
+
+  document.querySelectorAll('.eq-modal-overlay form[data-project-register-form]').forEach(function (form) {
+    const errorEl = form.querySelector('.eq-modal__error');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = form.querySelector('[name="name"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      const org = form.querySelector('[name="org"]').value.trim();
+
+      if (!name || !email || !isValidEmail(email)) {
+        if (errorEl) errorEl.classList.add('is-visible');
+        return;
+      }
+      if (errorEl) errorEl.classList.remove('is-visible');
+
+      saveProjectRegistration({
+        name: name, email: email, org: org,
+        page: window.location.pathname,
+        at: new Date().toISOString(),
+      });
+
+      const modal = form.closest('.eq-modal');
+      const nameEl = modal.querySelector('[data-success-name]');
+      if (nameEl) nameEl.textContent = name.split(' ')[0];
+      modal.classList.add('is-success');
     });
   });
 })();
