@@ -99,9 +99,14 @@ Proyecto Korve. Rediseño premium del sitio de Equiterra (firma de finanzas clim
   6. **Sección CBC (CBAM Benchmark Certificate) agregada a cbam.html`** — resuelve la decisión pendiente de la sesión 2026-08-18. Incluye "How to Trade & Comply CBC" (3 pasos circulares BUY/HOLD/COMPLY, clase nueva `.eq-circlesteps`) + formulario "Trade CBC Now" (Employee Name/Work Email/Phone/Company, clase nueva `.eq-tradepanel`, mismo patrón visual que `eq-form` de partner.html). **Decisión de diseño**: no se replicó el precio en vivo ("€75.36, actualizado 31 marzo 2026") del sitio real — un número fijo en un sitio estático quedaría desactualizado y sería engañoso. En su lugar, el formulario cierra con "A member of our CBAM team will follow up with live CBC pricing and next steps."
   7-9. Los 3 documentos de compliance (Code of Conduct, Anti-Bribery, Sanctions) que el cliente reenvió por WhatsApp ya estaban en `assets/docs/` con checksum MD5 idéntico — confirmado, sin acción necesaria.
   - Traducciones ES/FR/PT agregadas a `js/i18n.js` para todo el contenido nuevo (~34 claves × 3 idiomas). `./cache-bust.sh` corrido, QA visual completo vía Chrome local — todas las secciones nuevas verificadas renderizando correctamente.
+  - Commiteado y pusheado (`5b649e0`, junto con el marquee pendiente `f01c851`).
+- [2026-08-19] Tercera ronda, mismo día — 3 correcciones puntuales en `proyecto-sierra-nevada.html`, pedidas por capturas del sitio real:
+  1. Foto del hero (antes `sierra-nevada-1.jpg`, pueblo con techos de paja) reemplazada por `sierra-nevada-13.jpg` (ceremonia con poporo en el bosque) — nueva foto extraída del material del cliente, optimizada a 1400px/q50 con `sips` (mismo pipeline que el resto de `assets/images/`). `sierra-nevada-1.jpg` se queda en uso como thumbnail en `index.html`/`projects.html`, no quedó huérfana.
+  2. Foto de galería (antes `sierra-nevada-2.jpg`, Alexis Leroy presentando en un salón techo de paja) reemplazada por `sierra-nevada-12.jpg` (dos mujeres Arhuaco en el bosque) — misma pipeline de optimización.
+  3. Eliminada la sección CTA "Want to support or co-finance this project?" al final de la página (quedaba redundante con el CTA "Why Partner With Equiterra" justo arriba) — pedido explícito del cliente.
+  - QA visual vía Chrome local confirmando las 3 correcciones antes de commitear.
 - ⚠️ Pendiente inmediato (próxima sesión):
-  1. Commit + push de esta ronda de correcciones (marquee de la sesión anterior + los 6 puntos de arriba) — nada de esto está commiteado todavía.
-  2. Decidir qué hacer con la reutilización de `solutions-*.jpg` entre Solutions y sus 3 subpáginas (¿conseguir fotos nuevas o dejar como lenguaje visual intencional?).
+  1. Decidir qué hacer con la reutilización de `solutions-*.jpg` entre Solutions y sus 3 subpáginas (¿conseguir fotos nuevas o dejar como lenguaje visual intencional?).
 - Pendiente (no bloqueante): backend real de formulario de leads/compliance + PDF por proyecto, decisión de pase a Elementor, logo SEDESU (Querétaro) sin conseguir, migración de hosting de la cuenta personal de GitHub a equiterra.capital con DNS propio (bloqueante de lanzamiento según el punch list, pero es infraestructura/dominio — no depende de código).
 
 ## Páginas
