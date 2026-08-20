@@ -224,4 +224,25 @@
 .eq-btn--filter.is-active { background: var(--eq-forest); border-color: var(--eq-forest); color: var(--eq-white); }
 .eq-plibrary__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 .eq-plibrary__card { aspect-ratio: 3/3.6; }
+
+/* ---------- IMAGE BANNER (full-bleed photo + overlay text) ---------- */
+.eq-imgband { position: relative; min-height: 60vh; display: flex; align-items: center; color: var(--eq-white); overflow: hidden; background-size: cover; background-position: center; }
+.eq-imgband::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,46,21,.72) 0%, rgba(15,46,21,.55) 45%, rgba(15,46,21,.8) 100%); }
+.eq-imgband__inner { position: relative; max-width: 46rem; margin: 0 auto; text-align: center; padding-block: clamp(3rem, 7vw, 5rem); }
+.eq-imgband h2 { color: var(--eq-white); margin-bottom: 1.2rem; }
+.eq-imgband p { color: rgba(255,255,255,.85); font-size: clamp(1rem, 1.4vw, 1.15rem); margin-bottom: 1rem; }
+.eq-imgband p:last-child { margin-bottom: 0; }
+
+/* ---------- STEP CIRCLES (3-up numbered process, e.g. CBC trading) ---------- */
+.eq-circlesteps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+@media (max-width: 720px) { .eq-circlesteps { grid-template-columns: 1fr; } }
+.eq-circlestep__n { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--eq-forest); color: var(--eq-forest); display: grid; place-items: center; font-size: 1.2rem; font-weight: 600; margin-bottom: 1.2rem; }
+.eq-circlestep h3 { font-size: 1.15rem; margin-bottom: .6rem; }
+.eq-circlestep p { font-size: .92rem; color: var(--eq-text-soft); }
+
+/* ---------- CBC TRADE PANEL ---------- */
+.eq-tradepanel { background: var(--eq-white); border: 1px solid var(--eq-border); border-radius: var(--eq-radius-lg); padding: clamp(1.5rem, 3vw, 2.4rem); box-shadow: var(--eq-shadow-sm); max-width: 52rem; margin: 0 auto; }
+.eq-tradepanel .eq-form__row { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 620px) { .eq-tradepanel .eq-form__row { grid-template-columns: 1fr; } }
+.eq-tradepanel__note { font-size: .82rem; color: var(--eq-text-soft); margin-top: 1rem; }
 @media (max-width: 640px) { .eq-plibrary__grid { grid-template-columns: 1fr; } }
