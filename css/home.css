@@ -87,7 +87,7 @@
 /* ---------- PROJECTS CAROUSEL ---------- */
 .eq-projects__viewport { overflow: hidden; }
 .eq-projects__track { display: flex; gap: 1.5rem; transition: transform .6s var(--eq-ease); }
-.eq-project { flex: 0 0 clamp(280px, 32%, 380px); border-radius: var(--eq-radius-lg); overflow: hidden; position: relative; aspect-ratio: 3/4; color: var(--eq-white); display: flex; align-items: flex-end; }
+.eq-project { flex: 0 0 clamp(280px, 32%, 380px); border-radius: var(--eq-radius-lg); overflow: hidden; position: relative; isolation: isolate; aspect-ratio: 3/4; color: var(--eq-white); display: flex; align-items: flex-end; }
 .eq-project__bg { position: absolute; inset: 0; z-index: -1; background-size: cover; background-position: center; transition: transform .8s var(--eq-ease); }
 .eq-project:hover .eq-project__bg { transform: scale(1.06); }
 .eq-project::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 30%, rgba(15,46,21,.9)); z-index: -1; }
