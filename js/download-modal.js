@@ -148,15 +148,20 @@
       const nameEl = modal.querySelector('[data-success-name]');
       if (nameEl) nameEl.textContent = name.split(' ')[0];
       const linkEl = modal.querySelector('[data-success-link]');
-      if (linkEl) linkEl.setAttribute('href', docFile);
+      if (linkEl) {
+        linkEl.setAttribute('href', docFile);
+        linkEl.setAttribute('download', docFile.split('/').pop());
+      }
       modal.classList.add('is-success');
 
-      const a = document.createElement('a');
-      a.href = docFile;
-      a.download = '';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      // Click the persistent success-panel link (already in the DOM, with a
+      // real download attribute) instead of a synthetic detached <a> —
+      // creating + clicking + immediately removing an anchor in the same
+      // tick can race the browser's download start and silently no-op it
+      // in some builds. A short delay also lets the modal repaint first.
+      setTimeout(function () {
+        if (linkEl) linkEl.click();
+      }, 60);
     });
   });
 
