@@ -27,6 +27,29 @@
     }));
   }
 
+  /* ---- Hero video: forzar autoplay en móvil ----
+     iOS con Modo de bajo consumo (y algunos Android con ahorro de datos) ignoran el
+     atributo `autoplay` en silencio: el video queda pausado en el primer frame con el
+     ícono de play nativo, sin ningún error en consola. `muted`+`playsinline` no alcanza
+     en esos casos — hay que llamar `.play()` explícitamente y reintentar ante la primera
+     interacción del usuario, que sí cuenta como gesto válido para desbloquear el autoplay. */
+  const heroVideo = document.querySelector('.eq-hero__video video');
+  if (heroVideo) {
+    const tryPlay = () => { heroVideo.play().catch(() => {}); };
+    tryPlay();
+    heroVideo.addEventListener('loadeddata', tryPlay);
+    heroVideo.addEventListener('canplay', tryPlay);
+    if (heroVideo.paused) {
+      const retry = () => { tryPlay(); if (!heroVideo.paused) removeRetry(); };
+      const removeRetry = () => {
+        ['touchstart', 'click', 'scroll'].forEach(ev => document.removeEventListener(ev, retry));
+        document.removeEventListener('visibilitychange', retry);
+      };
+      ['touchstart', 'click', 'scroll'].forEach(ev => document.addEventListener(ev, retry, { passive: true, once: false }));
+      document.addEventListener('visibilitychange', retry);
+    }
+  }
+
   /* ---- Split de titulares en líneas (máscara) ---- */
   function splitLines(el) {
     const words = el.textContent.trim().split(/\s+/);
