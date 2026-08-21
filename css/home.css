@@ -152,7 +152,7 @@ a.eq-project { cursor: pointer; }
 .eq-marquee__logoset img:hover { opacity: 1; }
 .eq-marquee__logoset img.eq-marquee__logo--wide { max-width: 280px; }
 .eq-marquee__logoset img.eq-marquee__logo--wide:hover { opacity: 1; }
-.eq-marquee__logoset img.eq-marquee__logo--crest { height: clamp(46px, 5.2vw, 62px); }
+.eq-marquee__logoset img.eq-marquee__logo--crest { height: clamp(38px, 4.4vw, 54px); }
 
 /* ---------- CAPABILITIES con encabezado sticky ---------- */
 .eq-caps__layout { display: grid; grid-template-columns: .9fr 1.6fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
