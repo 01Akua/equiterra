@@ -28,31 +28,17 @@
   }
 
   /* ---- Hero video: forzar autoplay en móvil ----
-     Modo de bajo consumo en iOS (y ahorro de datos en algunos Android) bloquean el
-     autoplay en silencio: el video queda pausado en el primer frame, sin ningún error
-     en consola. `muted`+`playsinline` no alcanza en esos casos — un scroll o un touchstart
-     genérico en la página tampoco siempre cuenta como gesto válido para el navegador.
-     Lo único que garantiza desbloquear el autoplay es un tap directo sobre un control
-     visible, así que además del reintento automático se muestra un botón de play propio
-     si el video sigue pausado un momento después de cargar. */
+     iOS con Modo de bajo consumo (y algunos Android con ahorro de datos) ignoran el
+     atributo `autoplay` en silencio: el video queda pausado en el primer frame con el
+     ícono de play nativo, sin ningún error en consola. `muted`+`playsinline` no alcanza
+     en esos casos — hay que llamar `.play()` explícitamente y reintentar ante la primera
+     interacción del usuario, que sí cuenta como gesto válido para desbloquear el autoplay. */
   const heroVideo = document.querySelector('.eq-hero__video video');
-  const heroPlayBtn = document.querySelector('.eq-hero__play');
   if (heroVideo) {
     const tryPlay = () => { heroVideo.play().catch(() => {}); };
-    const showButton = () => { if (heroPlayBtn) { heroPlayBtn.hidden = false; heroPlayBtn.classList.add('is-visible'); } };
-    const hideButton = () => { if (heroPlayBtn) { heroPlayBtn.classList.remove('is-visible'); heroPlayBtn.hidden = true; } };
-
     tryPlay();
     heroVideo.addEventListener('loadeddata', tryPlay);
     heroVideo.addEventListener('canplay', tryPlay);
-    heroVideo.addEventListener('playing', hideButton);
-
-    setTimeout(() => { if (heroVideo.paused) showButton(); }, 1200);
-
-    if (heroPlayBtn) {
-      heroPlayBtn.addEventListener('click', () => { tryPlay(); });
-    }
-
     if (heroVideo.paused) {
       const retry = () => { tryPlay(); if (!heroVideo.paused) removeRetry(); };
       const removeRetry = () => {
