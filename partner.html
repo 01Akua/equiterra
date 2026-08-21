@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/variables.css?v=20260820131814" />
-  <link rel="stylesheet" href="css/base.css?v=20260820131814" />
-  <link rel="stylesheet" href="css/anim.css?v=20260820131814" />
-  <link rel="stylesheet" href="css/layout.css?v=20260820131814" />
-  <link rel="stylesheet" href="css/home.css?v=20260820131814" />
-  <link rel="stylesheet" href="css/pages.css?v=20260820131814" />
+  <link rel="stylesheet" href="css/variables.css?v=20260821101346" />
+  <link rel="stylesheet" href="css/base.css?v=20260821101346" />
+  <link rel="stylesheet" href="css/anim.css?v=20260821101346" />
+  <link rel="stylesheet" href="css/layout.css?v=20260821101346" />
+  <link rel="stylesheet" href="css/home.css?v=20260821101346" />
+  <link rel="stylesheet" href="css/pages.css?v=20260821101346" />
 </head>
 <body data-page="partner">
 
@@ -67,6 +67,7 @@
       <span class="eq-eyebrow" data-anim="rise">Partner With Us</span>
       <h1 data-anim="lines">Turn climate ambition into financeable reality.</h1>
       <p data-anim="rise" style="--d:.2s">We work with the institutions that move capital and the developers that build on the ground. Tell us where you are, we'll tell you how it gets done.</p>
+      <p data-anim="rise" style="--d:.28s;margin-top:.6rem;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;opacity:.75">Institutional Engagement — Connect with Equiterra Capital</p>
     </div>
   </section>
 
@@ -74,12 +75,25 @@
     <div class="eq-container">
       <div class="eq-head">
         <span class="eq-eyebrow" data-anim="rise">Who we partner with</span>
-        <h2 class="eq-h2" data-anim="lines">Built for serious counterparties</h2>
+        <h2 class="eq-h2" data-anim="lines">Built to institutional standard</h2>
       </div>
       <div class="eq-grid eq-grid--3" data-stagger>
         <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><h3>Governments</h3><p>National and subnational bodies designing carbon markets and mobilising climate finance.</p></div>
         <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5m0 14h16M8 16l3-4 3 2 4-6"/></svg></div><h3>Institutions &amp; investors</h3><p>Funds, banks and corporates seeking credible, financeable climate exposure.</p></div>
         <div class="eq-ptype"><div class="eq-ptype__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c4 4 6 7 6 10a6 6 0 1 1-12 0c0-3 2-6 6-10Z"/></svg></div><h3>Project developers</h3><p>Teams with environmental assets that need structuring, capital and delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="eq-section eq-section--alt">
+    <div class="eq-container">
+      <div class="eq-head">
+        <span class="eq-eyebrow" data-anim="rise">Engagement Categories</span>
+      </div>
+      <div class="eq-grid eq-grid--3" data-stagger>
+        <div class="eq-ptype"><h3>Institutional Inquiries</h3><p>Strategic advisory, project development opportunities, carbon market structuring, and sovereign climate finance.</p></div>
+        <div class="eq-ptype"><h3>Partnerships</h3><p>Collaboration proposals, technical partnerships, and joint project initiatives with aligned institutions.</p></div>
+        <div class="eq-ptype"><h3>Media &amp; Speaking</h3><p>Conference speaking engagements, expert commentary, and technical forum participation.</p></div>
       </div>
     </div>
   </section>
@@ -109,24 +123,35 @@
         <h2 data-anim="lines">Start a conversation</h2>
         <p data-anim="rise" style="--d:.15s">Send us the shape of your mandate. We respond to qualified inquiries within two business days.</p>
         <div class="eq-contact__channels" data-stagger>
-          <div><small>Email</small><a href="mailto:info@equiterra.capital">info@equiterra.capital</a></div>
-          <div><small>Connect</small><a href="https://linkedin.com/company/equiterra-capital" target="_blank" rel="noopener">LinkedIn, Equiterra Capital</a></div>
+          <div><small>Direct Contact</small><a href="mailto:info@equiterra.capital">info@equiterra.capital</a></div>
+          <div><small>Professional Network</small><a href="https://linkedin.com/company/equiterra-capital" target="_blank" rel="noopener">LinkedIn</a></div>
           <div><small>Languages</small><span>English · Español</span></div>
         </div>
       </div>
       <form class="eq-form" data-anim="rise" id="contactForm">
         <div class="eq-form__row">
-          <div class="eq-field"><label for="name">Full name</label><input id="name" type="text" placeholder="Your name" required /></div>
-          <div class="eq-field"><label for="org">Organisation</label><input id="org" type="text" placeholder="Company / institution" /></div>
+          <div class="eq-field"><label for="name">Name *</label><input id="name" type="text" placeholder="Your name" required /></div>
+          <div class="eq-field"><label for="org">Organization *</label><input id="org" type="text" placeholder="Company / institution" required /></div>
         </div>
         <div class="eq-form__row">
-          <div class="eq-field"><label for="email">Email</label><input id="email" type="email" placeholder="you@org.com" required /></div>
-          <div class="eq-field"><label for="type">I am a…</label><select id="type"><option>Government / public body</option><option>Institution / investor</option><option>Project developer</option><option>Other</option></select></div>
+          <div class="eq-field"><label for="email">Email *</label><input id="email" type="email" placeholder="you@org.com" required /></div>
+          <div class="eq-field"><label for="type">Inquiry Category *</label><select id="type"><option value="">Select a Category</option><option>Institutional Inquiries</option><option>Partnerships</option><option>Media &amp; Speaking</option><option>Other</option></select></div>
         </div>
-        <div class="eq-field"><label for="msg">How can we help?</label><textarea id="msg" placeholder="Tell us about your mandate, asset or exposure…"></textarea></div>
-        <button type="submit" class="eq-btn eq-btn--primary" style="justify-self:start">Send inquiry <span class="eq-arrow">→</span></button>
+        <div class="eq-field"><label for="msg">Message *</label><textarea id="msg" placeholder="Tell us about your mandate, asset or exposure…" required></textarea></div>
+        <button type="submit" class="eq-btn eq-btn--primary" style="justify-self:start">Send Message <span class="eq-arrow">→</span></button>
         <p class="eq-form__note" style="display:none;color:var(--eq-forest);font-size:.9rem;margin-top:.5rem">Your message has been sent. We'll be in touch within two business days.</p>
       </form>
+    </div>
+  </section>
+
+  <section class="eq-section eq-section--alt">
+    <div class="eq-container">
+      <div class="eq-head" style="max-width:60rem">
+        <span class="eq-eyebrow" data-anim="rise">Engagement Protocol</span>
+        <p class="eq-lead" data-anim="rise" style="--d:.15s">Equiterra Capital operates on a selective engagement basis. We prioritize inquiries aligned with our technical capabilities, sectoral focus, and institutional standards.</p>
+        <p class="eq-lead" data-anim="rise" style="--d:.2s">All inquiries are reviewed within 5 business days. We appreciate your interest and look forward to exploring opportunities for strategic collaboration.</p>
+        <p style="margin-top:1rem;font-size:.85rem;color:var(--eq-text-soft)">Equiterra Capital respects your privacy. Information submitted through this form is used solely for responding to your inquiry and is not shared with third parties. For more information on our data practices, please contact us directly.</p>
+      </div>
     </div>
   </section>
 
@@ -148,9 +173,9 @@
     </div>
   </footer>
 
-  <script src="js/i18n.js?v=20260820131814"></script>
+  <script src="js/i18n.js?v=20260821101346"></script>
 
-  <script src="js/content-loader.js?v=20260820131814"></script>
-  <script src="js/main.js?v=20260820131814"></script>
+  <script src="js/content-loader.js?v=20260821101346"></script>
+  <script src="js/main.js?v=20260821101346"></script>
 </body>
 </html>

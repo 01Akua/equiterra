@@ -26,12 +26,12 @@
         "pt": ""
       },
       "h1": {
-        "en": "Financing a <em>sustainable</em> future.",
+        "en": "Financing a <em>sustainable</em> future",
         "es": "",
         "pt": ""
       },
       "subtitle": {
-        "en": "Climate finance solutions for governments, institutions, and project developers — pairing regulatory depth with the structuring and execution that move climate capital at scale.",
+        "en": "Climate finance solutions for governments and institutions.",
         "es": "",
         "pt": ""
       },
@@ -48,12 +48,12 @@
     },
     "manifesto": {
       "eyebrow": {
-        "en": "Strategic Environmental Finance",
+        "en": "Strategic Environmental Finance Solutions",
         "es": "",
         "pt": ""
       },
       "h2": {
-        "en": "We structure climate finance solutions that help governments, institutions, and project developers unlock capital.",
+        "en": "We structure climate finance solutions that help governments, institutions, and project developers unlock capital, meet regulatory requirements, and deliver large-scale environmental projects.",
         "es": "",
         "pt": ""
       },
@@ -179,7 +179,7 @@
         },
         {
           "h3": {
-            "en": "Regulatory & Carbon Markets",
+            "en": "Regulatory & Carbon Markets Expertise",
             "es": "",
             "pt": ""
           },
@@ -365,7 +365,7 @@
         "pt": ""
       },
       "bio": {
-        "en": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital.",
+        "en": "Climate finance entrepreneur and carbon market specialist with nearly two decades of experience in environmental markets and international project development. Founder of ALLCOT and Equiterra Capital, his work focuses on structuring credible environmental assets and mobilizing climate capital through carbon markets, Article 6 cooperation and nature-based solutions.",
         "es": "",
         "pt": ""
       },
@@ -510,12 +510,12 @@
         "pt": ""
       },
       "h2": {
-        "en": "Sustainability becomes transformational when it moves from narrative to financial architecture.",
+        "en": "Structuring Climate Finance For Global Impact",
         "es": "",
         "pt": ""
       },
       "lead": {
-        "en": "Equiterra exists to close the distance between climate ambition and deployable capital, combining regulatory depth, market structuring and on-the-ground delivery.",
+        "en": "Equiterra Capital structures climate finance solutions and environmental markets for governments, financial institutions, and corporations. We operate at the intersection of regulatory intelligence, carbon markets, and financial structuring to transform sustainability commitments into scalable and investable outcomes.",
         "es": "",
         "pt": ""
       }
@@ -654,12 +654,12 @@
           "pt": ""
         },
         "h2": {
-          "en": "Climate Advisory & Investment Strategy",
+          "en": "Advisory & Strategy",
           "es": "",
           "pt": ""
         },
         "p": {
-          "en": "We design strategies to unlock climate finance and navigate complex regulatory environments with technical rigor, so decisions are made on architecture, not optimism.",
+          "en": "Strategic guidance for institutions seeking to integrate sustainability frameworks into core operations, regulatory positioning and capital allocation.",
           "es": "",
           "pt": ""
         },
@@ -671,17 +671,39 @@
       },
       {
         "eyebrow": {
-          "en": "02, Markets",
+          "en": "02, Development",
           "es": "",
           "pt": ""
         },
         "h2": {
-          "en": "Carbon Markets & Pricing",
+          "en": "Project Development",
           "es": "",
           "pt": ""
         },
         "p": {
-          "en": "Access carbon pricing insights and structure market-based compliance strategies across voluntary and regulated markets, with the methodology and MRV that make credits defensible.",
+          "en": "End-to-end project origination, structuring, and implementation across environmental and sustainable infrastructure sectors.",
+          "es": "",
+          "pt": ""
+        },
+        "li": [
+          "Feasibility & structuring",
+          "Capital raising & financial close",
+          "Delivery, monitoring & reporting"
+        ]
+      },
+      {
+        "eyebrow": {
+          "en": "03, Markets",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Environmental Markets",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Technical and strategic expertise across carbon markets, biodiversity credits and emerging environmental asset classes.",
           "es": "",
           "pt": ""
         },
@@ -693,25 +715,75 @@
       },
       {
         "eyebrow": {
-          "en": "03, Development",
+          "en": "04, Finance",
           "es": "",
           "pt": ""
         },
         "h2": {
-          "en": "Project Development & Financing",
+          "en": "Impact Finance Structuring",
           "es": "",
           "pt": ""
         },
         "p": {
-          "en": "We develop and finance large-scale environmental and infrastructure projects, connecting capital with territory, from concept to financial close and through delivery, monitoring and reporting.",
+          "en": "Financial engineering and capital mobilization for sustainability-linked investments and environmental assets.",
           "es": "",
           "pt": ""
         },
-        "li": [
-          "Feasibility & structuring",
-          "Capital raising & financial close",
-          "Delivery, monitoring & reporting"
-        ]
+        "li": []
+      },
+      {
+        "eyebrow": {
+          "en": "05, Sovereign",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Sovereign & Institutional Advisory",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Strategic advisory to governments, multilateral institutions, and public sector entities on climate policy and environmental market development.",
+          "es": "",
+          "pt": ""
+        },
+        "li": []
+      },
+      {
+        "eyebrow": {
+          "en": "06, Compliance",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "CBAM & Trade-Related Compliance",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Specialized advisory on EU climate and environmental regulations affecting international trade, including the Carbon Border Adjustment Mechanism (CBAM), the EU Emissions Trading System (EU ETS), and the EU Deforestation Regulation (EUDR).",
+          "es": "",
+          "pt": ""
+        },
+        "li": []
+      },
+      {
+        "eyebrow": {
+          "en": "07, Capacity",
+          "es": "",
+          "pt": ""
+        },
+        "h2": {
+          "en": "Capacity Building & Knowledge Transfer",
+          "es": "",
+          "pt": ""
+        },
+        "p": {
+          "en": "Technical training and institutional strengthening programs designed to build durable sustainability and climate finance capabilities.",
+          "es": "",
+          "pt": ""
+        },
+        "li": []
       }
     ],
     "process": {
@@ -1003,7 +1075,7 @@
         "pt": ""
       },
       "h2": {
-        "en": "Built for serious counterparties",
+        "en": "Built to institutional standard",
         "es": "",
         "pt": ""
       },
