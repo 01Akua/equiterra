@@ -28,9 +28,9 @@
 .eq-feature__media svg { width: 88px; height: 88px; }
 .eq-feature__media img { width: 100%; height: 100%; object-fit: cover; }
 .eq-feature h2 { font-size: var(--eq-fs-h2); margin: 1rem 0; }
-.eq-feature ul { list-style: none; padding: 0; margin-top: 1.4rem; display: grid; gap: .7rem; }
-.eq-feature li { padding-left: 1.6rem; position: relative; color: var(--eq-text-soft); }
-.eq-feature li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--eq-forest); }
+.eq-feature ul, .eq-list { list-style: none; padding: 0; margin-top: 1.4rem; display: grid; gap: .7rem; }
+.eq-feature li, .eq-list li { padding-left: 1.6rem; position: relative; color: var(--eq-text-soft); }
+.eq-feature li::before, .eq-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--eq-forest); }
 
 /* ---------- PROCESS (pasos numerados) ---------- */
 .eq-process { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; counter-reset: step; }
