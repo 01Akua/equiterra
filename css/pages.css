@@ -289,6 +289,21 @@
 .eq-blog-card p { font-size: .9rem; color: var(--eq-text-soft); margin: 0; flex: 1; }
 .eq-blog-card__cta { font-size: .82rem; font-weight: 600; letter-spacing: .02em; color: var(--eq-forest); margin-top: .3rem; }
 
+/* ---------- BLOG CARD, WIDE VARIANT (used for feature spotlights on Solutions) ---------- */
+.eq-blog-card--wide { flex-direction: row; cursor: default; }
+.eq-blog-card--wide:hover { transform: none; }
+.eq-blog-card--wide .eq-blog-card__media { flex: 0 0 42%; aspect-ratio: auto; }
+.eq-blog-card--wide .eq-blog-card__body { padding: clamp(1.8rem, 3vw, 2.6rem); gap: 1rem; }
+.eq-blog-card--wide h2 { font-size: var(--eq-fs-h2); line-height: 1.2; margin: 0; }
+.eq-blog-card--wide p { font-size: 1rem; flex: none; }
+.eq-blog-card--wide .eq-list { margin-top: .2rem; }
+.eq-blog-card--wide .eq-btn { align-self: flex-start; }
+.eq-blog-card--wide.eq-blog-card--flip { flex-direction: row-reverse; }
+@media (max-width: 860px) {
+  .eq-blog-card--wide, .eq-blog-card--wide.eq-blog-card--flip { flex-direction: column; }
+  .eq-blog-card--wide .eq-blog-card__media { flex: none; aspect-ratio: 16/10; }
+}
+
 /* ---------- BLOG POST (article template) ---------- */
 .eq-post-hero { background: var(--eq-forest); color: var(--eq-white); padding-top: calc(78px + clamp(3rem, 7vw, 5rem)); padding-bottom: clamp(2.5rem, 6vw, 4rem); }
 .eq-post-hero__tag { color: var(--eq-mint); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }

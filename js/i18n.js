@@ -40,6 +40,8 @@ window.EQ_I18N = {
     "Government-to-government (Article 6.2) — bilateral cooperation structures: authorization strategy, corresponding adjustments, and ITMO transfer frameworks between sovereigns": "Gobierno a gobierno (Artículo 6.2) — estructuras de cooperación bilateral: estrategia de autorización, ajustes correspondientes y marcos de transferencia de ITMOs entre soberanos",
     "Procurement for obligated buyers — eligibility screening, counterparty diligence, pricing, and settlement, from mandate to retirement": "Procurement para compradores obligados — elegibilidad, diligencia de contraparte, precio y liquidación, del mandato al retiro",
     "Discuss a compliance strategy": "Habla con nosotros sobre estrategia de compliance",
+    "Compliance & Procurement": "Compliance y Procurement",
+    "Our Core Concept": "Nuestro concepto central",
 
     // --- Bankable projects concept (memo 2026-08-21) ---
     "OUR CORE CONCEPT": "NUESTRO CONCEPTO CENTRAL",
