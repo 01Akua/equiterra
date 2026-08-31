@@ -16,11 +16,12 @@
 .eq-header__logo .logo-light { display: block; }
 .eq-header__logo .logo-dark  { display: none; }
 
-.eq-nav { display: flex; align-items: center; gap: clamp(1.2rem, 2.5vw, 2.4rem); }
+.eq-nav { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.4rem); }
 .eq-nav a {
   font-size: .95rem; font-weight: 500; color: var(--eq-white);
   opacity: .85; position: relative; padding-block: .4rem;
   transition: opacity var(--eq-dur);
+  white-space: nowrap;
 }
 .eq-nav a::after {
   content: ""; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 0;
@@ -83,7 +84,7 @@
 .eq-header.is-solid .eq-burger span { background: var(--eq-text); }
 
 /* Menú móvil */
-@media (max-width: 940px) {
+@media (max-width: 1100px) {
   .eq-nav, .eq-header__cta .eq-btn { display: none; }
   .eq-burger { display: flex; }
   .eq-mobile {
