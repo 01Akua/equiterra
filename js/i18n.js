@@ -7,6 +7,7 @@
    ============================================================ */
 window.EQ_I18N = {
   es: {
+    "New articles are in the works. Check back soon for briefings and market notes from the Equiterra team.": "Estamos preparando nuevos artículos. Vuelve pronto para leer briefings y notas de mercado del equipo de Equiterra.",
     // --- Nav / header / footer ---
     "Home": "Inicio",
     "Projects": "Proyectos",
@@ -742,6 +743,7 @@ window.EQ_I18N = {
   },
 
   fr: {
+    "New articles are in the works. Check back soon for briefings and market notes from the Equiterra team.": "De nouveaux articles sont en préparation. Revenez bientôt pour des briefings et des notes de marché de l'équipe Equiterra.",
     // --- Nav / header / footer ---
     "Home": "Accueil",
     "Projects": "Projets",
@@ -1452,6 +1454,7 @@ window.EQ_I18N = {
 
 
   pt: {
+    "New articles are in the works. Check back soon for briefings and market notes from the Equiterra team.": "Novos artigos estão a caminho. Volte em breve para briefings e notas de mercado da equipa Equiterra.",
     "Home": "Início",
     "Projects": "Projetos",
     "About": "Sobre",
