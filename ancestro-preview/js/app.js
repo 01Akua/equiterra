@@ -95,13 +95,13 @@
   });
 
   /* carbon potential stack */
-  var cp = [['High', 108, 2, '#c9a94d'], ['Medium', 1793, 40, '#4f8a58'], ['Low, near reference', 2632, 58, '#1d5228']];
+  var cp = [['Needs active restoration', 42, '#4f8a58'], ['Close to natural condition', 58, '#1d5228']];
   var st = $('#stack'), sl = $('#stack-l');
   cp.forEach(function (c) {
-    var d = document.createElement('div'); d.style.background = c[3]; d.dataset.w = c[2]; d.textContent = c[2] >= 10 ? c[2] + '%' : '';
-    d.title = c[0] + ': ' + c[2] + '%'; st.appendChild(d);
+    var d = document.createElement('div'); d.style.background = c[2]; d.dataset.w = c[1]; d.textContent = c[1] + '%';
+    d.title = c[0] + ': ' + c[1] + '%'; st.appendChild(d);
     var li = document.createElement('li');
-    li.innerHTML = '<i style="background:' + c[3] + '"></i>' + c[0] + '<b>' + c[1].toLocaleString('en-US') + ' ha · ' + c[2] + '%</b>';
+    li.innerHTML = '<i style="background:' + c[2] + '"></i>' + c[0] + '<b>' + c[1] + '%</b>';
     sl.appendChild(li);
   });
   function animateCharts() {
@@ -118,5 +118,114 @@
       tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t); });
       $$('.tabpanel').forEach(function (p) { p.classList.toggle('on', p.dataset.p === t.dataset.t); });
     });
+  });
+  /* ---------- gallery + events (edit the data lists to add content) ---------- */
+  var PHOTOS = [
+    { id: 'g1',  cat: 'Territory',   size: 'w', cap: 'Panorama of the Sierra Nevada' },
+    { id: 'g7',  cat: 'Communities', size: 't', cap: 'Weaving under the tree' },
+    { id: 'g3',  cat: 'Territory',   size: '',  cap: 'Stone path between traditional houses' },
+    { id: 'g16', cat: 'Gatherings',  size: 'w', cap: 'Large group in front of the houses' },
+    { id: 'g6',  cat: 'Communities', size: 't', cap: 'Arhuaco women in the forest' },
+    { id: 'g2',  cat: 'Territory',   size: '',  cap: 'Río Ariguaní' },
+    { id: 'g15', cat: 'Gatherings',  size: '',  cap: 'Assembly under the maloca' },
+    { id: 'g18', cat: 'Communities', size: '',  cap: 'Community among the cacao' },
+    { id: 'g4',  cat: 'Territory',   size: '',  cap: 'Slope with agaves' },
+    { id: 'g5',  cat: 'Territory',   size: '',  cap: 'Garden and forest' },
+    { id: 'g8',  cat: 'Communities', size: 't', cap: 'Three authorities at the house' },
+    { id: 'g9',  cat: 'Communities', size: '',  cap: 'Community leader in front of the houses' },
+    { id: 'g10', cat: 'Communities', size: '',  cap: 'Portrait of an Arhuaco woman' },
+    { id: 'g11', cat: 'Communities', size: '',  cap: 'Man at the fence' },
+    { id: 'g12', cat: 'Gatherings',  size: '',  cap: 'Conversation in the field' },
+    { id: 'g13', cat: 'Gatherings',  size: '',  cap: 'Group seated in the forest' },
+    { id: 'g14', cat: 'Gatherings',  size: '',  cap: 'Address at the community house' },
+    { id: 'g17', cat: 'Gatherings',  size: 'w', cap: 'Communities and team at sunset' }
+  ];
+  var IMG = function (id) { return id === 'bogota' ? 'img/sierra-nevada-3.jpg' : 'img/gallery/' + id + '.jpg'; };
+
+  // upcoming: true shows the card in "Coming next"
+  var EVENTS = [
+    { date: '2027', label: '2027', title: 'Pilot nurseries and first planting', place: 'Project territory', upcoming: true, cover: 'g4', photos: ['g4', 'g5'],
+      text: 'Pilot nurseries and planting on at least 2% of the area, the first step of restoration in the territory.' },
+    { date: '2026-10-12', label: 'Week of 12 Oct 2026', title: 'Capacity building for five Arhuaco leaders', place: 'Bogotá', cover: 'bogota', photos: ['bogota'],
+      text: 'A training week in Bogotá for five Arhuaco leaders of the project.' },
+    { date: '2026-08-07', label: '7 Aug 2026', title: 'Validation Agreement signed', place: 'Kunkurwa de Nawaku', cover: 'g16', photos: ['g16', 'g17'],
+      text: 'The Validation Agreement was signed by mamos, cabildos and comisarios.' },
+    { date: '2026-05', label: 'May – Aug 2026', title: 'Field missions and participatory mapping', place: 'Cuenca Durankwa Meyna', cover: 'g12', photos: ['g12', 'g11', 'g5'],
+      text: 'Field missions with the communities and participatory mapping of the territory.' },
+    { date: '2026-05-04', label: '4 May 2026', title: 'Socialisation assembly', place: 'Gunchukwa', cover: 'g15', photos: ['g15', 'g14'],
+      text: 'Assembly to present the project to the communities. Women leaders also spoke.' }
+  ];
+
+  var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var gal = $('#gal'), filter = 'all', expanded = false, SHOW = 8, shown = [];
+  function renderGal() {
+    shown = PHOTOS.filter(function (p) { return filter === 'all' || p.cat === filter; });
+    var vis = expanded ? shown : shown.slice(0, SHOW);
+    gal.innerHTML = vis.map(function (p, i) {
+      return '<button class="gi ' + (p.size ? 'gi--' + p.size : '') + '" data-i="' + i + '" type="button"><img src="' + IMG(p.id) + '" alt="' + esc(p.cap) + '" loading="lazy"><span>' + esc(p.cap) + '</span></button>';
+    }).join('');
+    $('#gal-more').parentNode.style.display = (!expanded && shown.length > SHOW) ? '' : 'none';
+  }
+  $$('#gf .tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      $$('#gf .tab').forEach(function (x) { x.setAttribute('aria-selected', x === t); });
+      filter = t.dataset.f; renderGal();
+    });
+  });
+  $('#gal-more').addEventListener('click', function () { expanded = true; renderGal(); });
+  renderGal();
+
+  /* lightbox */
+  var lb = $('#lb'), cur = 0, lastFocus = null;
+  function showLb(i) {
+    cur = (i + shown.length) % shown.length;
+    $('#lb-img').src = IMG(shown[cur].id); $('#lb-img').alt = shown[cur].cap; $('#lb-cap').textContent = shown[cur].cap;
+  }
+  function openLb(i) { lastFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = 'hidden'; showLb(i); $('#lb-x').focus(); }
+  function closeLb() { lb.hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  gal.addEventListener('click', function (e) { var b = e.target.closest('.gi'); if (b) openLb(+b.dataset.i); });
+  $('#lb-x').addEventListener('click', closeLb);
+  $('#lb-p').addEventListener('click', function () { showLb(cur - 1); });
+  $('#lb-n').addEventListener('click', function () { showLb(cur + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 40) showLb(cur + (dx < 0 ? 1 : -1));
+  });
+
+  /* events */
+  function evCard(ev, i, big) {
+    return '<button class="ev ' + (big ? 'ev--big' : '') + '" data-e="' + i + '" type="button"><span class="ev__img"><img src="' + IMG(ev.cover) + '" alt="" loading="lazy"></span>' +
+      '<span class="ev__b"><span class="ev__tag ' + (ev.upcoming ? 'up' : '') + '">' + (ev.upcoming ? 'Upcoming' : 'Held') + '</span>' +
+      '<time class="ev__d">' + esc(ev.label) + '</time><strong>' + esc(ev.title) + '</strong><em>' + esc(ev.place) + '</em><span class="ev__t">' + esc(ev.text) + '</span></span></button>';
+  }
+  var nextHtml = '', gridHtml = '';
+  EVENTS.forEach(function (ev, i) {
+    if (ev.upcoming) nextHtml += '<span class="evnext__l">Coming next</span>' + evCard(ev, i, true);
+    else gridHtml += evCard(ev, i, false);
+  });
+  $('#evnext').innerHTML = nextHtml; $('#evgrid').innerHTML = gridHtml;
+  var evm = $('#evm');
+  function openEv(i) {
+    var ev = EVENTS[i]; lastFocus = document.activeElement;
+    $('#evm-ph').innerHTML = ev.photos.map(function (id) { return '<img src="' + IMG(id) + '" alt="' + esc(ev.title) + '" loading="lazy">'; }).join('');
+    $('#evm-ph').className = 'evm__ph n' + ev.photos.length;
+    $('#evm-meta').textContent = ev.label + ' · ' + ev.place;
+    $('#evm-title').textContent = ev.title; $('#evm-txt').textContent = ev.text;
+    evm.hidden = false; document.body.style.overflow = 'hidden'; $('#evm-x').focus();
+  }
+  function closeEv() { evm.hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  $('#events').addEventListener('click', function (e) { var b = e.target.closest('.ev'); if (b) openEv(+b.dataset.e); });
+  $('#evm-x').addEventListener('click', closeEv);
+  evm.addEventListener('click', function (e) { if (e.target === evm) closeEv(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lb.hidden) {
+      if (e.key === 'Escape') closeLb();
+      else if (e.key === 'ArrowLeft') showLb(cur - 1);
+      else if (e.key === 'ArrowRight') showLb(cur + 1);
+    } else if (!evm.hidden && e.key === 'Escape') closeEv();
   });
 })();
