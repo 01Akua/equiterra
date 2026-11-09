@@ -162,7 +162,7 @@
     shown = PHOTOS.filter(function (p) { return filter === 'all' || p.cat === filter; });
     var vis = expanded ? shown : shown.slice(0, SHOW);
     gal.innerHTML = vis.map(function (p, i) {
-      return '<button class="gi ' + (p.size ? 'gi--' + p.size : '') + '" data-i="' + i + '" type="button"><img src="' + IMG(p.id) + '" alt="' + esc(p.cap) + '" loading="lazy"><span>' + esc(p.cap) + '</span></button>';
+      return '<button class="gi ' + (p.size ? 'gi--' + p.size : '') + '" data-i="' + i + '" type="button"><img src="' + IMG(p.id) + '" alt="' + esc(p.cap) + '" loading="lazy"></button>';
     }).join('');
     $('#gal-more').parentNode.style.display = (!expanded && shown.length > SHOW) ? '' : 'none';
   }
